@@ -29,7 +29,7 @@ function Check({ val }: { val: boolean }) {
 }
 
 export default function Landing() {
-  const [annual, setAnnual] = useState(false)
+  const [annual, setAnnual] = useState(true)
 
   return (
     <div>
@@ -46,9 +46,9 @@ export default function Landing() {
         <p className="text-[#5a5f72] font-light text-lg max-w-lg mx-auto mb-9 leading-relaxed">
           PaintFlow is the CRM built from scratch for painting contractors — with real job costing, live labor tracking, and the tools you actually need to run a crew.
         </p>
-        <GetStartedButton className="inline-flex items-center gap-2 bg-[#2563eb] text-white font-medium text-base px-7 py-3.5 rounded-xl hover:opacity-90 active:scale-[0.98] transition-all" />
+        <GetStartedButton plan="annual" label="Get Started — $79/mo" className="inline-flex items-center gap-2 bg-[#2563eb] text-white font-medium text-base px-7 py-3.5 rounded-xl hover:opacity-90 active:scale-[0.98] transition-all" />
         <p className="text-sm text-[#5a5f72] mt-3">
-          Cancel anytime.{' '}
+          Billed annually — save $240/year.{' '}
           <a
             href="https://calendly.com/carstonroberts/30min"
             target="_blank"
@@ -200,19 +200,19 @@ export default function Landing() {
           {/* Toggle */}
           <div className="inline-flex items-center bg-white/8 border border-white/12 rounded-xl p-1 mb-8 gap-1">
             <button
-              onClick={() => setAnnual(false)}
-              className={`text-sm font-medium px-5 py-2 rounded-lg transition-all cursor-pointer ${!annual ? 'bg-white text-[#0f1117]' : 'text-white/60 hover:text-white'}`}
-            >
-              Monthly
-            </button>
-            <button
               onClick={() => setAnnual(true)}
               className={`text-sm font-medium px-5 py-2 rounded-lg transition-all cursor-pointer flex items-center gap-2 ${annual ? 'bg-white text-[#0f1117]' : 'text-white/60 hover:text-white'}`}
             >
               Annual
               <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${annual ? 'bg-[#e4f5ec] text-[#1d7a4a]' : 'bg-[#1d7a4a]/30 text-[#4ade80]'}`}>
-                Save 20%
+                Best value
               </span>
+            </button>
+            <button
+              onClick={() => setAnnual(false)}
+              className={`text-sm font-medium px-5 py-2 rounded-lg transition-all cursor-pointer ${!annual ? 'bg-white text-[#0f1117]' : 'text-white/60 hover:text-white'}`}
+            >
+              Monthly
             </button>
           </div>
 
