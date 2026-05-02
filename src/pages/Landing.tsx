@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import GetStartedButton from '../components/GetStartedButton'
 
 const FEATURES = [
   { icon: '💰', color: 'bg-[#eff6ff]', title: 'Real Job Costing', desc: 'Compare estimated vs actual hours, materials, and supplies on every job. See your real margin — not just what you hoped for.' },
@@ -42,23 +43,23 @@ export default function Landing() {
         <p className="text-[#5a5f72] font-light text-lg max-w-lg mx-auto mb-9 leading-relaxed">
           PaintFlow is the CRM built from scratch for painting contractors — with real job costing, live labor tracking, and the tools you actually need to run a crew.
         </p>
-        <a
-          href="https://calendly.com/carstonroberts/30min"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-[#2563eb] text-white font-medium text-base px-7 py-3.5 rounded-xl hover:opacity-90 active:scale-[0.98] transition-all"
-        >
-          Schedule a Free Demo
-        </a>
+        <GetStartedButton className="inline-flex items-center gap-2 bg-[#2563eb] text-white font-medium text-base px-7 py-3.5 rounded-xl hover:opacity-90 active:scale-[0.98] transition-all" />
         <p className="text-sm text-[#5a5f72] mt-3">
-          30 minutes. No pressure. See exactly how it works.{' '}
-          <a href="https://paintflow-crm.vercel.app/login" className="text-[#2563eb] hover:underline">
+          Cancel anytime.{' '}
+          <a
+            href="https://calendly.com/carstonroberts/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#2563eb] hover:underline"
+          >
+            Prefer a demo first? Book 30 min →
+          </a>
+        </p>
+        <p className="text-xs text-[#5a5f72] mt-1">
+          <a href="https://paintflow-crm.vercel.app/login" className="hover:underline">
             Already a customer? Log in →
           </a>
         </p>
-        <div className="inline-flex items-center gap-2 bg-[#e4f5ec] text-[#1d7a4a] text-sm font-medium px-4 py-1.5 rounded-full mt-5">
-          Early access pricing — $99/month
-        </div>
       </div>
 
       {/* App Preview */}
@@ -203,14 +204,7 @@ export default function Landing() {
                 </li>
               ))}
             </ul>
-            <a
-              href="https://calendly.com/carstonroberts/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center w-full bg-white text-[#0f1117] font-semibold text-sm py-3.5 rounded-xl hover:opacity-90 transition-opacity"
-            >
-              Schedule a Free Demo
-            </a>
+            <GetStartedButton className="flex items-center justify-center w-full bg-white text-[#0f1117] font-semibold text-sm py-3.5 rounded-xl hover:opacity-90 transition-opacity" label="Get Started — $99/mo" />
           </div>
         </div>
       </div>

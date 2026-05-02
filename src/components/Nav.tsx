@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
+import GetStartedButton from './GetStartedButton'
 
 export default function Nav() {
   const { pathname } = useLocation()
@@ -29,14 +30,7 @@ export default function Nav() {
           >
             Log in
           </a>
-          <a
-            href="https://calendly.com/carstonroberts/30min"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-[#0f1117] text-white text-sm font-medium px-5 py-2 rounded-lg hover:opacity-85 transition-opacity"
-          >
-            Schedule a Demo
-          </a>
+          <GetStartedButton className="bg-[#0f1117] text-white text-sm font-medium px-5 py-2 rounded-lg hover:opacity-85 transition-opacity" label="Get Started" />
         </div>
       </div>
     </nav>
