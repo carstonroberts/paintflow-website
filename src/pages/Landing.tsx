@@ -400,6 +400,12 @@ export default function Landing() {
               </div>
             ))}
           </div>
+          <p className="text-sm text-[#5a5f72] mt-10 text-center">
+            Want to see all of this in action?{' '}
+            <a href="https://calendly.com/carstonroberts/30min" target="_blank" rel="noopener noreferrer" className="text-[#2563eb] font-medium hover:underline">
+              Book a free 30-minute demo →
+            </a>
+          </p>
         </div>
       </section>
 
@@ -449,6 +455,27 @@ export default function Landing() {
             </tr>
           </tbody>
         </table>
+      </div>
+
+      {/* ── Demo CTA ── */}
+      <div className="max-w-4xl mx-auto px-6 pb-16">
+        <div className="bg-[#eff6ff] border border-[#2563eb]/20 rounded-2xl p-10 flex flex-col sm:flex-row items-center gap-8">
+          <div className="flex-1">
+            <div className="text-xs font-semibold uppercase tracking-widest text-[#2563eb] mb-2">Free Demo</div>
+            <h3 className="text-2xl font-extrabold tracking-tight text-[#0f1117] mb-2">See it before you buy.</h3>
+            <p className="text-sm text-[#5a5f72] font-light leading-relaxed max-w-sm">
+              Book a free 30-minute walkthrough. We'll show you exactly how PaintFlow works for your crew and your jobs — no pressure.
+            </p>
+          </div>
+          <a
+            href="https://calendly.com/carstonroberts/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 bg-[#2563eb] text-white font-semibold text-sm px-7 py-3.5 rounded-xl hover:opacity-90 active:scale-[0.98] transition-all whitespace-nowrap"
+          >
+            Book a Free Demo →
+          </a>
+        </div>
       </div>
 
       {/* ── Pricing ── */}
@@ -507,6 +534,17 @@ export default function Landing() {
               className="flex items-center justify-center w-full bg-white text-[#0f1117] font-semibold text-sm py-3.5 rounded-xl hover:opacity-90 transition-opacity"
               label={annual ? 'Get Started — $948/year' : 'Get Started — $99/mo'}
             />
+            <p className="text-white/40 text-xs mt-4">
+              Not ready yet?{' '}
+              <a
+                href="https://calendly.com/carstonroberts/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 hover:text-white underline transition-colors"
+              >
+                Book a free demo first →
+              </a>
+            </p>
           </div>
         </div>
       </div>
