@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import GetStartedButton from '../components/GetStartedButton'
 
@@ -28,6 +29,8 @@ function Check({ val }: { val: boolean }) {
 }
 
 export default function Landing() {
+  const [annual, setAnnual] = useState(false)
+
   return (
     <div>
       {/* Hero */}
@@ -192,10 +195,41 @@ export default function Landing() {
         <div className="bg-[#0f1117] text-white rounded-2xl px-8 py-16 text-center">
           <div className="text-xs font-semibold uppercase tracking-widest text-[#f0a500] mb-3">Pricing</div>
           <h2 className="font-[Syne] text-4xl font-extrabold tracking-tight mb-3">Simple, honest pricing.</h2>
-          <p className="text-white/55 font-light text-base max-w-sm mx-auto mb-10">Low overhead means we pass the savings on. One plan. Everything included.</p>
+          <p className="text-white/55 font-light text-base max-w-sm mx-auto mb-8">Low overhead means we pass the savings on. One plan. Everything included.</p>
+
+          {/* Toggle */}
+          <div className="inline-flex items-center bg-white/8 border border-white/12 rounded-xl p-1 mb-8 gap-1">
+            <button
+              onClick={() => setAnnual(false)}
+              className={`text-sm font-medium px-5 py-2 rounded-lg transition-all cursor-pointer ${!annual ? 'bg-white text-[#0f1117]' : 'text-white/60 hover:text-white'}`}
+            >
+              Monthly
+            </button>
+            <button
+              onClick={() => setAnnual(true)}
+              className={`text-sm font-medium px-5 py-2 rounded-lg transition-all cursor-pointer flex items-center gap-2 ${annual ? 'bg-white text-[#0f1117]' : 'text-white/60 hover:text-white'}`}
+            >
+              Annual
+              <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${annual ? 'bg-[#e4f5ec] text-[#1d7a4a]' : 'bg-[#1d7a4a]/30 text-[#4ade80]'}`}>
+                Save 20%
+              </span>
+            </button>
+          </div>
+
           <div className="bg-white/6 border border-white/12 rounded-xl p-8 max-w-sm mx-auto">
-            <div className="font-[Syne] text-6xl font-extrabold tracking-[-0.04em] text-white leading-none mb-1">$99</div>
-            <div className="text-white/45 text-sm mb-7">per month, cancel anytime</div>
+            <div className="flex items-end justify-center gap-1 mb-1">
+              <div className="font-[Syne] text-6xl font-extrabold tracking-[-0.04em] text-white leading-none">
+                ${annual ? '79' : '99'}
+              </div>
+              <div className="text-white/45 text-sm mb-2">/mo</div>
+            </div>
+            <div className="text-white/45 text-sm mb-1">
+              {annual ? 'billed as $948/year' : 'billed monthly, cancel anytime'}
+            </div>
+            {annual && (
+              <div className="text-[#4ade80] text-xs font-medium mb-6">You save $240/year</div>
+            )}
+            {!annual && <div className="mb-6" />}
             <ul className="text-left mb-7 space-y-0">
               {['Full pipeline & CRM', 'Job costing & margin tracking', 'Live labor time clock', 'Smart estimating engine', 'Invoicing & payment collection', 'Text & email automations', 'Gmail lead sync', 'Unlimited jobs & clients'].map(item => (
                 <li key={item} className="flex items-center gap-2.5 text-sm text-white/75 py-1.5 border-b border-white/7 last:border-0">
@@ -204,7 +238,11 @@ export default function Landing() {
                 </li>
               ))}
             </ul>
-            <GetStartedButton className="flex items-center justify-center w-full bg-white text-[#0f1117] font-semibold text-sm py-3.5 rounded-xl hover:opacity-90 transition-opacity" label="Get Started — $99/mo" />
+            <GetStartedButton
+              plan={annual ? 'annual' : 'monthly'}
+              className="flex items-center justify-center w-full bg-white text-[#0f1117] font-semibold text-sm py-3.5 rounded-xl hover:opacity-90 transition-opacity"
+              label={annual ? 'Get Started — $948/year' : 'Get Started — $99/mo'}
+            />
           </div>
         </div>
       </div>

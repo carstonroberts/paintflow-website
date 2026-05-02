@@ -5,9 +5,10 @@ const API_BASE = 'https://paintflow-crm-production.up.railway.app'
 interface Props {
   className?: string
   label?: string
+  plan?: 'monthly' | 'annual'
 }
 
-export default function GetStartedButton({ className = '', label = 'Get Started — $99/mo' }: Props) {
+export default function GetStartedButton({ className = '', label = 'Get Started — $99/mo', plan = 'monthly' }: Props) {
   const [loading, setLoading] = useState(false)
 
   async function handleClick() {
@@ -16,7 +17,7 @@ export default function GetStartedButton({ className = '', label = 'Get Started 
       const res = await fetch(`${API_BASE}/api/create-checkout-session`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({}),
+        body: JSON.stringify({ plan }),
       })
       const { url, error } = await res.json()
       if (url) window.location.href = url
