@@ -24,6 +24,12 @@ export default function Nav() {
             </Link>
           )}
           <a
+            href="https://paintflow-crm.vercel.app/login"
+            className="text-sm text-[#5a5f72] hover:text-[#0f1117] transition-colors hidden sm:block"
+          >
+            Log in
+          </a>
+          <a
             href="https://calendly.com/carstonroberts/30min"
             target="_blank"
             rel="noopener noreferrer"

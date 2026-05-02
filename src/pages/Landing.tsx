@@ -50,7 +50,12 @@ export default function Landing() {
         >
           Schedule a Free Demo
         </a>
-        <p className="text-sm text-[#5a5f72] mt-3">30 minutes. No pressure. See exactly how it works.</p>
+        <p className="text-sm text-[#5a5f72] mt-3">
+          30 minutes. No pressure. See exactly how it works.{' '}
+          <a href="https://paintflow-crm.vercel.app/login" className="text-[#2563eb] hover:underline">
+            Already a customer? Log in →
+          </a>
+        </p>
         <div className="inline-flex items-center gap-2 bg-[#e4f5ec] text-[#1d7a4a] text-sm font-medium px-4 py-1.5 rounded-full mt-5">
           Early access pricing — $99/month
         </div>
