@@ -68,7 +68,7 @@ export default function FiveMistakes() {
           <div className="inline-flex items-center gap-1.5 bg-[#fdf0ee] text-[#c0392b] text-xs font-medium px-4 py-1.5 rounded-full mb-5">
             ⚠️ Free Guide for Painting Contractors
           </div>
-          <h1 className="font-[Syne] text-3xl font-extrabold tracking-tight leading-tight text-[#0f1117] mb-3">
+          <h1 className="text-3xl font-extrabold tracking-tight leading-tight text-[#0f1117] mb-3">
             5 Mistakes Painters Make That<br />
             Cost Them Money on <em className="not-italic text-[#2563eb]">Every Job</em>
           </h1>
@@ -80,7 +80,7 @@ export default function FiveMistakes() {
         {/* Email gate */}
         {!shown && (
           <div className="bg-white border border-black/10 rounded-2xl p-8 mb-4">
-            <div className="font-[Syne] font-bold text-base mb-1">Get the free guide instantly</div>
+            <div className="font-bold text-base mb-1">Get the free guide instantly</div>
             <p className="text-[13px] text-[#5a5f72] font-light mb-5">Enter your name and email to access all 5 mistakes — plus a fix for each one.</p>
             <div className="grid grid-cols-2 gap-4 mb-4">
               <div className="flex flex-col gap-1.5">
@@ -127,7 +127,7 @@ export default function FiveMistakes() {
 
             <div className="bg-[#0f1117] text-white rounded-2xl px-6 py-6 mb-4">
               <div className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-2">Free Guide — PaintFlow</div>
-              <div className="font-[Syne] text-xl font-extrabold tracking-tight mb-2">5 Mistakes Costing You Money on Every Job</div>
+              <div className="text-xl font-extrabold tracking-tight mb-2">5 Mistakes Costing You Money on Every Job</div>
               <p className="text-white/55 text-sm font-light leading-relaxed">
                 These aren't rare mistakes — they happen on almost every job at almost every painting company. The ones who fix them are the ones who actually scale.
               </p>
@@ -136,9 +136,9 @@ export default function FiveMistakes() {
             <div className="flex flex-col gap-3.5 mb-4">
               {MISTAKES.map((m, i) => (
                 <div key={i} className="bg-white border border-black/10 rounded-xl p-6 flex gap-4">
-                  <div className="font-[Syne] text-3xl font-extrabold text-[#c0392b] opacity-20 leading-none shrink-0 w-9">{i + 1}</div>
+                  <div className="text-3xl font-extrabold text-[#c0392b] opacity-20 leading-none shrink-0 w-9">{i + 1}</div>
                   <div className="flex-1">
-                    <div className="font-[Syne] font-bold text-base text-[#0f1117] mb-2">{m.title}</div>
+                    <div className="font-bold text-base text-[#0f1117] mb-2">{m.title}</div>
                     <p className="text-sm text-[#5a5f72] font-light leading-relaxed mb-3">{m.body}</p>
                     <div className="flex items-start gap-2 bg-[#e4f5ec] rounded-lg px-3 py-2.5 text-[13px] text-[#1d7a4a] font-medium leading-relaxed">
                       <span className="font-bold shrink-0">The fix:</span>
@@ -151,7 +151,7 @@ export default function FiveMistakes() {
 
             {/* Pitch */}
             <div className="bg-[#0f1117] rounded-2xl px-8 py-10 text-center mb-6">
-              <div className="font-[Syne] font-extrabold text-xl text-white mb-3">PaintFlow tracks all of this automatically.</div>
+              <div className="font-extrabold text-xl text-white mb-3">PaintFlow tracks all of this automatically.</div>
               <p className="text-white/60 font-light text-sm leading-relaxed max-w-md mx-auto mb-6">
                 Every one of these mistakes is solved by having the right data in front of you. PaintFlow was built by a painting contractor specifically to track job costing, labor budgets, deposit status, and post-job profitability — so you always know where your money is going.
               </p>

@@ -100,7 +100,7 @@ export default function RateCalculator() {
 
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="font-[Syne] text-3xl font-extrabold tracking-tight leading-tight text-[#0f1117] mb-2">
+          <h1 className="text-3xl font-extrabold tracking-tight leading-tight text-[#0f1117] mb-2">
             What should you charge for painting in{' '}
             <em className="not-italic text-[#2563eb]">{form.state || 'your state'}</em>?
           </h1>
@@ -131,7 +131,7 @@ export default function RateCalculator() {
         {/* Step 1: Details */}
         {step === 'details' && (
           <div className="bg-white border border-black/10 rounded-2xl p-8">
-            <div className="font-[Syne] font-bold text-base mb-5">Tell us about your business</div>
+            <div className="font-bold text-base mb-5">Tell us about your business</div>
             <div className="grid grid-cols-2 gap-4 mb-4">
               <div className="flex flex-col gap-1.5">
                 <label className="text-[13px] font-medium">Your State</label>
@@ -179,7 +179,7 @@ export default function RateCalculator() {
         {/* Step 2: Email */}
         {step === 'email' && (
           <div className="bg-white border border-black/10 rounded-2xl p-8">
-            <div className="font-[Syne] font-bold text-base mb-1.5">Almost there — who should we send this to?</div>
+            <div className="font-bold text-base mb-1.5">Almost there — who should we send this to?</div>
             <div className="grid grid-cols-2 gap-4 mb-4 mt-5">
               <div className="flex flex-col gap-1.5">
                 <label className="text-[13px] font-medium">First Name</label>
@@ -225,7 +225,7 @@ export default function RateCalculator() {
             {/* Results header */}
             <div className="bg-[#0f1117] text-white rounded-2xl px-6 py-6 mb-3 flex items-center justify-between flex-wrap gap-4">
               <div>
-                <div className="font-[Syne] text-xl font-extrabold tracking-tight">Painting Rates — {results.state}</div>
+                <div className="text-xl font-extrabold tracking-tight">Painting Rates — {results.state}</div>
                 <div className="text-white/50 text-[13px] mt-1">{wtLabel} · {sizeLabel} · {expLabel} · Based on BLS 2024 data</div>
               </div>
               <span className="text-white/80 text-xs bg-white/10 border border-white/15 px-3 py-1 rounded-full">{results.region}</span>
@@ -260,7 +260,7 @@ export default function RateCalculator() {
                   {card.rows.map(row => (
                     <div key={row.name} className="flex justify-between items-center py-1.5 border-b border-black/10 last:border-0 text-[13px]">
                       <span className="text-[#5a5f72]">{row.name}</span>
-                      <span className={`font-[Syne] font-bold text-sm tracking-tight ${row.cls}`}>{row.val}</span>
+                      <span className={`font-bold text-sm tracking-tight ${row.cls}`}>{row.val}</span>
                     </div>
                   ))}
                 </div>
@@ -279,7 +279,7 @@ export default function RateCalculator() {
 
             {/* Pitch */}
             <div className="bg-white border border-black/10 rounded-2xl p-8 mb-4">
-              <div className="font-[Syne] font-extrabold text-lg mb-2">Knowing the rate is only half the battle.</div>
+              <div className="font-extrabold text-lg mb-2">Knowing the rate is only half the battle.</div>
               <p className="text-[#5a5f72] font-light text-sm leading-relaxed mb-5">
                 Most painting contractors know what they <em>should</em> charge — but have no idea if they're actually hitting those numbers on every job. Labor runs over by 15%, materials get under-quoted, and by the time the job is done you're not sure if you made money or lost it.<br /><br />
                 PaintFlow tracks your estimated vs actual hours, materials, and margin on every single job. You'll know your real profitability — not just your hoped-for profitability.

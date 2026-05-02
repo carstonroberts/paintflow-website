@@ -112,7 +112,7 @@ export default function Landing() {
           <span className="w-1.5 h-1.5 bg-[#2563eb] rounded-full" />
           Built by a painting contractor
         </div>
-        <h1 className="font-[Syne] text-5xl font-extrabold leading-[1.08] tracking-[-0.03em] text-[#0f1117] mb-5">
+        <h1 className="text-5xl font-extrabold leading-[1.08] tracking-[-0.03em] text-[#0f1117] mb-5">
           Finally know if your<br />
           <em className="not-italic text-[#2563eb]">jobs are profitable.</em>
         </h1>
@@ -182,7 +182,7 @@ export default function Landing() {
                 ].map(s => (
                   <div key={s.label} className="bg-white border border-black/8 rounded-xl p-3">
                     <div className="text-[9px] uppercase tracking-wider font-semibold text-[#5a5f72] mb-1">{s.label}</div>
-                    <div className="font-[Syne] text-xl font-bold text-[#0f1117]">{s.val}</div>
+                    <div className="text-xl font-bold text-[#0f1117]">{s.val}</div>
                     <div className={`text-[10px] mt-0.5 ${s.up ? 'text-[#1d7a4a]' : 'text-[#a06000]'}`}>{s.sub}</div>
                   </div>
                 ))}
@@ -227,7 +227,7 @@ export default function Landing() {
         <div className="grid sm:grid-cols-2 gap-12 items-center">
           <div>
             <div className="text-xs font-semibold uppercase tracking-widest text-[#2563eb] mb-3">The problem</div>
-            <h2 className="font-[Syne] text-4xl font-extrabold tracking-tight leading-[1.1] text-[#0f1117] mb-5">
+            <h2 className="text-4xl font-extrabold tracking-tight leading-[1.1] text-[#0f1117] mb-5">
               You finish jobs<br />not knowing if<br />you made money.
             </h2>
             <p className="text-[#5a5f72] font-light leading-relaxed text-base mb-4">
@@ -267,11 +267,11 @@ export default function Landing() {
               <div className="mt-3 grid grid-cols-2 gap-2">
                 <div className="bg-[#f5f4f0] rounded-lg p-3 text-center">
                   <div className="text-[10px] text-[#5a5f72] mb-0.5">Est. Margin</div>
-                  <div className="font-[Syne] text-xl font-bold text-[#0f1117]">38%</div>
+                  <div className="text-xl font-bold text-[#0f1117]">38%</div>
                 </div>
                 <div className="bg-[#fff3d6] rounded-lg p-3 text-center">
                   <div className="text-[10px] text-[#a06000] mb-0.5">Actual Margin</div>
-                  <div className="font-[Syne] text-xl font-bold text-[#a06000]">31%</div>
+                  <div className="text-xl font-bold text-[#a06000]">31%</div>
                 </div>
               </div>
             </div>
@@ -311,7 +311,7 @@ export default function Landing() {
 
             <div>
               <div className="text-xs font-semibold uppercase tracking-widest text-[#2563eb] mb-3">Pipeline</div>
-              <h2 className="font-[Syne] text-4xl font-extrabold tracking-tight leading-[1.1] text-[#0f1117] mb-5">
+              <h2 className="text-4xl font-extrabold tracking-tight leading-[1.1] text-[#0f1117] mb-5">
                 Every lead.<br />Every stage.<br />Nothing lost.
               </h2>
               <p className="text-[#5a5f72] font-light leading-relaxed text-base mb-6">
@@ -332,7 +332,7 @@ export default function Landing() {
         <div className="grid sm:grid-cols-2 gap-12 items-center">
           <div>
             <div className="text-xs font-semibold uppercase tracking-widest text-[#2563eb] mb-3">Crew Time Tracking</div>
-            <h2 className="font-[Syne] text-4xl font-extrabold tracking-tight leading-[1.1] text-[#0f1117] mb-5">
+            <h2 className="text-4xl font-extrabold tracking-tight leading-[1.1] text-[#0f1117] mb-5">
               See your labor<br />budget in real time.
             </h2>
             <p className="text-[#5a5f72] font-light leading-relaxed text-base mb-6">
@@ -385,7 +385,7 @@ export default function Landing() {
       <section className="bg-[#f5f4f0] border-y border-black/8 py-20">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-xs font-semibold uppercase tracking-widest text-[#2563eb] mb-2.5">Everything included</div>
-          <h2 className="font-[Syne] text-4xl font-extrabold tracking-tight leading-[1.12] text-[#0f1117] mb-3">
+          <h2 className="text-4xl font-extrabold tracking-tight leading-[1.12] text-[#0f1117] mb-3">
             Built for painting.<br />Not plumbing.
           </h2>
           <p className="text-[#5a5f72] font-light text-base max-w-md mb-9 leading-relaxed">
@@ -397,7 +397,7 @@ export default function Landing() {
                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-3 ${f.color}`}>
                   <f.Icon />
                 </div>
-                <div className="font-[Syne] text-sm font-bold mb-1.5">{f.title}</div>
+                <div className="text-sm font-bold mb-1.5">{f.title}</div>
                 <p className="text-xs text-[#5a5f72] leading-relaxed font-light">{f.desc}</p>
               </div>
             ))}
@@ -409,7 +409,7 @@ export default function Landing() {
       <div className="max-w-4xl mx-auto px-6 py-16">
         <div className="bg-[#eff6ff] border border-[#2563eb]/20 rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <div className="font-[Syne] font-bold text-lg text-[#0f1117] mb-1">Not sure what to charge in your state?</div>
+            <div className="font-bold text-lg text-[#0f1117] mb-1">Not sure what to charge in your state?</div>
             <p className="text-sm text-[#5a5f72] font-light">Free rate sheet — low, median, and high labor rates specific to your state and work type.</p>
           </div>
           <Link to="/resources/rate-calculator" className="shrink-0 bg-[#2563eb] text-white text-sm font-medium px-6 py-3 rounded-xl hover:opacity-90 transition-opacity whitespace-nowrap">
@@ -421,17 +421,17 @@ export default function Landing() {
       {/* ── Comparison ── */}
       <div className="max-w-4xl mx-auto px-6 pb-16 text-center">
         <div className="text-xs font-semibold uppercase tracking-widest text-[#2563eb] mb-2.5">Comparison</div>
-        <h2 className="font-[Syne] text-4xl font-extrabold tracking-tight text-[#0f1117] mb-3">
+        <h2 className="text-4xl font-extrabold tracking-tight text-[#0f1117] mb-3">
           Half the price.<br />More of what matters.
         </h2>
         <p className="text-[#5a5f72] font-light text-base max-w-md mx-auto mb-8">Built by a painter for painters — without the enterprise price tag.</p>
         <table className="w-full text-sm border-collapse">
           <thead>
             <tr>
-              <th className="text-left px-4 py-2.5 font-[Syne] font-bold text-xs border-b-2 border-black/10">Feature</th>
-              <th className="text-left px-4 py-2.5 font-[Syne] font-bold text-xs border-b-2 border-black/10 text-[#2563eb]">PaintFlow</th>
-              <th className="text-left px-4 py-2.5 font-[Syne] font-bold text-xs border-b-2 border-black/10">PaintScout</th>
-              <th className="text-left px-4 py-2.5 font-[Syne] font-bold text-xs border-b-2 border-black/10">DripJobs</th>
+              <th className="text-left px-4 py-2.5 font-bold text-xs border-b-2 border-black/10">Feature</th>
+              <th className="text-left px-4 py-2.5 font-bold text-xs border-b-2 border-black/10 text-[#2563eb]">PaintFlow</th>
+              <th className="text-left px-4 py-2.5 font-bold text-xs border-b-2 border-black/10">PaintScout</th>
+              <th className="text-left px-4 py-2.5 font-bold text-xs border-b-2 border-black/10">DripJobs</th>
             </tr>
           </thead>
           <tbody>
@@ -457,7 +457,7 @@ export default function Landing() {
       <div className="max-w-4xl mx-auto px-6 pb-20">
         <div className="bg-[#0f1117] text-white rounded-2xl px-8 py-16 text-center">
           <div className="text-xs font-semibold uppercase tracking-widest text-[#f0a500] mb-3">Pricing</div>
-          <h2 className="font-[Syne] text-4xl font-extrabold tracking-tight mb-3">Simple, honest pricing.</h2>
+          <h2 className="text-4xl font-extrabold tracking-tight mb-3">Simple, honest pricing.</h2>
           <p className="text-white/55 font-light text-base max-w-sm mx-auto mb-8">One plan. Everything included. No per-seat fees.</p>
 
           {/* Toggle */}
@@ -479,7 +479,7 @@ export default function Landing() {
 
           <div className="bg-white/6 border border-white/12 rounded-xl p-8 max-w-sm mx-auto">
             <div className="flex items-end justify-center gap-1 mb-1">
-              <div className="font-[Syne] text-6xl font-extrabold tracking-[-0.04em] text-white leading-none">${annual ? '79' : '99'}</div>
+              <div className="text-6xl font-extrabold tracking-[-0.04em] text-white leading-none">${annual ? '79' : '99'}</div>
               <div className="text-white/45 text-sm mb-2">/mo</div>
             </div>
             <div className="text-white/45 text-sm mb-1">

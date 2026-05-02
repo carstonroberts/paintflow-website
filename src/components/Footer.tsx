@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 export default function Footer() {
   return (
     <footer className="bg-[#f5f4f0] border-t border-black/10 py-8 px-6 text-center">
-      <Link to="/" className="font-[Syne] font-extrabold text-lg text-[#0f1117] tracking-tight">
+      <Link to="/" className="font-extrabold text-lg text-[#0f1117] tracking-tight">
         Paint<span className="text-[#2563eb]">Flow</span>
       </Link>
       <p className="text-sm text-[#5a5f72] mt-1">Built by a painting contractor, for painting contractors.</p>

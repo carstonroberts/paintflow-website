@@ -10,7 +10,7 @@ export default function Nav() {
       <div className="max-w-4xl mx-auto px-6 h-full flex items-center justify-between">
         <Link
           to="/"
-          className="font-[Syne] font-extrabold text-xl tracking-tight text-[#0f1117]"
+          className="font-extrabold text-xl tracking-tight text-[#0f1117]"
         >
           Paint<span className="text-[#2563eb]">Flow</span>
         </Link>
