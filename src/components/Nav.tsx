@@ -8,11 +8,11 @@ export default function Nav() {
   return (
     <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-black/10 h-15">
       <div className="max-w-4xl mx-auto px-6 h-full flex items-center justify-between">
-        <Link
-          to="/"
-          className="font-extrabold text-xl tracking-tight text-[#0f1117]"
-        >
-          Paint<span className="text-[#2563eb]">Flow</span>
+        <Link to="/" className="flex items-center gap-2.5">
+          <img src="/logo.png" alt="PaintFlow" className="w-8 h-8 rounded-lg" />
+          <span className="font-extrabold text-xl tracking-tight text-[#0f1117]">
+            Paint<span className="text-[#2563eb]">Flow</span>
+          </span>
         </Link>
 
         <div className="flex items-center gap-4">

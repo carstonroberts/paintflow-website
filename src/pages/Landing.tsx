@@ -149,9 +149,7 @@ export default function Landing() {
             {/* Sidebar */}
             <div className="w-44 bg-white border-r border-black/8 p-3 shrink-0 hidden md:block">
               <div className="flex items-center gap-2 px-2 py-2 mb-3">
-                <div className="w-6 h-6 bg-[#2563eb] rounded-md flex items-center justify-center shrink-0">
-                  <span className="text-white text-[10px] font-bold">P</span>
-                </div>
+                <img src="/logo.png" alt="PaintFlow" className="w-6 h-6 rounded-md shrink-0" />
                 <span className="text-[11px] font-semibold text-[#0f1117]">PaintFlow</span>
               </div>
               {[
