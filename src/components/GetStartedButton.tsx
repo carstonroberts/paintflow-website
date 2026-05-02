@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const API_BASE = 'https://paintflow-crm-production.up.railway.app'
+const API_BASE = ''  // same-origin — Vercel routes /api/checkout to serverless function
 
 interface Props {
   className?: string
@@ -14,7 +14,7 @@ export default function GetStartedButton({ className = '', label = 'Get Started 
   async function handleClick() {
     setLoading(true)
     try {
-      const res = await fetch(`${API_BASE}/api/create-checkout-session`, {
+      const res = await fetch(`${API_BASE}/api/checkout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ plan }),
