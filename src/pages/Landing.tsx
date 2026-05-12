@@ -131,7 +131,7 @@ export default function Landing() {
           </a>
         </p>
         <p className="text-xs text-[#5a5f72] mt-1">
-          <a href="https://paintflow-crm.vercel.app/login" className="hover:underline">Already a customer? Log in →</a>
+          <a href="https://app.getpaintflow.com/login" className="hover:underline">Already a customer? Log in →</a>
         </p>
       </div>
 
