@@ -5,18 +5,27 @@ import Landing from './pages/Landing'
 import RateCalculator from './pages/RateCalculator'
 import FiveMistakes from './pages/FiveMistakes'
 
+// Layout with shared Nav/Footer for resource pages
+function ResourceLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <Nav />
+      <main>{children}</main>
+      <Footer />
+    </>
+  )
+}
+
 export default function App() {
   return (
     <BrowserRouter>
-      <Nav />
-      <main>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/resources/rate-calculator" element={<RateCalculator />} />
-          <Route path="/resources/5-mistakes" element={<FiveMistakes />} />
-        </Routes>
-      </main>
-      <Footer />
+      <Routes>
+        {/* Landing has its own Nav and Footer built in */}
+        <Route path="/" element={<Landing />} />
+        {/* Resource pages use the shared Nav/Footer */}
+        <Route path="/resources/rate-calculator" element={<ResourceLayout><RateCalculator /></ResourceLayout>} />
+        <Route path="/resources/5-mistakes" element={<ResourceLayout><FiveMistakes /></ResourceLayout>} />
+      </Routes>
     </BrowserRouter>
   )
 }
