@@ -53,11 +53,17 @@ function DashIcon({ size = 18 }: { size?: number }) {
 // ─── Nav ──────────────────────────────────────────────────────────────────────
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', fn);
-    return () => window.removeEventListener('scroll', fn);
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onResize = () => setIsMobile(window.innerWidth < 640);
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('resize', onResize);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    };
   }, []);
 
   return (
@@ -69,29 +75,31 @@ function Nav() {
       transition: 'box-shadow 0.2s',
       boxShadow: scrolled ? '0 2px 24px rgba(0,0,0,0.07)' : 'none',
     }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px', height: 60, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 20px', height: 60, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <img src="/logo.png" alt="PaintFlow" style={{ width: 32, height: 32, borderRadius: 8 }} />
           <span style={{ fontWeight: 800, fontSize: 18, letterSpacing: '-0.03em', color: '#0f1117' }}>
             Paint<span style={{ color: ACCENT }}>Flow</span>
           </span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <button
-            onClick={() => window.location.href = 'https://app.getpaintflow.com/login'}
-            style={{ fontSize: 13, color: '#5a5f72', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 500 }}>
-            Log in
-          </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 10 : 16 }}>
+          {!isMobile && (
+            <button
+              onClick={() => window.location.href = 'https://app.getpaintflow.com/login'}
+              style={{ fontSize: 13, color: '#5a5f72', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 500 }}>
+              Log in
+            </button>
+          )}
           <a
             href={DEMO_URL}
             target="_blank"
             rel="noopener noreferrer"
             style={{
               background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 600,
-              padding: '9px 20px', borderRadius: 10, textDecoration: 'none',
-              letterSpacing: '-0.01em', display: 'inline-block',
+              padding: isMobile ? '8px 16px' : '9px 20px', borderRadius: 10, textDecoration: 'none',
+              letterSpacing: '-0.01em', display: 'inline-block', whiteSpace: 'nowrap',
             }}>
-            Schedule a Free Demo →
+            {isMobile ? 'Free Demo →' : 'Schedule a Free Demo →'}
           </a>
         </div>
       </div>
