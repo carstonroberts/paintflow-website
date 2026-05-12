@@ -1,554 +1,1155 @@
-import { useState } from 'react'
-import React from 'react'
-import { Link } from 'react-router-dom'
-import GetStartedButton from '../components/GetStartedButton'
+import { useState, useEffect } from 'react';
 
-// --- SVG Icons ---
-function IconChart() {
-  return (
-    <svg viewBox="0 0 20 20" fill="currentColor" className="w-[18px] h-[18px]">
-      <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
-    </svg>
-  )
-}
-function IconClock() {
-  return (
-    <svg viewBox="0 0 20 20" fill="currentColor" className="w-[18px] h-[18px]">
-      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-    </svg>
-  )
-}
-function IconDocument() {
-  return (
-    <svg viewBox="0 0 20 20" fill="currentColor" className="w-[18px] h-[18px]">
-      <path fillRule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-2 0v2a1 1 0 102 0v-2zm2-2a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm4-1a1 1 0 10-2 0v4a1 1 0 102 0V9z" clipRule="evenodd" />
-    </svg>
-  )
-}
-function IconUsers() {
-  return (
-    <svg viewBox="0 0 20 20" fill="currentColor" className="w-[18px] h-[18px]">
-      <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
-    </svg>
-  )
-}
-function IconBoards() {
-  return (
-    <svg viewBox="0 0 20 20" fill="currentColor" className="w-[18px] h-[18px]">
-      <path d="M2 4a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H3a1 1 0 01-1-1V4zM2 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h3a1 1 0 001-1v-6a1 1 0 00-1-1h-3z" />
-    </svg>
-  )
-}
-function IconCard() {
-  return (
-    <svg viewBox="0 0 20 20" fill="currentColor" className="w-[18px] h-[18px]">
-      <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
-      <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
-    </svg>
-  )
-}
-function IconMail() {
-  return (
-    <svg viewBox="0 0 20 20" fill="currentColor" className="w-[18px] h-[18px]">
-      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-    </svg>
-  )
-}
-function IconDocText() {
-  return (
-    <svg viewBox="0 0 20 20" fill="currentColor" className="w-[18px] h-[18px]">
-      <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
-    </svg>
-  )
+
+const DEMO_URL = 'https://calendly.com/carstonroberts/30min';
+
+const ACCENT = '#2563eb';
+
+// Reliable scroll-to-pricing that works across all browsers/environments
+function scrollToPricing() {
+  const el = document.getElementById('pricing');
+  if (!el) return;
+  const top = el.getBoundingClientRect().top + window.scrollY - 60; // offset for sticky nav
+  window.scrollTo({ top, behavior: 'smooth' });
 }
 
-const FEATURES: { title: string; desc: string; color: string; Icon: () => React.ReactElement }[] = [
-  { title: 'Real Job Costing', desc: 'Compare estimated vs actual hours, materials, and supplies on every job. See your real margin — not what you hoped for.', color: 'bg-[#eff6ff] text-[#2563eb]', Icon: IconChart },
-  { title: 'Live Labor Tracking', desc: "Crew clocks in from their phone. See who's on site and how many hours are burned vs budgeted in real time.", color: 'bg-[#e4f5ec] text-[#1d7a4a]', Icon: IconClock },
-  { title: 'Smart Estimating', desc: 'Set your labor rate, paint coverage, and target margin. Hours, gallons, and final price — calculated automatically.', color: 'bg-[#fff3d6] text-[#a06000]', Icon: IconDocument },
-  { title: 'Crew Efficiency Scores', desc: 'Track which estimators and lead painters consistently hit their targets. Find out where your margin is actually going.', color: 'bg-[#ede9fe] text-[#6d28d9]', Icon: IconUsers },
-  { title: 'Pipeline Management', desc: 'Move jobs through 9 stages. Gmail sync pulls leads straight into your funnel automatically.', color: 'bg-[#eff6ff] text-[#2563eb]', Icon: IconBoards },
-  { title: 'Invoicing & Payments', desc: 'Send deposit and final invoices from the app. Deposit status gates scheduling so jobs can\'t be booked until you\'re paid.', color: 'bg-[#e4f5ec] text-[#1d7a4a]', Icon: IconCard },
-  { title: 'Text & Email Automations', desc: 'Follow-up sequences, estimate reminders, and job confirmations — sent automatically so nothing slips.', color: 'bg-[#fff3d6] text-[#a06000]', Icon: IconMail },
-  { title: 'Digital Crew Sheets', desc: 'Print-ready job sheets with colors, notes, and hours — financials hidden. Your crew gets what they need, nothing they shouldn\'t.', color: 'bg-[#ede9fe] text-[#6d28d9]', Icon: IconDocText },
-]
-
-const COMPARE_ROWS = [
-  { feature: 'Job costing & margin tracking', pf: true, ps: false, dj: false },
-  { feature: 'Live labor budget health',       pf: true, ps: false, dj: false },
-  { feature: 'Crew efficiency scoring',        pf: true, ps: false, dj: false },
-  { feature: 'Gmail lead sync',                pf: true, ps: true,  dj: false },
-  { feature: 'Text & email automations',       pf: true, ps: true,  dj: true  },
-  { feature: 'Invoicing with deposit logic',   pf: true, ps: true,  dj: true  },
-]
-
-function Check({ val }: { val: boolean }) {
-  return val
-    ? <span className="text-[#1d7a4a] font-bold">✓</span>
-    : <span className="text-[#ccc]">—</span>
+// ─── Icons ────────────────────────────────────────────────────────────────────
+function Ic({ d, size = 18 }: { d: string; size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 20 20" fill="currentColor">
+      <path fillRule="evenodd" d={d} clipRule="evenodd" />
+    </svg>
+  );
 }
 
-function CheckItem({ label }: { label: string }) {
+const ICONS: Record<string, string> = {
+  chart:  'M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z',
+  clock:  'M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z',
+  doc:    'M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-2 0v2a1 1 0 102 0v-2zm2-2a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm4-1a1 1 0 10-2 0v4a1 1 0 102 0V9z',
+  users:  'M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z',
+  board:  'M2 4a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H3a1 1 0 01-1-1V4zM2 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h3a1 1 0 001-1v-6a1 1 0 00-1-1h-3z',
+  card:   'M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zM18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z',
+  mail:   'M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884zM18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z',
+  star:   'M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z',
+};
+
+function CheckIcon({ color = '#22c55e', size = 18 }: { color?: string; size?: number }) {
   return (
-    <li className="flex items-center gap-2.5 text-sm text-[#0f1117]">
-      <span className="w-4 h-4 rounded-full bg-[#e4f5ec] flex items-center justify-center shrink-0">
-        <span className="text-[#1d7a4a] text-[9px] font-bold">✓</span>
-      </span>
-      {label}
-    </li>
-  )
+    <svg width={size} height={size} viewBox="0 0 20 20" fill="none" style={{ flexShrink: 0 }}>
+      <circle cx="10" cy="10" r="10" fill={color} fillOpacity="0.12" />
+      <path d="M6 10l3 3 5-5" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
 }
 
-export default function Landing() {
-  const [annual, setAnnual] = useState(true)
+function DashIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 20 20" fill="none">
+      <path d="M6 10h8" stroke="#d1d5db" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+// ─── Nav ──────────────────────────────────────────────────────────────────────
+function Nav() {
+  const [scrolled, setScrolled] = useState(false);
+  
+
+  useEffect(() => {
+    const fn = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', fn);
+    return () => window.removeEventListener('scroll', fn);
+  }, []);
 
   return (
-    <div>
-
-      {/* ── Hero ── */}
-      <div className="max-w-4xl mx-auto px-6 pt-20 pb-16 text-center">
-        <div className="inline-flex items-center gap-2 bg-[#eff6ff] text-[#2563eb] text-xs font-medium px-4 py-1.5 rounded-full mb-6">
-          <span className="w-1.5 h-1.5 bg-[#2563eb] rounded-full" />
-          Built by a painting contractor
+    <nav style={{
+      position: 'sticky', top: 0, zIndex: 100,
+      background: 'rgba(255,255,255,0.95)',
+      backdropFilter: 'blur(12px)',
+      borderBottom: '1px solid rgba(15,17,23,0.08)',
+      transition: 'box-shadow 0.2s',
+      boxShadow: scrolled ? '0 2px 24px rgba(0,0,0,0.07)' : 'none',
+    }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px', height: 60, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <img src="/logo.png" alt="PaintFlow" style={{ width: 32, height: 32, borderRadius: 8 }} />
+          <span style={{ fontWeight: 800, fontSize: 18, letterSpacing: '-0.03em', color: '#0f1117' }}>
+            Paint<span style={{ color: ACCENT }}>Flow</span>
+          </span>
         </div>
-        <h1 className="text-5xl font-extrabold leading-[1.08] tracking-[-0.03em] text-[#0f1117] mb-5">
-          Finally know if your<br />
-          <em className="not-italic text-[#2563eb]">jobs are profitable.</em>
-        </h1>
-        <p className="text-[#5a5f72] font-light text-lg max-w-lg mx-auto mb-9 leading-relaxed">
-          PaintFlow is the CRM built from scratch for painting contractors — with real job costing, live labor tracking, and the tools you actually need to run a crew.
-        </p>
-        <GetStartedButton
-          plan="annual"
-          label="Get Started — $79/mo"
-          className="inline-flex items-center gap-2 bg-[#2563eb] text-white font-medium text-base px-7 py-3.5 rounded-xl hover:opacity-90 active:scale-[0.98] transition-all"
-        />
-        <p className="text-sm text-[#5a5f72] mt-3">
-          Billed annually — save $240/year.{' '}
-          <a href="https://calendly.com/carstonroberts/30min" target="_blank" rel="noopener noreferrer" className="text-[#2563eb] hover:underline">
-            Prefer a demo first? Book 30 min →
-          </a>
-        </p>
-        <p className="text-xs text-[#5a5f72] mt-1">
-          <a href="https://app.getpaintflow.com/login" className="hover:underline">Already a customer? Log in →</a>
-        </p>
-      </div>
-
-      {/* ── App mockup — Dashboard ── */}
-      <div className="max-w-5xl mx-auto px-6 pb-20">
-        <div className="bg-[#f5f4f0] border border-black/10 rounded-2xl overflow-hidden shadow-sm">
-          {/* Window chrome */}
-          <div className="flex items-center gap-2 px-5 py-3 border-b border-black/8 bg-white/60">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
-            <span className="ml-3 text-xs text-[#5a5f72] font-medium">PaintFlow — Dashboard</span>
-          </div>
-          <div className="flex">
-            {/* Sidebar */}
-            <div className="w-44 bg-white border-r border-black/8 p-3 shrink-0 hidden md:block">
-              <div className="flex items-center gap-2 px-2 py-2 mb-3">
-                <img src="/logo.png" alt="PaintFlow" className="w-6 h-6 rounded-md shrink-0" />
-                <span className="text-[11px] font-semibold text-[#0f1117]">PaintFlow</span>
-              </div>
-              {[
-                { label: 'Dashboard', active: true },
-                { label: 'Pipeline', active: false },
-                { label: 'Jobs', active: false },
-                { label: 'Clients', active: false },
-                { label: 'Calendar', active: false },
-                { label: 'Invoices', active: false },
-                { label: 'Time Tracking', active: false },
-                { label: 'Insights', active: false },
-              ].map(item => (
-                <div key={item.label} className={`flex items-center gap-2 px-2.5 py-1.5 rounded-lg mb-0.5 ${item.active ? 'bg-[#eff6ff] text-[#2563eb]' : 'text-[#5a5f72]'}`}>
-                  <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${item.active ? 'bg-[#2563eb]' : 'bg-[#d1d5db]'}`} />
-                  <span className="text-[11px] font-medium">{item.label}</span>
-                </div>
-              ))}
-            </div>
-            {/* Main content */}
-            <div className="flex-1 p-4 min-w-0">
-              {/* Stats row */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3">
-                {[
-                  { label: 'Pipeline Value', val: '$84,200', sub: '+12% this month', up: true },
-                  { label: 'Active Jobs', val: '7', sub: '3 on site now', up: true },
-                  { label: 'Avg Margin', val: '38%', sub: 'Goal: 35%', up: true },
-                  { label: 'Unpaid Invoices', val: '$14,800', sub: '3 outstanding', up: false },
-                ].map(s => (
-                  <div key={s.label} className="bg-white border border-black/8 rounded-xl p-3">
-                    <div className="text-[9px] uppercase tracking-wider font-semibold text-[#5a5f72] mb-1">{s.label}</div>
-                    <div className="text-xl font-bold text-[#0f1117]">{s.val}</div>
-                    <div className={`text-[10px] mt-0.5 ${s.up ? 'text-[#1d7a4a]' : 'text-[#a06000]'}`}>{s.sub}</div>
-                  </div>
-                ))}
-              </div>
-              {/* Pipeline preview */}
-              <div className="grid grid-cols-3 gap-2">
-                {[
-                  { label: 'New Lead', count: 3, tagColor: 'bg-[#eff6ff] text-[#2563eb]', cards: [
-                    { name: 'Henderson Exterior', val: '~$4,200', tag: 'From Gmail' },
-                    { name: 'Maple St. Interior', val: '~$2,800', tag: 'New' },
-                  ]},
-                  { label: 'In Production', count: 2, tagColor: 'bg-[#e4f5ec] text-[#1d7a4a]', cards: [
-                    { name: 'Whitmore Residence', val: '$6,400', tag: 'On Budget' },
-                    { name: 'Cedar Ln. Cabinets', val: '$3,100', tag: 'Watch Labor' },
-                  ]},
-                  { label: 'Invoiced', count: 2, tagColor: 'bg-[#fff3d6] text-[#a06000]', cards: [
-                    { name: 'Tanner Home', val: '$5,200', tag: '42% Margin' },
-                  ]},
-                ].map(col => (
-                  <div key={col.label} className="bg-white border border-black/8 rounded-xl p-2.5">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-[9px] font-semibold uppercase tracking-widest text-[#5a5f72]">{col.label}</span>
-                      <span className={`text-[9px] font-semibold px-1.5 py-0.5 rounded-full ${col.tagColor}`}>{col.count}</span>
-                    </div>
-                    {col.cards.map(card => (
-                      <div key={card.name} className="bg-[#f5f4f0] rounded-lg p-2 mb-1.5 last:mb-0">
-                        <div className="text-[10px] font-semibold text-[#0f1117]">{card.name}</div>
-                        <div className="text-[10px] text-[#5a5f72]">{card.val}</div>
-                        <span className="inline-block text-[9px] font-medium px-1.5 py-0.5 rounded-full mt-1 bg-[#eff6ff] text-[#2563eb]">{card.tag}</span>
-                      </div>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Problem ── */}
-      <div className="max-w-4xl mx-auto px-6 pb-20">
-        <div className="grid sm:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-widest text-[#2563eb] mb-3">The problem</div>
-            <h2 className="text-4xl font-extrabold tracking-tight leading-[1.1] text-[#0f1117] mb-5">
-              You finish jobs<br />not knowing if<br />you made money.
-            </h2>
-            <p className="text-[#5a5f72] font-light leading-relaxed text-base mb-4">
-              Most contractors track revenue, not cost. You quote 24 hours, the crew runs 31, and you don't find out until you're on the next job.
-            </p>
-            <p className="text-[#5a5f72] font-light leading-relaxed text-base">
-              PaintFlow closes the loop — from estimate to final margin — so you know exactly where the money went on every job.
-            </p>
-          </div>
-
-          {/* Job costing mockup */}
-          <div className="bg-white border border-black/10 rounded-2xl overflow-hidden shadow-sm">
-            <div className="px-4 py-3 border-b border-black/8 flex items-center justify-between">
-              <div>
-                <div className="text-xs font-semibold text-[#0f1117]">Whitmore Residence</div>
-                <div className="text-[10px] text-[#5a5f72]">Exterior — 2,400 sq ft</div>
-              </div>
-              <span className="text-[10px] font-semibold bg-[#fff3d6] text-[#a06000] px-2.5 py-1 rounded-full">Watch Labor</span>
-            </div>
-            <div className="p-4">
-              <div className="grid grid-cols-3 gap-2 mb-2 text-[10px] font-semibold text-[#5a5f72] uppercase tracking-wider">
-                <div />
-                <div className="text-center">Estimated</div>
-                <div className="text-center">Actual</div>
-              </div>
-              {[
-                { label: 'Labor Hours', est: '24h', act: '27.5h', over: true },
-                { label: 'Materials', est: '$340', act: '$312', over: false },
-                { label: 'Revenue', est: '$6,400', act: '$6,400', over: false },
-              ].map(row => (
-                <div key={row.label} className="grid grid-cols-3 gap-2 py-2 border-b border-black/6 last:border-0">
-                  <div className="text-[11px] text-[#5a5f72]">{row.label}</div>
-                  <div className="text-[11px] font-medium text-[#0f1117] text-center">{row.est}</div>
-                  <div className={`text-[11px] font-semibold text-center ${row.over ? 'text-[#a06000]' : 'text-[#1d7a4a]'}`}>{row.act}</div>
-                </div>
-              ))}
-              <div className="mt-3 grid grid-cols-2 gap-2">
-                <div className="bg-[#f5f4f0] rounded-lg p-3 text-center">
-                  <div className="text-[10px] text-[#5a5f72] mb-0.5">Est. Margin</div>
-                  <div className="text-xl font-bold text-[#0f1117]">38%</div>
-                </div>
-                <div className="bg-[#fff3d6] rounded-lg p-3 text-center">
-                  <div className="text-[10px] text-[#a06000] mb-0.5">Actual Margin</div>
-                  <div className="text-xl font-bold text-[#a06000]">31%</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Pipeline spotlight ── */}
-      <div className="bg-[#f5f4f0] border-y border-black/8 py-20">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="grid sm:grid-cols-2 gap-12 items-center">
-            {/* Pipeline mockup */}
-            <div className="bg-white border border-black/10 rounded-2xl overflow-hidden shadow-sm">
-              <div className="px-4 py-3 border-b border-black/8 flex items-center gap-2">
-                <div className="text-xs font-semibold text-[#0f1117]">Sales Pipeline</div>
-                <span className="ml-auto text-[10px] font-medium bg-[#e4f5ec] text-[#1d7a4a] px-2 py-0.5 rounded-full">Gmail sync active</span>
-              </div>
-              <div className="p-3 space-y-0">
-                {[
-                  { stage: 'New Lead', count: 3, color: 'bg-[#eff6ff] text-[#2563eb]', jobs: ['Henderson Exterior — $4,200', 'Maple St. Interior — $2,800'] },
-                  { stage: 'Estimate Sent', count: 2, color: 'bg-[#fff3d6] text-[#a06000]', jobs: ['Park Ridge HOA — $18,500'] },
-                  { stage: 'Deposit Paid', count: 1, color: 'bg-[#e4f5ec] text-[#1d7a4a]', jobs: ['Whitmore Residence — $6,400'] },
-                  { stage: 'In Production', count: 2, color: 'bg-[#e4f5ec] text-[#1d7a4a]', jobs: ['Cedar Ln. Cabinets — $3,100'] },
-                ].map(col => (
-                  <div key={col.stage} className="flex items-start gap-3 py-2.5 border-b border-black/6 last:border-0">
-                    <span className={`text-[9px] font-semibold px-2 py-1 rounded-full shrink-0 mt-0.5 ${col.color}`}>{col.count}</span>
-                    <div className="min-w-0">
-                      <div className="text-[10px] font-semibold text-[#0f1117] mb-1">{col.stage}</div>
-                      {col.jobs.map(j => (
-                        <div key={j} className="text-[10px] text-[#5a5f72] bg-[#f5f4f0] rounded px-2 py-1 mb-1 last:mb-0 truncate">{j}</div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-widest text-[#2563eb] mb-3">Pipeline</div>
-              <h2 className="text-4xl font-extrabold tracking-tight leading-[1.1] text-[#0f1117] mb-5">
-                Every lead.<br />Every stage.<br />Nothing lost.
-              </h2>
-              <p className="text-[#5a5f72] font-light leading-relaxed text-base mb-6">
-                Move jobs through 9 stages from first contact to invoice received. Gmail sync pulls new leads directly into your pipeline so nothing slips through.
-              </p>
-              <ul className="space-y-2.5">
-                {['9-stage Kanban pipeline', 'Gmail auto-import for new leads', 'Deposit gates job scheduling', 'One-click estimate-to-job conversion'].map(item => (
-                  <CheckItem key={item} label={item} />
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Crew time tracking spotlight ── */}
-      <div className="max-w-4xl mx-auto px-6 py-20">
-        <div className="grid sm:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-widest text-[#2563eb] mb-3">Crew Time Tracking</div>
-            <h2 className="text-4xl font-extrabold tracking-tight leading-[1.1] text-[#0f1117] mb-5">
-              See your labor<br />budget in real time.
-            </h2>
-            <p className="text-[#5a5f72] font-light leading-relaxed text-base mb-6">
-              Crew clocks in from their phone — no app install required. You see who's on site, how many hours are burned, and whether you're still on budget before it's too late to act.
-            </p>
-            <ul className="space-y-2.5">
-              {['Mobile punch-in for crew', 'Live hours vs budget tracker', 'Labor budget warnings', 'Admin time log editing'].map(item => (
-                <CheckItem key={item} label={item} />
-              ))}
-            </ul>
-          </div>
-
-          {/* Time tracking mockup */}
-          <div className="bg-white border border-black/10 rounded-2xl overflow-hidden shadow-sm">
-            <div className="px-4 py-3 border-b border-black/8">
-              <div className="text-xs font-semibold text-[#0f1117]">Cedar Ln. Cabinets — Labor</div>
-              <div className="flex items-center gap-2 mt-2.5">
-                <div className="flex-1 h-1.5 bg-[#f5f4f0] rounded-full overflow-hidden">
-                  <div className="h-full bg-[#f0a500] rounded-full" style={{ width: '87%' }} />
-                </div>
-                <span className="text-[10px] font-semibold text-[#a06000]">87%</span>
-              </div>
-              <div className="text-[10px] text-[#5a5f72] mt-1">13.9 of 16h budget used</div>
-            </div>
-            <div className="p-3">
-              {[
-                { name: 'Marcus K.', role: 'Lead Painter', hours: '5.5h today', active: true },
-                { name: 'Tyler R.', role: 'Painter', hours: '4.2h today', active: true },
-                { name: 'Devon W.', role: 'Painter', hours: '4.2h today', active: false },
-              ].map(crew => (
-                <div key={crew.name} className="flex items-center gap-3 py-2.5 border-b border-black/6 last:border-0">
-                  <div className="w-7 h-7 rounded-full bg-[#eff6ff] flex items-center justify-center shrink-0">
-                    <span className="text-[10px] font-bold text-[#2563eb]">{crew.name[0]}</span>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-[11px] font-semibold text-[#0f1117]">{crew.name}</div>
-                    <div className="text-[10px] text-[#5a5f72]">{crew.role} · {crew.hours}</div>
-                  </div>
-                  <span className={`text-[9px] font-semibold px-2 py-0.5 rounded-full ${crew.active ? 'bg-[#e4f5ec] text-[#1d7a4a]' : 'bg-[#f5f4f0] text-[#5a5f72]'}`}>
-                    {crew.active ? 'On site' : 'Clocked out'}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ── All features grid ── */}
-      <section className="bg-[#f5f4f0] border-y border-black/8 py-20">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="text-xs font-semibold uppercase tracking-widest text-[#2563eb] mb-2.5">Everything included</div>
-          <h2 className="text-4xl font-extrabold tracking-tight leading-[1.12] text-[#0f1117] mb-3">
-            Built for painting.<br />Not plumbing.
-          </h2>
-          <p className="text-[#5a5f72] font-light text-base max-w-md mb-9 leading-relaxed">
-            No bloat. No features built for other trades. Just the tools that matter when you're running crews and closing jobs.
-          </p>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {FEATURES.map(f => (
-              <div key={f.title} className="bg-white rounded-xl p-5 border border-black/8 hover:-translate-y-0.5 transition-transform">
-                <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-3 ${f.color}`}>
-                  <f.Icon />
-                </div>
-                <div className="text-sm font-bold mb-1.5">{f.title}</div>
-                <p className="text-xs text-[#5a5f72] leading-relaxed font-light">{f.desc}</p>
-              </div>
-            ))}
-          </div>
-          <p className="text-sm text-[#5a5f72] mt-10 text-center">
-            Want to see all of this in action?{' '}
-            <a href="https://calendly.com/carstonroberts/30min" target="_blank" rel="noopener noreferrer" className="text-[#2563eb] font-medium hover:underline">
-              Book a free 30-minute demo →
-            </a>
-          </p>
-        </div>
-      </section>
-
-      {/* ── Rate sheet CTA ── */}
-      <div className="max-w-4xl mx-auto px-6 py-16">
-        <div className="bg-[#eff6ff] border border-[#2563eb]/20 rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div>
-            <div className="font-bold text-lg text-[#0f1117] mb-1">Not sure what to charge in your state?</div>
-            <p className="text-sm text-[#5a5f72] font-light">Free rate sheet — low, median, and high labor rates specific to your state and work type.</p>
-          </div>
-          <Link to="/resources/rate-calculator" className="shrink-0 bg-[#2563eb] text-white text-sm font-medium px-6 py-3 rounded-xl hover:opacity-90 transition-opacity whitespace-nowrap">
-            Get Free Rate Sheet →
-          </Link>
-        </div>
-      </div>
-
-      {/* ── Comparison ── */}
-      <div className="max-w-4xl mx-auto px-6 pb-16 text-center">
-        <div className="text-xs font-semibold uppercase tracking-widest text-[#2563eb] mb-2.5">Comparison</div>
-        <h2 className="text-4xl font-extrabold tracking-tight text-[#0f1117] mb-3">
-          Half the price.<br />More of what matters.
-        </h2>
-        <p className="text-[#5a5f72] font-light text-base max-w-md mx-auto mb-8">Built by a painter for painters — without the enterprise price tag.</p>
-        <table className="w-full text-sm border-collapse">
-          <thead>
-            <tr>
-              <th className="text-left px-4 py-2.5 font-bold text-xs border-b-2 border-black/10">Feature</th>
-              <th className="text-left px-4 py-2.5 font-bold text-xs border-b-2 border-black/10 text-[#2563eb]">PaintFlow</th>
-              <th className="text-left px-4 py-2.5 font-bold text-xs border-b-2 border-black/10">PaintScout</th>
-              <th className="text-left px-4 py-2.5 font-bold text-xs border-b-2 border-black/10">DripJobs</th>
-            </tr>
-          </thead>
-          <tbody>
-            {COMPARE_ROWS.map(row => (
-              <tr key={row.feature}>
-                <td className="text-left px-4 py-2.5 border-b border-black/10 text-[#5a5f72]">{row.feature}</td>
-                <td className="px-4 py-2.5 border-b border-black/10 font-medium text-[#0f1117]"><Check val={row.pf} /></td>
-                <td className="px-4 py-2.5 border-b border-black/10"><Check val={row.ps} /></td>
-                <td className="px-4 py-2.5 border-b border-black/10"><Check val={row.dj} /></td>
-              </tr>
-            ))}
-            <tr>
-              <td className="text-left px-4 py-2.5 text-[#5a5f72]">Starting price</td>
-              <td className="px-4 py-2.5 text-[#2563eb] font-bold">$99/mo</td>
-              <td className="px-4 py-2.5 text-[#5a5f72]">$149/mo</td>
-              <td className="px-4 py-2.5 text-[#5a5f72]">$97/mo</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      {/* ── Demo CTA ── */}
-      <div className="max-w-4xl mx-auto px-6 pb-16">
-        <div className="bg-[#eff6ff] border border-[#2563eb]/20 rounded-2xl p-10 flex flex-col sm:flex-row items-center gap-8">
-          <div className="flex-1">
-            <div className="text-xs font-semibold uppercase tracking-widest text-[#2563eb] mb-2">Free Demo</div>
-            <h3 className="text-2xl font-extrabold tracking-tight text-[#0f1117] mb-2">See it before you buy.</h3>
-            <p className="text-sm text-[#5a5f72] font-light leading-relaxed max-w-sm">
-              Book a free 30-minute walkthrough. We'll show you exactly how PaintFlow works for your crew and your jobs — no pressure.
-            </p>
-          </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <button
+            onClick={() => window.location.href = 'https://app.getpaintflow.com/login'}
+            style={{ fontSize: 13, color: '#5a5f72', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 500 }}>
+            Log in
+          </button>
           <a
-            href="https://calendly.com/carstonroberts/30min"
+            href={DEMO_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 bg-[#2563eb] text-white font-semibold text-sm px-7 py-3.5 rounded-xl hover:opacity-90 active:scale-[0.98] transition-all whitespace-nowrap"
-          >
-            Book a Free Demo →
+            style={{
+              background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 600,
+              padding: '9px 20px', borderRadius: 10, textDecoration: 'none',
+              letterSpacing: '-0.01em', display: 'inline-block',
+            }}>
+            Schedule a Free Demo →
           </a>
         </div>
       </div>
+    </nav>
+  );
+}
 
-      {/* ── Pricing ── */}
-      <div className="max-w-4xl mx-auto px-6 pb-20">
-        <div className="bg-[#0f1117] text-white rounded-2xl px-8 py-16 text-center">
-          <div className="text-xs font-semibold uppercase tracking-widest text-[#f0a500] mb-3">Pricing</div>
-          <h2 className="text-4xl font-extrabold tracking-tight mb-3">Simple, honest pricing.</h2>
-          <p className="text-white/55 font-light text-base max-w-sm mx-auto mb-8">One plan. Everything included. No per-seat fees.</p>
-
-          {/* Toggle */}
-          <div className="inline-flex items-center bg-white/8 border border-white/12 rounded-xl p-1 mb-8 gap-1">
-            <button
-              onClick={() => setAnnual(true)}
-              className={`text-sm font-medium px-5 py-2 rounded-lg transition-all cursor-pointer flex items-center gap-2 ${annual ? 'bg-white text-[#0f1117]' : 'text-white/60 hover:text-white'}`}
-            >
-              Annual
-              <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${annual ? 'bg-[#e4f5ec] text-[#1d7a4a]' : 'bg-[#1d7a4a]/30 text-[#4ade80]'}`}>Best value</span>
-            </button>
-            <button
-              onClick={() => setAnnual(false)}
-              className={`text-sm font-medium px-5 py-2 rounded-lg transition-all cursor-pointer ${!annual ? 'bg-white text-[#0f1117]' : 'text-white/60 hover:text-white'}`}
-            >
-              Monthly
-            </button>
+// ─── Hero ─────────────────────────────────────────────────────────────────────
+function Hero() {
+  return (
+    <section style={{
+      background: 'radial-gradient(ellipse 80% 50% at 20% 40%, oklch(0.32 0.12 260 / 0.5) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 60%, oklch(0.25 0.08 260 / 0.3) 0%, transparent 55%), #0b0f1a',
+      padding: '80px 24px 0',
+      overflow: 'hidden',
+    }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        {/* Badge */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 24 }}>
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: 8,
+            background: 'rgba(59,130,246,0.15)',
+            border: '1px solid rgba(59,130,246,0.3)',
+            color: '#93c5fd',
+            fontSize: 12, fontWeight: 600,
+            padding: '6px 14px', borderRadius: 100,
+            letterSpacing: '0.01em',
+          }}>
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#93c5fd', display: 'inline-block', animation: 'pulse-dot 2s ease-in-out infinite' }} />
+            Built by a painting contractor — for painting contractors
           </div>
+        </div>
 
-          <div className="bg-white/6 border border-white/12 rounded-xl p-8 max-w-sm mx-auto">
-            <div className="flex items-end justify-center gap-1 mb-1">
-              <div className="text-6xl font-extrabold tracking-[-0.04em] text-white leading-none">${annual ? '79' : '99'}</div>
-              <div className="text-white/45 text-sm mb-2">/mo</div>
+        {/* Headline */}
+        <h1 style={{
+          textAlign: 'center',
+          fontSize: 'clamp(40px, 6vw, 68px)',
+          fontWeight: 900, letterSpacing: '-0.04em',
+          lineHeight: 1.03, color: '#ffffff',
+          marginBottom: 20, maxWidth: 800, margin: '0 auto 20px',
+        }}>
+          Finally know if your<br />
+          <span style={{
+            background: 'linear-gradient(90deg, #3b82f6 0%, #93c5fd 40%, #3b82f6 60%, #1d4ed8 100%)',
+            backgroundSize: '200% auto',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            animation: 'shimmer 3s linear infinite',
+          }}>
+            jobs are profitable.
+          </span>
+        </h1>
+
+        {/* Subhead */}
+        <p style={{
+          textAlign: 'center', fontSize: 18, fontWeight: 300,
+          color: 'rgba(255,255,255,0.62)',
+          maxWidth: 520, margin: '0 auto 36px', lineHeight: 1.65,
+        }}>
+          PaintFlow is the CRM built for painting contractors — with real job costing, live labor tracking, and every tool your crew needs to run profitably.
+        </p>
+
+        {/* CTA row */}
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 16, flexWrap: 'wrap', marginBottom: 16 }}>
+          <a
+            href={DEMO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              background: ACCENT, color: '#fff', fontWeight: 700, fontSize: 16,
+              padding: '16px 36px', borderRadius: 14, textDecoration: 'none',
+              boxShadow: `0 4px 24px ${ACCENT}55`,
+              letterSpacing: '-0.02em',
+              display: 'inline-block',
+              transition: 'transform 0.15s, box-shadow 0.15s',
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-2px)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 8px 32px ${ACCENT}66`; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.transform = ''; (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 4px 24px ${ACCENT}55`; }}
+          >
+            Schedule a Free Demo →
+          </a>
+          <button
+            onClick={() => scrollToPricing()}
+            style={{
+              color: 'rgba(255,255,255,0.65)',
+              fontSize: 14, fontWeight: 500,
+              background: 'none', border: 'none', cursor: 'pointer',
+            }}
+          >
+            View pricing ↓
+          </button>
+        </div>
+
+        {/* Trust line */}
+        <p style={{ textAlign: 'center', fontSize: 12, color: 'rgba(255,255,255,0.35)', marginBottom: 48 }}>
+          No commitment · 30-min call · See it live before you buy
+        </p>
+
+        {/* Social proof bar */}
+        <div style={{
+          display: 'flex', justifyContent: 'center', gap: 40, flexWrap: 'wrap',
+          padding: '20px 24px 24px',
+          borderTop: '1px solid rgba(255,255,255,0.08)',
+          marginBottom: 0,
+        }}>
+          {[
+            { num: '14 days', label: 'Free trial, no card required' },
+            { num: '$99/mo', label: 'Flat rate, no per-seat fees' },
+            { num: '9 stages', label: 'Built-in pipeline' },
+            { num: '< 1 hr', label: 'Average setup time' },
+          ].map(s => (
+            <div key={s.label} style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: 22, fontWeight: 800, letterSpacing: '-0.03em', color: '#fff' }}>{s.num}</div>
+              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', fontWeight: 500, marginTop: 2 }}>{s.label}</div>
             </div>
-            <div className="text-white/45 text-sm mb-1">
-              {annual ? 'billed as $948/year' : 'billed monthly, cancel anytime'}
+          ))}
+        </div>
+
+        {/* Dashboard screenshot */}
+        <div style={{ marginTop: 0, position: 'relative', maxWidth: 1000, margin: '0 auto' }}>
+          <div style={{
+            position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)',
+            width: '70%', height: '50%',
+            background: `radial-gradient(ellipse, ${ACCENT}35 0%, transparent 70%)`,
+            filter: 'blur(70px)',
+            pointerEvents: 'none', zIndex: 0,
+          }} />
+          <div style={{
+            position: 'relative', zIndex: 1,
+            borderRadius: '16px 16px 0 0',
+            overflow: 'hidden',
+            border: '1px solid rgba(255,255,255,0.12)',
+            borderBottom: 'none',
+            boxShadow: '0 -4px 60px rgba(59,130,246,0.15), 0 0 0 1px rgba(255,255,255,0.05)',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', background: '#1a1f2e', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+              <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#ff5f57', display: 'block', flexShrink: 0 }} />
+              <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#ffbd2e', display: 'block', flexShrink: 0 }} />
+              <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#28c840', display: 'block', flexShrink: 0 }} />
+              <div style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 6, padding: '4px 12px', marginLeft: 8, fontSize: 10, color: 'rgba(255,255,255,0.3)', fontWeight: 500, border: '1px solid rgba(255,255,255,0.07)' }}>
+                app.paintflow.io/dashboard
+              </div>
             </div>
-            {annual && <div className="text-[#4ade80] text-xs font-medium mb-6">You save $240/year</div>}
-            {!annual && <div className="mb-6" />}
-            <ul className="text-left mb-7 space-y-0">
+            <img
+              src="/dashboard.png"
+              alt="PaintFlow Dashboard"
+              style={{ width: '100%', display: 'block', maxHeight: 480, objectFit: 'cover', objectPosition: 'top' }}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Testimonials ─────────────────────────────────────────────────────────────
+function Testimonials() {
+  const testimonials = [
+    {
+      quote: "I used to finish a job and just hope I made money. With PaintFlow I can see if we're over on labor before we hit the last day — that's changed how I run every job.",
+      name: 'Mike D.', role: 'Owner, 6-crew exterior company, Texas',
+    },
+    {
+      quote: "PaintScout was $149 a month and I still had to do job costing in a spreadsheet. PaintFlow does it all in one place for half the price.",
+      name: 'Jason W.', role: 'Residential & commercial painter, Colorado',
+    },
+    {
+      quote: 'The lead sync alone saved me. Leads used to disappear into my inbox. Now they land straight in the pipeline and I follow up the same day.',
+      name: 'Chris L.', role: 'Owner-operator, Florida',
+    },
+  ];
+  return (
+    <section style={{ background: '#f8f9fb', borderTop: '1px solid rgba(0,0,0,0.06)', borderBottom: '1px solid rgba(0,0,0,0.06)', padding: '72px 24px' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 48 }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 3, marginBottom: 12 }}>
+            {[0,1,2,3,4].map(i => (
+              <svg key={i} width="16" height="16" viewBox="0 0 20 20" fill="#f59e0b">
+                <path d={ICONS.star} />
+              </svg>
+            ))}
+          </div>
+          <p style={{ fontSize: 13, color: '#9ca3af', fontWeight: 500 }}>Trusted by painting contractors across the US</p>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
+          {testimonials.map((t, i) => (
+            <div key={i} style={{
+              background: '#fff', borderRadius: 16, padding: 28,
+              border: '1px solid rgba(0,0,0,0.07)',
+              boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
+              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+            }}>
+              <div style={{ display: 'flex', gap: 3, marginBottom: 14 }}>
+                {[0,1,2,3,4].map(j => (
+                  <svg key={j} width="13" height="13" viewBox="0 0 20 20" fill="#f59e0b">
+                    <path d={ICONS.star} />
+                  </svg>
+                ))}
+              </div>
+              <p style={{ fontSize: 14, lineHeight: 1.65, color: '#374151', fontWeight: 400, marginBottom: 20, fontStyle: 'italic' }}>"{t.quote}"</p>
+              <div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: '#0f1117' }}>{t.name}</div>
+                <div style={{ fontSize: 12, color: '#9ca3af', marginTop: 2 }}>{t.role}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Problem Section ──────────────────────────────────────────────────────────
+function ProblemSection() {
+  return (
+    <section style={{ padding: '88px 24px' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: 64, alignItems: 'center' }}>
+        <div>
+          <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: ACCENT, marginBottom: 14 }}>The Problem</div>
+          <h2 style={{ fontSize: 'clamp(32px, 4vw, 46px)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1.06, color: '#0f1117', marginBottom: 20 }}>
+            You finish jobs not<br />knowing if you<br />made money.
+          </h2>
+          <p style={{ fontSize: 16, color: '#5a5f72', lineHeight: 1.7, fontWeight: 300, marginBottom: 16 }}>
+            Most contractors track revenue, not cost. You quote 24 hours, the crew runs 31, and you don't find out until you're already on the next job.
+          </p>
+          <p style={{ fontSize: 16, color: '#5a5f72', lineHeight: 1.7, fontWeight: 300 }}>
+            PaintFlow closes the loop — from estimate to final margin — so you know exactly where the money went on every single job.
+          </p>
+        </div>
+        {/* Job costing card */}
+        <div style={{
+          background: '#fff', border: '1px solid rgba(0,0,0,0.09)',
+          borderRadius: 20, overflow: 'hidden',
+          boxShadow: '0 8px 40px rgba(0,0,0,0.07)',
+        }}>
+          <div style={{ padding: '16px 20px', borderBottom: '1px solid rgba(0,0,0,0.07)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#0f1117' }}>Whitmore Residence</div>
+              <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 2 }}>Exterior — 2,400 sq ft</div>
+            </div>
+            <span style={{ fontSize: 11, fontWeight: 700, background: '#fff3d6', color: '#d97706', padding: '4px 10px', borderRadius: 100 }}>⚠ Watch Labor</span>
+          </div>
+          <div style={{ padding: 20 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, marginBottom: 4 }}>
+              <div />
+              <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#9ca3af', textAlign: 'center' }}>Estimated</div>
+              <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#9ca3af', textAlign: 'center' }}>Actual</div>
+            </div>
+            {[
+              { label: 'Labor Hours', est: '24h', act: '27.5h', over: true },
+              { label: 'Materials', est: '$340', act: '$312', over: false },
+              { label: 'Revenue', est: '$6,400', act: '$6,400', over: false },
+            ].map(row => (
+              <div key={row.label} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, padding: '10px 0', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
+                <div style={{ fontSize: 12, color: '#5a5f72' }}>{row.label}</div>
+                <div style={{ fontSize: 12, fontWeight: 600, color: '#0f1117', textAlign: 'center' }}>{row.est}</div>
+                <div style={{ fontSize: 12, fontWeight: 700, textAlign: 'center', color: row.over ? '#d97706' : '#16a34a' }}>{row.act}</div>
+              </div>
+            ))}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginTop: 16 }}>
+              <div style={{ background: '#f8f9fb', borderRadius: 12, padding: '14px 16px', textAlign: 'center' }}>
+                <div style={{ fontSize: 10, color: '#9ca3af', fontWeight: 600, marginBottom: 4 }}>Est. Margin</div>
+                <div style={{ fontSize: 28, fontWeight: 900, letterSpacing: '-0.04em', color: '#0f1117' }}>38%</div>
+              </div>
+              <div style={{ background: '#fff7ed', borderRadius: 12, padding: '14px 16px', textAlign: 'center', border: '1px solid #fed7aa' }}>
+                <div style={{ fontSize: 10, color: '#d97706', fontWeight: 600, marginBottom: 4 }}>Actual Margin</div>
+                <div style={{ fontSize: 28, fontWeight: 900, letterSpacing: '-0.04em', color: '#d97706' }}>31%</div>
+                <div style={{ fontSize: 10, color: '#d97706', marginTop: 2 }}>↓ $448 lost</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Pipeline Section ─────────────────────────────────────────────────────────
+function PipelineSection() {
+  return (
+    <section style={{ background: '#f8f9fb', borderTop: '1px solid rgba(0,0,0,0.06)', borderBottom: '1px solid rgba(0,0,0,0.06)', padding: '88px 24px' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: 64, alignItems: 'center' }}>
+        {/* Pipeline mockup */}
+        <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.09)', borderRadius: 20, overflow: 'hidden', boxShadow: '0 8px 40px rgba(0,0,0,0.07)' }}>
+          <div style={{ padding: '16px 20px', borderBottom: '1px solid rgba(0,0,0,0.07)', display: 'flex', alignItems: 'center', gap: 10 }}>
+            <div style={{ fontSize: 13, fontWeight: 700, color: '#0f1117' }}>Sales Pipeline</div>
+            <span style={{ marginLeft: 'auto', fontSize: 11, fontWeight: 600, background: '#e4f5ec', color: '#16a34a', padding: '3px 10px', borderRadius: 100 }}>
+              <span style={{ display: 'inline-block', width: 5, height: 5, borderRadius: '50%', background: '#16a34a', marginRight: 5, verticalAlign: 'middle', animation: 'pulse-dot 2s ease-in-out infinite' }} />
+              Lead sync active
+            </span>
+          </div>
+          <div style={{ padding: 12 }}>
+            {[
+              { stage: 'New Lead', count: 3, color: { bg: '#eff6ff', text: ACCENT }, jobs: ['Henderson Exterior — $4,200 (Meta)', 'Maple St. Interior — $2,800 (Google)'] },
+              { stage: 'Quote Sent', count: 2, color: { bg: '#fff3d6', text: '#d97706' }, jobs: ['Park Ridge HOA — $18,500'] },
+              { stage: 'Project Scheduled', count: 1, color: { bg: '#e4f5ec', text: '#16a34a' }, jobs: ['Whitmore Residence — $6,400'] },
+              { stage: 'Project In Progress', count: 2, color: { bg: '#e4f5ec', text: '#16a34a' }, jobs: ['Cedar Ln. Cabinets — $3,100'] },
+            ].map(col => (
+              <div key={col.stage} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '11px 0', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
+                <span style={{ fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 100, background: col.color.bg, color: col.color.text, flexShrink: 0, marginTop: 2 }}>{col.count}</span>
+                <div style={{ minWidth: 0, flex: 1 }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: '#0f1117', marginBottom: 4 }}>{col.stage}</div>
+                  {col.jobs.map(j => (
+                    <div key={j} style={{ fontSize: 11, color: '#6b7280', background: '#f8f9fb', borderRadius: 6, padding: '4px 8px', marginBottom: 3, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{j}</div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: ACCENT, marginBottom: 14 }}>Pipeline</div>
+          <h2 style={{ fontSize: 'clamp(30px, 4vw, 44px)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1.06, color: '#0f1117', marginBottom: 18 }}>
+            Every lead.<br />Every stage.<br />Nothing lost.
+          </h2>
+          <p style={{ fontSize: 16, color: '#5a5f72', lineHeight: 1.7, fontWeight: 300, marginBottom: 24 }}>
+            Move jobs through 9 stages from first contact to invoice received. Leads sync automatically from Meta ads, Google ads, and your website — so nothing slips through the cracks.
+          </p>
+          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, padding: 0, margin: 0 }}>
+            {['9-stage Kanban pipeline', 'Auto-import from Meta, Google & your site', 'Deposit gates job scheduling', 'One-click estimate-to-job conversion'].map(item => (
+              <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 14, color: '#0f1117', fontWeight: 500 }}>
+                <CheckIcon color={ACCENT} size={20} />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Time Tracking Section ────────────────────────────────────────────────────
+function TimeTrackingSection() {
+  return (
+    <section style={{ padding: '88px 24px' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: 64, alignItems: 'center' }}>
+        <div>
+          <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: ACCENT, marginBottom: 14 }}>Crew Time Tracking</div>
+          <h2 style={{ fontSize: 'clamp(30px, 4vw, 44px)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1.06, color: '#0f1117', marginBottom: 18 }}>
+            See your labor<br />budget in real time.
+          </h2>
+          <p style={{ fontSize: 16, color: '#5a5f72', lineHeight: 1.7, fontWeight: 300, marginBottom: 24 }}>
+            Crew clocks in from their phone — no app install required. You see who's on site, how many hours are burned, and whether you're still on budget before it's too late to act.
+          </p>
+          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, padding: 0, margin: 0 }}>
+            {['Mobile punch-in for crew', 'Live hours vs budget tracker', 'Labor budget warnings', 'Admin time log editing'].map(item => (
+              <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 14, color: '#0f1117', fontWeight: 500 }}>
+                <CheckIcon color={ACCENT} size={20} />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        {/* Time tracking mockup */}
+        <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.09)', borderRadius: 20, overflow: 'hidden', boxShadow: '0 8px 40px rgba(0,0,0,0.07)' }}>
+          <div style={{ padding: '16px 20px', borderBottom: '1px solid rgba(0,0,0,0.07)' }}>
+            <div style={{ fontSize: 13, fontWeight: 700, color: '#0f1117', marginBottom: 10 }}>Cedar Ln. Cabinets — Labor</div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <div style={{ flex: 1, height: 8, background: '#f3f4f6', borderRadius: 100, overflow: 'hidden' }}>
+                <div style={{ width: '87%', height: '100%', background: 'linear-gradient(90deg, #f59e0b, #d97706)', borderRadius: 100 }} />
+              </div>
+              <span style={{ fontSize: 12, fontWeight: 700, color: '#d97706' }}>87%</span>
+            </div>
+            <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 6 }}>13.9 of 16h budget used — 2.1h remaining</div>
+          </div>
+          <div style={{ padding: 12 }}>
+            {[
+              { name: 'Marcus K.', role: 'Lead Painter', hours: '5.5h today', active: true },
+              { name: 'Tyler R.', role: 'Painter', hours: '4.2h today', active: true },
+              { name: 'Devon W.', role: 'Painter', hours: '4.2h today', active: false },
+            ].map(crew => (
+              <div key={crew.name} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '11px 0', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
+                <div style={{ width: 32, height: 32, borderRadius: '50%', background: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <span style={{ fontSize: 12, fontWeight: 700, color: ACCENT }}>{crew.name[0]}</span>
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: '#0f1117' }}>{crew.name}</div>
+                  <div style={{ fontSize: 11, color: '#9ca3af' }}>{crew.role} · {crew.hours}</div>
+                </div>
+                <span style={{
+                  fontSize: 10, fontWeight: 700, padding: '4px 10px', borderRadius: 100,
+                  background: crew.active ? '#e4f5ec' : '#f3f4f6',
+                  color: crew.active ? '#16a34a' : '#9ca3af',
+                }}>
+                  {crew.active ? '● On site' : 'Clocked out'}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── AI Insights Section ──────────────────────────────────────────────────────
+function AISection() {
+  return (
+    <section style={{ background: '#0b0f1a', padding: '88px 24px', overflow: 'hidden', position: 'relative' }}>
+      <div style={{ position: 'absolute', top: '50%', left: '30%', transform: 'translate(-50%,-50%)', width: 600, height: 400, background: `radial-gradient(ellipse, ${ACCENT}25 0%, transparent 65%)`, filter: 'blur(60px)', pointerEvents: 'none' }} />
+      <div style={{ maxWidth: 1100, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: 64, alignItems: 'center' }}>
+          <div>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(124,58,237,0.15)', border: '1px solid rgba(124,58,237,0.3)', color: '#a78bfa', fontSize: 12, fontWeight: 600, padding: '6px 14px', borderRadius: 100, marginBottom: 20 }}>
+              <span style={{ fontSize: 14 }}>✦</span> Powered by AI
+            </div>
+            <h2 style={{ fontSize: 'clamp(30px, 4vw, 44px)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1.06, color: '#fff', marginBottom: 18 }}>
+              Your business data,<br />working for you.
+            </h2>
+            <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', lineHeight: 1.7, fontWeight: 300, marginBottom: 28 }}>
+              PaintFlow's AI analyzes your jobs, margins, crew performance, and pipeline to surface insights you'd never spot on your own. No spreadsheets. No guesswork.
+            </p>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 14, padding: 0, margin: 0 }}>
               {[
-                'Full pipeline & CRM',
-                'Job costing & margin tracking',
-                'Live labor time clock',
-                'Smart estimating engine',
-                'Invoicing & payment collection',
-                'Text & email automations',
-                'Gmail lead sync',
-                'Unlimited jobs & clients',
+                { label: 'Spot which job types consistently underperform', icon: '📉' },
+                { label: 'Identify your most profitable crew members', icon: '⭐' },
+                { label: 'Get AI recommendations based on your actual job data', icon: '💡' },
+                { label: 'Flag at-risk jobs before they blow the budget', icon: '🚨' },
               ].map(item => (
-                <li key={item} className="flex items-center gap-2.5 text-sm text-white/75 py-1.5 border-b border-white/7 last:border-0">
-                  <span className="w-3.5 h-3.5 rounded-full bg-[#f0a500] shrink-0" />
-                  {item}
+                <li key={item.label} style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                  <span style={{ fontSize: 18, flexShrink: 0 }}>{item.icon}</span>
+                  <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>{item.label}</span>
                 </li>
               ))}
             </ul>
-            <GetStartedButton
-              plan={annual ? 'annual' : 'monthly'}
-              className="flex items-center justify-center w-full bg-white text-[#0f1117] font-semibold text-sm py-3.5 rounded-xl hover:opacity-90 transition-opacity"
-              label={annual ? 'Get Started — $948/year' : 'Get Started — $99/mo'}
-            />
-            <p className="text-white/40 text-xs mt-4">
-              Not ready yet?{' '}
-              <a
-                href="https://calendly.com/carstonroberts/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/60 hover:text-white underline transition-colors"
-              >
-                Book a free demo first →
-              </a>
-            </p>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            {[
+              { icon: '📉', title: 'Cabinet jobs running 22% over on labor', body: 'Your last 4 cabinet jobs averaged 22% over on labor hours. Consider adjusting your cabinet estimating rate or reviewing your prep process.', color: '#fbbf24', bg: 'rgba(251,191,36,0.08)', border: 'rgba(251,191,36,0.2)' },
+              { icon: '⭐', title: 'Marcus K. is your most profitable crew member', body: 'Marcus consistently finishes within 5% of budgeted hours. Consider leading larger jobs with him.', color: '#34d399', bg: 'rgba(52,211,153,0.08)', border: 'rgba(52,211,153,0.2)' },
+              { icon: '💡', title: 'Your exterior margin is trending down', body: 'Based on your last 6 exterior jobs, your realized margin is 4% below your target. Consider revisiting your labor rate or prep estimates.', color: '#a78bfa', bg: 'rgba(167,139,250,0.08)', border: 'rgba(167,139,250,0.2)' },
+            ].map(card => (
+              <div key={card.title} style={{ background: card.bg, border: `1px solid ${card.border}`, borderRadius: 16, padding: '16px 20px' }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                  <span style={{ fontSize: 20, flexShrink: 0, marginTop: 1 }}>{card.icon}</span>
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: card.color, marginBottom: 4 }}>{card.title}</div>
+                    <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.55 }}>{card.body}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
+    </section>
+  );
+}
 
+// ─── Features Grid ────────────────────────────────────────────────────────────
+const FEATURES = [
+  { title: 'Real Job Costing', desc: 'Compare estimated vs actual hours and materials on every job. See your real margin — not what you hoped for.', color: '#eff6ff', ic: '#2563eb', iconKey: 'chart' },
+  { title: 'Live Labor Tracking', desc: "Crew clocks in from their phone. See who's on site and how many hours are burned vs budgeted in real time.", color: '#e4f5ec', ic: '#16a34a', iconKey: 'clock' },
+  { title: 'Smart Estimating', desc: 'Set your labor rate, paint coverage, and target margin. Hours, gallons, and final price — calculated automatically.', color: '#fff3d6', ic: '#d97706', iconKey: 'doc' },
+  { title: 'Crew Efficiency Scores', desc: 'Track which painters consistently hit their targets. Find out where your margin is actually going.', color: '#ede9fe', ic: '#7c3aed', iconKey: 'users' },
+  { title: 'AI Business Insights', desc: 'PaintFlow analyzes your jobs, margins, and crew data to surface actionable suggestions — so you always know what to fix next.', color: '#ede9fe', ic: '#7c3aed', iconKey: 'chart' },
+  { title: 'Pipeline Management', desc: 'Move jobs through 9 stages. Leads sync automatically from Meta ads, Google ads, and your website.', color: '#eff6ff', ic: '#2563eb', iconKey: 'board' },
+  { title: 'Invoicing & Payments', desc: "Deposit gates job scheduling. Jobs can't be booked until you're paid — built into the workflow.", color: '#e4f5ec', ic: '#16a34a', iconKey: 'card' },
+  { title: 'Text & Email Automations', desc: 'Follow-up sequences, estimate reminders, and job confirmations — sent automatically so nothing slips.', color: '#fff3d6', ic: '#d97706', iconKey: 'mail' },
+  { title: 'Digital Crew Sheets', desc: 'Print-ready job sheets with colors, notes, and hours. Financials hidden — your crew gets only what they need.', color: '#ede9fe', ic: '#7c3aed', iconKey: 'doc' },
+];
+
+function FeaturesSection() {
+  return (
+    <section style={{ background: '#f8f9fb', borderTop: '1px solid rgba(0,0,0,0.06)', borderBottom: '1px solid rgba(0,0,0,0.06)', padding: '88px 24px' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ marginBottom: 52 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: ACCENT, marginBottom: 12 }}>Everything included</div>
+          <h2 style={{ fontSize: 'clamp(30px, 4vw, 44px)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1.07, color: '#0f1117', marginBottom: 12 }}>
+            Built for painting.<br />Not plumbing.
+          </h2>
+          <p style={{ fontSize: 16, color: '#5a5f72', fontWeight: 300, maxWidth: 440, lineHeight: 1.65 }}>
+            No bloat. No features built for other trades. Just the tools that matter when you're running crews and closing jobs.
+          </p>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 14 }}>
+          {FEATURES.map(f => (
+            <div key={f.title} style={{
+              background: '#fff', borderRadius: 16, padding: '22px 22px',
+              border: '1px solid rgba(0,0,0,0.07)',
+              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+            }}>
+              <div style={{ width: 36, height: 36, borderRadius: 10, background: f.color, color: f.ic, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>
+                <Ic d={ICONS[f.iconKey]} size={17} />
+              </div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: '#0f1117', marginBottom: 6, letterSpacing: '-0.01em' }}>{f.title}</div>
+              <p style={{ fontSize: 12.5, color: '#6b7280', lineHeight: 1.6, fontWeight: 400 }}>{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Founder Section ──────────────────────────────────────────────────────────
+function FounderSection() {
+  return (
+    <section style={{ padding: '88px 24px', background: '#fff' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 64, alignItems: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div style={{ position: 'relative' }}>
+            <div style={{
+              width: 280, height: 320, borderRadius: 24,
+              border: '1px solid rgba(0,0,0,0.08)',
+              overflow: 'hidden',
+            }}>
+              <img
+                src="/founder.png"
+                alt="Carston Roberts, Founder of PaintFlow"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+              />
+            </div>
+            <div style={{
+              position: 'absolute', bottom: -16, right: -16,
+              background: ACCENT, color: '#fff',
+              fontSize: 11, fontWeight: 700, padding: '8px 16px',
+              borderRadius: 100, boxShadow: `0 4px 20px ${ACCENT}55`,
+              letterSpacing: '0.02em', textTransform: 'uppercase',
+            }}>
+              Built by a painter
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: ACCENT, marginBottom: 14 }}>From the founder</div>
+          <blockquote style={{
+            fontSize: 'clamp(18px, 2.5vw, 24px)', fontWeight: 300, lineHeight: 1.6,
+            color: '#0f1117', fontStyle: 'italic', marginBottom: 28,
+            borderLeft: `3px solid ${ACCENT}`, paddingLeft: 24,
+          }}>
+            "I was tired of not knowing where my money was going. I was too busy working to fill out data sheets. So with the help of modern technology, I developed PaintFlow to give myself and other contractors an affordable, hands-off solution to have access to all the data your painting business needs."
+          </blockquote>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+            <div style={{
+              width: 44, height: 44, borderRadius: '50%',
+              background: `${ACCENT}18`, display: 'flex', alignItems: 'center', justifyContent: 'center',
+              flexShrink: 0,
+            }}>
+              <span style={{ fontSize: 18, fontWeight: 800, color: ACCENT }}>C</span>
+            </div>
+            <div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: '#0f1117' }}>Carston Roberts</div>
+              <div style={{ fontSize: 12, color: '#9ca3af', marginTop: 2 }}>Founder, PaintFlow · Painting contractor</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Comparison Table ─────────────────────────────────────────────────────────
+const COMPARE_ROWS = [
+  { feature: 'Job costing & margin tracking',    pf: true,  ps: false, dj: false, highlight: true },
+  { feature: 'Live labor budget health',          pf: true,  ps: false, dj: false, highlight: true },
+  { feature: 'Crew efficiency scoring',           pf: true,  ps: false, dj: false, highlight: true },
+  { feature: 'AI business insights',              pf: true,  ps: false, dj: false, highlight: true },
+  { feature: 'Meta/Google/website lead sync',     pf: true,  ps: false, dj: false, highlight: true },
+  { feature: 'Text & email automations',          pf: true,  ps: true,  dj: true,  highlight: false },
+  { feature: 'Invoicing with deposit logic',      pf: true,  ps: true,  dj: true,  highlight: false },
+  { feature: 'Smart estimating engine',           pf: true,  ps: true,  dj: false, highlight: false },
+  { feature: 'Crew time clock',                   pf: true,  ps: false, dj: false, highlight: true },
+];
+
+function ComparisonSection() {
+  return (
+    <section style={{ padding: '88px 24px' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 52 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: ACCENT, marginBottom: 12 }}>vs. The competition</div>
+          <h2 style={{ fontSize: 'clamp(30px, 4vw, 44px)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1.07, color: '#0f1117', marginBottom: 12 }}>
+            All the features.<br />One flat price.
+          </h2>
+          <p style={{ fontSize: 16, color: '#5a5f72', fontWeight: 300, maxWidth: 480, margin: '0 auto', lineHeight: 1.65 }}>
+            PaintScout and DripJobs are great at parts of the job. PaintFlow is the only one that closes the loop from estimate to final margin — at a flat rate, no per-seat fees.
+          </p>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 0, maxWidth: 860, margin: '0 auto 0' }}>
+          <div />
+          <div style={{ background: ACCENT, borderRadius: '16px 16px 0 0', padding: '20px 16px', textAlign: 'center', position: 'relative' }}>
+            <div style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)', background: '#16a34a', color: '#fff', fontSize: 10, fontWeight: 700, padding: '3px 10px', borderRadius: 100, letterSpacing: '0.05em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
+              Best Value
+            </div>
+            <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.7)', letterSpacing: '0.05em', marginBottom: 6, textTransform: 'uppercase' }}>PaintFlow</div>
+            <div style={{ fontSize: 32, fontWeight: 900, letterSpacing: '-0.04em', color: '#fff' }}>$99</div>
+            <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', marginTop: 2 }}>/mo · or $79 annual</div>
+          </div>
+          <div style={{ background: '#f8f9fb', borderRadius: '16px 16px 0 0', padding: '20px 16px', textAlign: 'center', border: '1px solid rgba(0,0,0,0.07)', borderBottom: 'none' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#9ca3af', letterSpacing: '0.05em', marginBottom: 6, textTransform: 'uppercase' }}>PaintScout</div>
+            <div style={{ fontSize: 32, fontWeight: 900, letterSpacing: '-0.04em', color: '#374151' }}>$149</div>
+            <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 2 }}>/mo</div>
+          </div>
+          <div style={{ background: '#f8f9fb', borderRadius: '16px 16px 0 0', padding: '20px 16px', textAlign: 'center', border: '1px solid rgba(0,0,0,0.07)', borderBottom: 'none', borderLeft: 'none' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#9ca3af', letterSpacing: '0.05em', marginBottom: 6, textTransform: 'uppercase' }}>DripJobs</div>
+            <div style={{ fontSize: 32, fontWeight: 900, letterSpacing: '-0.04em', color: '#374151' }}>$97</div>
+            <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 2 }}>/mo</div>
+          </div>
+        </div>
+
+        <div style={{ maxWidth: 860, margin: '0 auto', overflow: 'hidden', borderRadius: '0 0 16px 16px', border: '1px solid rgba(0,0,0,0.08)' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <tbody>
+              {COMPARE_ROWS.map((row, i) => (
+                <tr key={row.feature} style={{ background: row.highlight ? 'rgba(37,99,235,0.025)' : (i % 2 === 0 ? '#fff' : '#fafafa') }}>
+                  <td style={{ padding: '13px 20px', fontSize: 13, color: '#374151', fontWeight: row.highlight ? 600 : 400, width: '44%' }}>
+                    {row.highlight && <span style={{ display: 'inline-block', width: 6, height: 6, background: ACCENT, borderRadius: '50%', marginRight: 8, verticalAlign: 'middle' }} />}
+                    {row.feature}
+                  </td>
+                  <td style={{ padding: '13px 16px', textAlign: 'center', background: `${ACCENT}0a`, borderLeft: `3px solid ${ACCENT}` }}>
+                    <CheckIcon color={ACCENT} size={20} />
+                  </td>
+                  <td style={{ padding: '13px 16px', textAlign: 'center', borderLeft: '1px solid rgba(0,0,0,0.06)' }}>
+                    {row.ps ? <CheckIcon color="#9ca3af" size={20} /> : <DashIcon size={20} />}
+                  </td>
+                  <td style={{ padding: '13px 16px', textAlign: 'center', borderLeft: '1px solid rgba(0,0,0,0.06)' }}>
+                    {row.dj ? <CheckIcon color="#9ca3af" size={20} /> : <DashIcon size={20} />}
+                  </td>
+                </tr>
+              ))}
+              <tr style={{ background: '#0f1117' }}>
+                <td style={{ padding: '16px 20px', fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.6)' }}>Monthly price</td>
+                <td style={{ padding: '16px 16px', textAlign: 'center', background: ACCENT, borderLeft: `3px solid ${ACCENT}` }}>
+                  <div style={{ fontSize: 18, fontWeight: 900, color: '#fff', letterSpacing: '-0.03em' }}>$99</div>
+                  <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.6)' }}>flat · $79 annual</div>
+                </td>
+                <td style={{ padding: '16px 16px', textAlign: 'center', borderLeft: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div style={{ fontSize: 18, fontWeight: 700, color: 'rgba(255,255,255,0.5)', letterSpacing: '-0.03em', textDecoration: 'line-through' }}>$149</div>
+                </td>
+                <td style={{ padding: '16px 16px', textAlign: 'center', borderLeft: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div style={{ fontSize: 18, fontWeight: 700, color: 'rgba(255,255,255,0.5)', letterSpacing: '-0.03em', textDecoration: 'line-through' }}>$97</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p style={{ textAlign: 'center', fontSize: 12, color: '#9ca3af', marginTop: 20 }}>
+          ● Highlighted rows = features exclusive to PaintFlow
+        </p>
+
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
+          <a href="/compare/paintscout" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 8,
+            background: '#fff', color: ACCENT, fontSize: 13, fontWeight: 700,
+            padding: '12px 22px', borderRadius: 12, textDecoration: 'none',
+            border: `1px solid ${ACCENT}40`,
+          }}>
+            PaintFlow vs PaintScout →
+          </a>
+          <a href="/compare/dripjobs" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 8,
+            background: '#fff', color: ACCENT, fontSize: 13, fontWeight: 700,
+            padding: '12px 22px', borderRadius: 12, textDecoration: 'none',
+            border: `1px solid ${ACCENT}40`,
+          }}>
+            PaintFlow vs DripJobs →
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Rate Sheet CTA ───────────────────────────────────────────────────────────
+function RateSheetCTA() {
+  return (
+    <div style={{ padding: '0 24px 72px' }}>
+      <div style={{
+        maxWidth: 1100, margin: '0 auto',
+        background: `linear-gradient(135deg, ${ACCENT}12 0%, ${ACCENT}06 100%)`,
+        border: `1px solid ${ACCENT}25`,
+        borderRadius: 20, padding: '32px 40px',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20,
+      }}>
+        <div>
+          <div style={{ fontSize: 16, fontWeight: 700, color: '#0f1117', marginBottom: 6 }}>See how PaintFlow tracks your real margin on every job.</div>
+          <p style={{ fontSize: 14, color: '#5a5f72', fontWeight: 300 }}>14-day free trial — full access, no credit card required to start.</p>
+        </div>
+        <a href="https://app.getpaintflow.com/checkout?plan=monthly" style={{
+          background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 600,
+          padding: '12px 24px', borderRadius: 12, textDecoration: 'none',
+          whiteSpace: 'nowrap', flexShrink: 0,
+        }}>
+          Start Free Trial →
+        </a>
+      </div>
     </div>
-  )
+  );
+}
+
+// ─── FAQ Section ──────────────────────────────────────────────────────────────
+function FAQSection() {
+  const [open, setOpen] = useState<number | null>(null);
+  const faqs = [
+    {
+      q: 'Do my crew members need to install an app?',
+      a: 'No app installation needed. Crew members are invited via email and log in through a mobile-optimized web link — works on any smartphone browser. No download required.',
+    },
+    {
+      q: 'Is there really a free trial?',
+      a: "Yes — 14 days free, no charge until the trial ends. We ask for a card upfront so there's no disruption if you decide to keep going, but you can cancel before day 14 and you won't be billed anything.",
+    },
+    {
+      q: 'Can I cancel anytime?',
+      a: "Yes. Monthly plans can be cancelled at any time. Annual plans are billed upfront — if you cancel early we'll prorate a refund for unused months.",
+    },
+    {
+      q: 'Does PaintFlow work with QuickBooks?',
+      a: "QuickBooks integration is on the roadmap. Right now, PaintFlow handles invoicing and payment collection natively — most customers find they no longer need QuickBooks once they're fully set up.",
+    },
+    {
+      q: 'How is PaintFlow different from PaintScout or DripJobs?',
+      a: 'PaintScout and DripJobs are good at estimating and CRM basics, but neither gives you real job costing, live labor tracking, or AI-powered business insights. PaintFlow was built specifically because those tools couldn\'t answer the most important question: "Did I actually make money on that job?"',
+    },
+    {
+      q: 'How long does setup take?',
+      a: 'Most contractors are up and running within an hour. We offer a free 30-minute onboarding call to walk you through your first job setup, estimating templates, and crew configuration.',
+    },
+    {
+      q: 'What lead sources does PaintFlow sync with?',
+      a: 'PaintFlow syncs leads from Meta (Facebook/Instagram) ads, Google ads, and your website contact form. New leads land directly in your pipeline automatically — no manual entry.',
+    },
+    {
+      q: 'Is my data secure?',
+      a: 'Yes. All data is encrypted in transit and at rest. We use industry-standard security practices and your data is never shared or sold.',
+    },
+  ];
+  return (
+    <section style={{ padding: '88px 24px', background: '#f8f9fb', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+      <div style={{ maxWidth: 720, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 52 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: ACCENT, marginBottom: 12 }}>FAQ</div>
+          <h2 style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 900, letterSpacing: '-0.04em', color: '#0f1117' }}>Common questions</h2>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {faqs.map((faq, i) => (
+            <div key={i} style={{
+              background: '#fff', border: '1px solid rgba(0,0,0,0.07)',
+              borderRadius: 14, overflow: 'hidden',
+              transition: 'box-shadow 0.2s',
+              boxShadow: open === i ? '0 4px 20px rgba(0,0,0,0.06)' : 'none',
+            }}>
+              <button
+                onClick={() => setOpen(open === i ? null : i)}
+                style={{
+                  width: '100%', padding: '18px 22px',
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16,
+                  background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left',
+                }}>
+                <span style={{ fontSize: 14, fontWeight: 600, color: '#0f1117', lineHeight: 1.4 }}>{faq.q}</span>
+                <span style={{
+                  width: 24, height: 24, borderRadius: '50%',
+                  background: open === i ? ACCENT : '#f3f4f6',
+                  color: open === i ? '#fff' : '#6b7280',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: 16, fontWeight: 700, flexShrink: 0,
+                  transition: 'all 0.2s',
+                }}>
+                  {open === i ? '−' : '+'}
+                </span>
+              </button>
+              {open === i && (
+                <div style={{ padding: '0 22px 18px', fontSize: 14, color: '#5a5f72', lineHeight: 1.7, fontWeight: 300 }}>
+                  {faq.a}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Pricing Section ──────────────────────────────────────────────────────────
+const PLAN_FEATURES = [
+  'Full pipeline & CRM',
+  'Job costing & margin tracking',
+  'Live labor time clock',
+  'Smart estimating engine',
+  'Invoicing & payment collection',
+  'Text & email automations',
+  'Meta/Google/website lead sync',
+  'Unlimited jobs & clients',
+];
+
+function PricingSection() {
+  return (
+    <section id="pricing" style={{ background: '#0b0f1a', padding: '88px 24px' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 52 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#60a5fa', marginBottom: 12 }}>Pricing</div>
+          <h2 style={{ fontSize: 'clamp(30px, 4vw, 44px)', fontWeight: 900, letterSpacing: '-0.04em', color: '#fff', marginBottom: 12 }}>
+            Simple, honest pricing.
+          </h2>
+          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.45)', fontWeight: 300 }}>One plan. Everything included. No per-seat fees.</p>
+        </div>
+
+        {/* Two cards side by side */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20, maxWidth: 860, margin: '0 auto' }}>
+
+          {/* Annual card — prominent default */}
+          <div style={{
+            borderRadius: 24, padding: 32, position: 'relative', overflow: 'hidden',
+            background: ACCENT,
+            boxShadow: `0 0 0 2px ${ACCENT}, 0 20px 60px rgba(59,130,246,0.25)`,
+          }}>
+            {/* Best Value badge */}
+            <div style={{ position: 'absolute', top: 0, right: 0, background: '#16a34a', color: '#fff', fontSize: 10, fontWeight: 800, padding: '6px 16px', borderRadius: '0 24px 0 12px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+              Best Value
+            </div>
+            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at top left, rgba(255,255,255,0.12) 0%, transparent 60%)', pointerEvents: 'none' }} />
+            <div style={{ position: 'relative', zIndex: 1 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,0.75)', marginBottom: 16 }}>⚡ Annual Plan</div>
+              <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, marginBottom: 4 }}>
+                <span style={{ fontSize: 64, fontWeight: 900, letterSpacing: '-0.05em', color: '#fff', lineHeight: 1 }}>$79</span>
+                <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', marginBottom: 10 }}>/mo</span>
+              </div>
+              <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)', marginBottom: 8 }}>Billed as $948/year</div>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.15)', borderRadius: 100, padding: '5px 12px', marginBottom: 24 }}>
+                <span style={{ fontSize: 12, fontWeight: 700, color: '#fff' }}>✦ Save $240/year vs monthly</span>
+              </div>
+              <ul style={{ listStyle: 'none', marginBottom: 28, padding: 0 }}>
+                {PLAN_FEATURES.map(item => (
+                  <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 0', borderBottom: 'rgba(255,255,255,0.1) solid 1px' }}>
+                    <span style={{ width: 16, height: 16, borderRadius: '50%', background: 'rgba(255,255,255,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <svg width="9" height="9" viewBox="0 0 20 20" fill="none">
+                        <path d="M5 10l4 4 6-6" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                    <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)' }}>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <button
+                onClick={() => window.location.href = 'https://app.getpaintflow.com/checkout?plan=annual'}
+                style={{
+                  width: '100%', padding: '16px', borderRadius: 14, border: 'none', cursor: 'pointer',
+                  background: '#fff', color: ACCENT,
+                  fontSize: 15, fontWeight: 700, letterSpacing: '-0.01em',
+                  transition: 'opacity 0.15s',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.opacity = '0.9'; }}
+                onMouseLeave={e => { e.currentTarget.style.opacity = '1'; }}
+              >
+                Start Free Trial — 14 days free
+              </button>
+              <div style={{ textAlign: 'center', marginTop: 12 }}>
+                <a href={DEMO_URL} target="_blank" rel="noopener noreferrer"
+                  style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', textDecoration: 'none' }}>
+                  or <span style={{ textDecoration: 'underline' }}>schedule a free demo first</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Monthly card */}
+          <div style={{
+            borderRadius: 24, padding: 32, position: 'relative',
+            background: 'rgba(255,255,255,0.04)',
+            border: '1px solid rgba(255,255,255,0.1)',
+          }}>
+            <div style={{ fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,0.45)', marginBottom: 16 }}>Monthly Plan</div>
+            <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, marginBottom: 4 }}>
+              <span style={{ fontSize: 64, fontWeight: 900, letterSpacing: '-0.05em', color: 'rgba(255,255,255,0.7)', lineHeight: 1 }}>$99</span>
+              <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.35)', marginBottom: 10 }}>/mo</span>
+            </div>
+            <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)', marginBottom: 8 }}>Billed monthly · cancel anytime</div>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.06)', borderRadius: 100, padding: '5px 12px', marginBottom: 24 }}>
+              <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>Switch to annual and save $240/year</span>
+            </div>
+            <ul style={{ listStyle: 'none', marginBottom: 28, padding: 0 }}>
+              {PLAN_FEATURES.map(item => (
+                <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                  <span style={{ width: 16, height: 16, borderRadius: '50%', background: 'rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <svg width="9" height="9" viewBox="0 0 20 20" fill="none">
+                      <path d="M5 10l4 4 6-6" stroke="rgba(255,255,255,0.4)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={() => window.location.href = 'https://app.getpaintflow.com/checkout?plan=monthly'}
+              style={{
+                width: '100%', padding: '16px', borderRadius: 14,
+                border: '1px solid rgba(255,255,255,0.15)', cursor: 'pointer',
+                background: 'transparent', color: 'rgba(255,255,255,0.6)',
+                fontSize: 15, fontWeight: 600,
+                transition: 'border-color 0.15s, color 0.15s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.35)'; e.currentTarget.style.color = 'rgba(255,255,255,0.85)'; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'; e.currentTarget.style.color = 'rgba(255,255,255,0.6)'; }}
+            >
+              Start Free Trial — 14 days free
+            </button>
+            <div style={{ textAlign: 'center', marginTop: 12 }}>
+              <a href={DEMO_URL} target="_blank" rel="noopener noreferrer"
+                style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', textDecoration: 'none' }}>
+                or <span style={{ textDecoration: 'underline' }}>schedule a free demo first</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* 14-day free trial badge */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 28 }}>
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: 10,
+            background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
+            borderRadius: 100, padding: '10px 20px',
+          }}>
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="9" stroke="#4ade80" strokeWidth="1.5" />
+              <path d="M6 10l3 3 5-5" stroke="#4ade80" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', fontWeight: 500 }}>
+              14-day free trial · No charge until trial ends · Cancel anytime
+            </span>
+          </div>
+        </div>
+
+        {/* Trust bullets */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 32, flexWrap: 'wrap', marginTop: 24 }}>
+          {['14-day free trial', 'No setup fees', 'No per-seat charges', 'Cancel anytime'].map(item => (
+            <div key={item} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'rgba(255,255,255,0.35)' }}>
+              <CheckIcon color="rgba(255,255,255,0.25)" size={16} />
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Sticky Bar ───────────────────────────────────────────────────────────────
+function StickyBar() {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const fn = () => setVisible(window.scrollY > 500);
+    window.addEventListener('scroll', fn, { passive: true });
+    return () => window.removeEventListener('scroll', fn);
+  }, []);
+  return (
+    <div style={{
+      position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 99,
+      background: 'rgba(15,17,23,0.97)',
+      backdropFilter: 'blur(16px)',
+      borderTop: '1px solid rgba(255,255,255,0.08)',
+      padding: '14px 24px',
+      transform: visible ? 'translateY(0)' : 'translateY(100%)',
+      transition: 'transform 0.3s cubic-bezier(0.32,0.72,0,1)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 20, flexWrap: 'wrap',
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <img src="/logo.png" alt="" style={{ width: 24, height: 24, borderRadius: 6 }} />
+        <span style={{ fontSize: 14, fontWeight: 600, color: '#fff', letterSpacing: '-0.01em' }}>
+          PaintFlow — <span style={{ color: 'rgba(255,255,255,0.5)', fontWeight: 400 }}>14-day free trial · $99/mo · or $79 annual</span>
+        </span>
+      </div>
+      <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+        <button
+          onClick={() => scrollToPricing()}
+          style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 500 }}>
+          View pricing
+        </button>
+        <a
+          href={DEMO_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 700,
+            padding: '10px 22px', borderRadius: 10, textDecoration: 'none',
+            letterSpacing: '-0.01em', display: 'inline-block',
+          }}>
+          Schedule a Free Demo →
+        </a>
+      </div>
+    </div>
+  );
+}
+
+// ─── Footer ───────────────────────────────────────────────────────────────────
+function Footer() {
+  return (
+    <footer style={{ background: '#f8f9fb', borderTop: '1px solid rgba(0,0,0,0.07)', padding: '48px 24px', textAlign: 'center' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginBottom: 8 }}>
+        <img src="/logo.png" alt="" style={{ width: 28, height: 28, borderRadius: 7 }} />
+        <span style={{ fontWeight: 800, fontSize: 16, letterSpacing: '-0.03em', color: '#0f1117' }}>
+          Paint<span style={{ color: ACCENT }}>Flow</span>
+        </span>
+      </div>
+      <p style={{ fontSize: 13, color: '#9ca3af', marginBottom: 20 }}>Built by a painting contractor, for painting contractors.</p>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 28, flexWrap: 'wrap' }}>
+        {[
+          { label: 'Book a Demo', href: 'https://calendly.com/carstonroberts/30min', external: true },
+          { label: 'vs PaintScout', href: '/compare/paintscout', external: false },
+          { label: 'vs DripJobs', href: '/compare/dripjobs', external: false },
+          { label: 'Privacy', href: '/privacy', external: false },
+          { label: 'Terms', href: '/terms', external: false },
+          { label: 'Log in', href: 'https://app.getpaintflow.com/login', external: false },
+        ].map(link => (
+          <a
+            key={link.label}
+            href={link.href}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener noreferrer' : undefined}
+            style={{ fontSize: 13, color: '#9ca3af', textDecoration: 'none' }}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+      <p style={{ fontSize: 11, color: '#d1d5db', marginTop: 24 }}>© 2026 PaintFlow. All rights reserved.</p>
+    </footer>
+  );
+}
+
+// ─── Keyframe styles ──────────────────────────────────────────────────────────
+const globalStyles = `
+  @keyframes shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.4; }
+  }
+`;
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
+export default function Landing() {
+  return (
+    <>
+      <style>{globalStyles}</style>
+      <div style={{ fontFamily: "'Inter', sans-serif", color: '#0f1117', WebkitFontSmoothing: 'antialiased', paddingBottom: 72 }}>
+        <Nav />
+        <Hero />
+        <ProblemSection />
+        <PipelineSection />
+        <TimeTrackingSection />
+        <AISection />
+        <FeaturesSection />
+        <FounderSection />
+        <Testimonials />
+        <ComparisonSection />
+        <RateSheetCTA />
+        <FAQSection />
+        <PricingSection />
+        <Footer />
+        <StickyBar />
+      </div>
+    </>
+  );
 }
