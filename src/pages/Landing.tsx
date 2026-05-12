@@ -53,7 +53,6 @@ function DashIcon({ size = 18 }: { size?: number }) {
 // ─── Nav ──────────────────────────────────────────────────────────────────────
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 10);
@@ -248,62 +247,6 @@ function Hero() {
   );
 }
 
-// ─── Testimonials ─────────────────────────────────────────────────────────────
-function Testimonials() {
-  const testimonials = [
-    {
-      quote: "I used to finish a job and just hope I made money. With PaintFlow I can see if we're over on labor before we hit the last day — that's changed how I run every job.",
-      name: 'Mike D.', role: 'Owner, 6-crew exterior company, Texas',
-    },
-    {
-      quote: "PaintScout was $149 a month and I still had to do job costing in a spreadsheet. PaintFlow does it all in one place for half the price.",
-      name: 'Jason W.', role: 'Residential & commercial painter, Colorado',
-    },
-    {
-      quote: 'The lead sync alone saved me. Leads used to disappear into my inbox. Now they land straight in the pipeline and I follow up the same day.',
-      name: 'Chris L.', role: 'Owner-operator, Florida',
-    },
-  ];
-  return (
-    <section style={{ background: '#f8f9fb', borderTop: '1px solid rgba(0,0,0,0.06)', borderBottom: '1px solid rgba(0,0,0,0.06)', padding: '72px 24px' }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: 48 }}>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: 3, marginBottom: 12 }}>
-            {[0,1,2,3,4].map(i => (
-              <svg key={i} width="16" height="16" viewBox="0 0 20 20" fill="#f59e0b">
-                <path d={ICONS.star} />
-              </svg>
-            ))}
-          </div>
-          <p style={{ fontSize: 13, color: '#9ca3af', fontWeight: 500 }}>Trusted by painting contractors across the US</p>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
-          {testimonials.map((t, i) => (
-            <div key={i} style={{
-              background: '#fff', borderRadius: 16, padding: 28,
-              border: '1px solid rgba(0,0,0,0.07)',
-              boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
-              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-            }}>
-              <div style={{ display: 'flex', gap: 3, marginBottom: 14 }}>
-                {[0,1,2,3,4].map(j => (
-                  <svg key={j} width="13" height="13" viewBox="0 0 20 20" fill="#f59e0b">
-                    <path d={ICONS.star} />
-                  </svg>
-                ))}
-              </div>
-              <p style={{ fontSize: 14, lineHeight: 1.65, color: '#374151', fontWeight: 400, marginBottom: 20, fontStyle: 'italic' }}>"{t.quote}"</p>
-              <div>
-                <div style={{ fontSize: 13, fontWeight: 700, color: '#0f1117' }}>{t.name}</div>
-                <div style={{ fontSize: 12, color: '#9ca3af', marginTop: 2 }}>{t.role}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 // ─── Problem Section ──────────────────────────────────────────────────────────
 function ProblemSection() {
@@ -1142,7 +1085,6 @@ export default function Landing() {
         <AISection />
         <FeaturesSection />
         <FounderSection />
-        <Testimonials />
         <ComparisonSection />
         <RateSheetCTA />
         <FAQSection />
