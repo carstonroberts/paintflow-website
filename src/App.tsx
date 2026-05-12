@@ -4,6 +4,8 @@ import Footer from './components/Footer'
 import Landing from './pages/Landing'
 import RateCalculator from './pages/RateCalculator'
 import FiveMistakes from './pages/FiveMistakes'
+import ComparePaintScout from './pages/ComparePaintScout'
+import CompareDripJobs from './pages/CompareDripJobs'
 
 // Layout with shared Nav/Footer for resource pages
 function ResourceLayout({ children }: { children: React.ReactNode }) {
@@ -25,6 +27,9 @@ export default function App() {
         {/* Resource pages use the shared Nav/Footer */}
         <Route path="/resources/rate-calculator" element={<ResourceLayout><RateCalculator /></ResourceLayout>} />
         <Route path="/resources/5-mistakes" element={<ResourceLayout><FiveMistakes /></ResourceLayout>} />
+        {/* Compare pages have their own Nav/Footer built in */}
+        <Route path="/compare/paintscout" element={<ComparePaintScout />} />
+        <Route path="/compare/dripjobs" element={<CompareDripJobs />} />
       </Routes>
     </BrowserRouter>
   )
