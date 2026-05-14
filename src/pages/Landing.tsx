@@ -128,7 +128,7 @@ function Hero() {
             letterSpacing: '0.01em',
           }}>
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#93c5fd', display: 'inline-block', animation: 'pulse-dot 2s ease-in-out infinite' }} />
-            Built by a painting contractor — for painting contractors
+            CRM built for painting contractors
           </div>
         </div>
 
@@ -153,13 +153,22 @@ function Hero() {
           </span>
         </h1>
 
+        {/* Founder credibility line */}
+        <p style={{
+          textAlign: 'center', fontSize: 14, color: 'rgba(255,255,255,0.4)',
+          maxWidth: 520, margin: '0 auto 24px', lineHeight: 1.6,
+          fontStyle: 'italic', fontWeight: 400, letterSpacing: '-0.01em',
+        }}>
+          Built on a job site, not in an office — by a painter who runs his crews on it every day.
+        </p>
+
         {/* Subhead */}
         <p style={{
           textAlign: 'center', fontSize: 18, fontWeight: 300,
           color: 'rgba(255,255,255,0.62)',
           maxWidth: 520, margin: '0 auto 36px', lineHeight: 1.65,
         }}>
-          PaintFlow is the CRM built for painting contractors — with real job costing, live labor tracking, and every tool your crew needs to run profitably.
+          PaintFlow is the CRM built for painting contractors — with real job costing, live labor tracking, and everything you need to run your crews profitably.
         </p>
 
         {/* CTA row */}
@@ -255,6 +264,148 @@ function Hero() {
   );
 }
 
+
+// ─── Job Narrative Section ────────────────────────────────────────────────────
+function JobNarrativeSection() {
+  const steps = [
+    {
+      label: 'Lead arrives',
+      caption: "A Facebook ad fires at 9 PM. By 9:01 it's in your pipeline — no manual entry.",
+      card: (
+        <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.09)', borderRadius: 14, overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.06)' }}>
+          <div style={{ padding: '10px 14px', borderBottom: '1px solid rgba(0,0,0,0.07)', display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ display: 'inline-block', width: 6, height: 6, borderRadius: '50%', background: '#16a34a', animation: 'pulse-dot 2s ease-in-out infinite', flexShrink: 0 }} />
+            <span style={{ fontSize: 11, fontWeight: 700, color: '#0f1117' }}>New Lead</span>
+          </div>
+          <div style={{ padding: '12px 14px' }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: '#0f1117', marginBottom: 6 }}>Henderson Exterior</div>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, background: '#eff6ff', borderRadius: 100, padding: '3px 9px', fontSize: 10, fontWeight: 700, color: ACCENT }}>📣 Meta Ad</span>
+            <div style={{ fontSize: 10, color: '#9ca3af', marginTop: 8 }}>Arrived 9:01 PM · today</div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      label: 'Quote signed',
+      caption: 'Quote built in minutes, sent for e-sign, deposit collected. Job locked.',
+      card: (
+        <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.09)', borderRadius: 14, overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.06)' }}>
+          <div style={{ padding: '10px 14px', borderBottom: '1px solid rgba(0,0,0,0.07)' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#0f1117' }}>Quote #Q-041</div>
+            <div style={{ fontSize: 10, color: '#9ca3af' }}>Henderson Exterior · $4,200</div>
+          </div>
+          <div style={{ padding: '12px 14px' }}>
+            <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap', marginBottom: 8 }}>
+              <span style={{ fontSize: 10, fontWeight: 700, background: '#e4f5ec', color: '#16a34a', padding: '3px 8px', borderRadius: 100 }}>✓ Signed</span>
+              <span style={{ fontSize: 10, fontWeight: 700, background: '#e4f5ec', color: '#16a34a', padding: '3px 8px', borderRadius: 100 }}>✓ Deposit paid</span>
+            </div>
+            <div style={{ fontSize: 10, color: '#9ca3af' }}>$1,050 collected · Stripe</div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      label: 'Crew clocks in',
+      caption: 'Your crew taps a button on their phone. You watch hours burn vs. budget — live.',
+      card: (
+        <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.09)', borderRadius: 14, overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.06)' }}>
+          <div style={{ padding: '10px 14px', borderBottom: '1px solid rgba(0,0,0,0.07)' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#0f1117' }}>Labor — Day 1</div>
+          </div>
+          <div style={{ padding: '12px 14px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+              <div style={{ flex: 1, height: 6, background: '#f3f4f6', borderRadius: 100, overflow: 'hidden' }}>
+                <div style={{ width: '38%', height: '100%', background: `linear-gradient(90deg, ${ACCENT}, #60a5fa)`, borderRadius: 100 }} />
+              </div>
+              <span style={{ fontSize: 10, fontWeight: 700, color: ACCENT }}>38%</span>
+            </div>
+            <div style={{ fontSize: 10, color: '#9ca3af', marginBottom: 8 }}>6.1 of 16h budget used</div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+              <span style={{ display: 'inline-block', width: 5, height: 5, borderRadius: '50%', background: '#16a34a', animation: 'pulse-dot 2s ease-in-out infinite', flexShrink: 0 }} />
+              <span style={{ fontSize: 10, color: '#16a34a', fontWeight: 600 }}>2 on site now</span>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      label: 'Invoice paid',
+      caption: 'Job done. One tap sends the invoice. Stripe handles collection.',
+      card: (
+        <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.09)', borderRadius: 14, overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.06)' }}>
+          <div style={{ padding: '10px 14px', borderBottom: '1px solid rgba(0,0,0,0.07)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#0f1117' }}>Invoice #I-041</div>
+            <span style={{ fontSize: 10, fontWeight: 700, background: '#e4f5ec', color: '#16a34a', padding: '3px 8px', borderRadius: 100 }}>✓ Paid</span>
+          </div>
+          <div style={{ padding: '12px 14px' }}>
+            <div style={{ fontSize: 20, fontWeight: 900, letterSpacing: '-0.03em', color: '#0f1117', marginBottom: 2 }}>$3,150</div>
+            <div style={{ fontSize: 10, color: '#9ca3af' }}>Balance after deposit · Stripe</div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      label: 'Margin confirmed',
+      caption: 'No spreadsheet. No guessing. 34% margin, locked in automatically.',
+      card: (
+        <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.09)', borderRadius: 14, overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.06)' }}>
+          <div style={{ padding: '10px 14px', borderBottom: '1px solid rgba(0,0,0,0.07)' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#0f1117' }}>Henderson Exterior</div>
+          </div>
+          <div style={{ padding: '12px 14px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+              <div style={{ background: '#f8f9fb', borderRadius: 10, padding: '10px', textAlign: 'center' }}>
+                <div style={{ fontSize: 9, color: '#9ca3af', fontWeight: 600, marginBottom: 3, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Revenue</div>
+                <div style={{ fontSize: 16, fontWeight: 900, letterSpacing: '-0.03em', color: '#0f1117' }}>$4,200</div>
+              </div>
+              <div style={{ background: '#e4f5ec', borderRadius: 10, padding: '10px', textAlign: 'center' }}>
+                <div style={{ fontSize: 9, color: '#16a34a', fontWeight: 600, marginBottom: 3, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Margin</div>
+                <div style={{ fontSize: 16, fontWeight: 900, letterSpacing: '-0.03em', color: '#16a34a' }}>34%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+  ];
+
+  return (
+    <section style={{ background: '#f8f9fb', borderTop: '1px solid rgba(0,0,0,0.06)', borderBottom: '1px solid rgba(0,0,0,0.06)', padding: '72px 24px' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 48 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: ACCENT, marginBottom: 12 }}>Follow one job</div>
+          <h2 style={{ fontSize: 'clamp(26px, 3.5vw, 38px)', fontWeight: 900, letterSpacing: '-0.04em', color: '#0f1117', marginBottom: 10, lineHeight: 1.06 }}>
+            Henderson Exterior — lead to paid.
+          </h2>
+          <p style={{ fontSize: 15, color: '#5a5f72', fontWeight: 300, maxWidth: 440, margin: '0 auto', lineHeight: 1.6 }}>
+            See how a single job moves through PaintFlow — from the first ping to the final margin number.
+          </p>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 20, alignItems: 'start' }}>
+          {steps.map((step, i) => (
+            <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <div style={{
+                  width: 26, height: 26, borderRadius: '50%',
+                  background: ACCENT, color: '#fff',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: 11, fontWeight: 800, flexShrink: 0,
+                }}>
+                  {i + 1}
+                </div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: '#0f1117', letterSpacing: '-0.01em' }}>{step.label}</div>
+              </div>
+              {step.card}
+              <p style={{ fontSize: 12, color: '#6b7280', lineHeight: 1.55, fontWeight: 400, margin: 0 }}>
+                {step.caption}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 // ─── Problem Section ──────────────────────────────────────────────────────────
 function ProblemSection() {
@@ -370,6 +521,30 @@ function PipelineSection() {
               </li>
             ))}
           </ul>
+
+          {/* Lead attribution callout */}
+          <div style={{ marginTop: 24, background: `${ACCENT}08`, border: `1px solid ${ACCENT}25`, borderRadius: 14, padding: '16px 20px' }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: ACCENT, marginBottom: 6 }}>💡 Which ad actually paid off?</div>
+            <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, fontWeight: 400, margin: '0 0 12px' }}>
+              Find out which $500 Facebook ad became $40K of jobs. Lead-source revenue attribution is built in — every closed job traces back to where the lead came from.
+            </p>
+            <div style={{ background: '#fff', borderRadius: 10, padding: '12px 14px', border: '1px solid rgba(0,0,0,0.07)' }}>
+              <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#9ca3af', marginBottom: 10 }}>Revenue by Lead Source</div>
+              {[
+                { source: 'Meta Ads', pct: 68, rev: '$42,800', color: ACCENT },
+                { source: 'Google', pct: 22, rev: '$13,900', color: '#7c3aed' },
+                { source: 'Referral', pct: 10, rev: '$6,300', color: '#16a34a' },
+              ].map(row => (
+                <div key={row.source} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 7 }}>
+                  <div style={{ width: 56, fontSize: 10, color: '#5a5f72', fontWeight: 600, flexShrink: 0 }}>{row.source}</div>
+                  <div style={{ flex: 1, height: 6, background: '#f3f4f6', borderRadius: 100, overflow: 'hidden' }}>
+                    <div style={{ width: `${row.pct}%`, height: '100%', background: row.color, borderRadius: 100 }} />
+                  </div>
+                  <div style={{ width: 48, fontSize: 10, fontWeight: 700, color: '#0f1117', textAlign: 'right', flexShrink: 0 }}>{row.rev}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -500,7 +675,7 @@ const FEATURES = [
   { title: 'Live Labor Tracking', desc: "Crew clocks in from their phone. See who's on site and how many hours are burned vs budgeted in real time.", color: '#e4f5ec', ic: '#16a34a', iconKey: 'clock' },
   { title: 'Smart Estimating', desc: 'Set your labor rate, paint coverage, and target margin. Hours, gallons, and final price — calculated automatically.', color: '#fff3d6', ic: '#d97706', iconKey: 'doc' },
   { title: 'Crew Efficiency Scores', desc: 'Track which painters consistently hit their targets. Find out where your margin is actually going.', color: '#ede9fe', ic: '#7c3aed', iconKey: 'users' },
-  { title: 'AI Business Insights', desc: 'PaintFlow analyzes your jobs, margins, and crew data to surface actionable suggestions — so you always know what to fix next.', color: '#ede9fe', ic: '#7c3aed', iconKey: 'chart' },
+  { title: 'AI Weekly Summary', desc: 'A Gemini-powered weekly digest flags which job types are underperforming and which crew members are hitting their targets — delivered to your inbox, no extra dashboard.', color: '#ede9fe', ic: '#7c3aed', iconKey: 'chart' },
   { title: 'Pipeline Management', desc: 'Move jobs through 9 stages. Leads sync automatically from Meta ads, Google ads, and your website.', color: '#eff6ff', ic: '#2563eb', iconKey: 'board' },
   { title: 'Invoicing & Payments', desc: "Deposit gates job scheduling. Jobs can't be booked until you're paid — built into the workflow.", color: '#e4f5ec', ic: '#16a34a', iconKey: 'card' },
   { title: 'Text & Email Automations', desc: 'Follow-up sequences, estimate reminders, and job confirmations — sent automatically so nothing slips.', color: '#fff3d6', ic: '#d97706', iconKey: 'mail' },
@@ -535,6 +710,19 @@ function FeaturesSection() {
             </div>
           ))}
         </div>
+
+        {/* AI insight callout — one real example, not oversold */}
+        <div style={{ marginTop: 32, background: 'rgba(124,58,237,0.05)', border: '1px solid rgba(124,58,237,0.15)', borderRadius: 16, padding: '20px 24px', display: 'flex', gap: 16, alignItems: 'flex-start', flexWrap: 'wrap' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(124,58,237,0.1)', border: '1px solid rgba(124,58,237,0.2)', color: '#7c3aed', fontSize: 11, fontWeight: 700, padding: '5px 12px', borderRadius: 100, flexShrink: 0 }}>
+            <span>✦</span> Gemini AI
+          </div>
+          <div style={{ flex: 1, minWidth: 240 }}>
+            <div style={{ fontSize: 13, fontWeight: 700, color: '#7c3aed', marginBottom: 4 }}>Example weekly insight: "Cabinet jobs running 22% over on labor"</div>
+            <div style={{ fontSize: 13, color: '#5a5f72', lineHeight: 1.6, fontWeight: 300 }}>
+              Your last 4 cabinet jobs averaged 22% over on labor hours. Consider adjusting your estimating rate or reviewing your prep process. — <em>Gemini-powered weekly summary, based on your actual job data.</em>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -547,21 +735,61 @@ function FounderSection() {
       <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 64, alignItems: 'center' }}>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <div style={{ position: 'relative' }}>
+            {/* ── FOUNDER VIDEO SLOT ──────────────────────────────────────────
+                Drop your Loom or YouTube embed src here once you have the URL.
+                Option A (Loom):
+                  Replace the <video> element below with:
+                  <iframe src="https://www.loom.com/embed/YOUR_LOOM_ID"
+                    frameBorder="0" allowFullScreen
+                    style={{ width:'100%', height:'100%', border:'none', display:'block' }} />
+                Option B (YouTube):
+                  <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                    frameBorder="0" allowFullScreen
+                    style={{ width:'100%', height:'100%', border:'none', display:'block' }} />
+                ─────────────────────────────────────────────────────────────── */}
             <div style={{
-              width: 280, height: 320, borderRadius: 24,
-              border: '1px solid rgba(0,0,0,0.08)',
-              overflow: 'hidden',
+              width: 360, height: 240, borderRadius: 20,
+              border: '1px solid rgba(0,0,0,0.09)',
+              overflow: 'hidden', background: '#0f1117',
+              boxShadow: '0 8px 40px rgba(0,0,0,0.10)',
+              position: 'relative',
             }}>
-              <img
-                src="/founder.png"
-                alt="Carston Roberts, Founder of PaintFlow"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+              {/* Placeholder — swap for real embed above */}
+              <video
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                poster="/founder.png"
               />
+              {/* Play-button overlay */}
+              <div style={{
+                position: 'absolute', inset: 0,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                background: 'rgba(0,0,0,0.35)',
+                pointerEvents: 'none',
+              }}>
+                <div style={{
+                  width: 56, height: 56, borderRadius: '50%',
+                  background: 'rgba(255,255,255,0.92)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
+                }}>
+                  <svg width="22" height="22" viewBox="0 0 20 20" fill={ACCENT}>
+                    <path d="M6.3 4.7a1 1 0 011.5-.87l8 5a1 1 0 010 1.74l-8 5A1 1 0 016.3 14.7V5.3z" />
+                  </svg>
+                </div>
+              </div>
+              <div style={{
+                position: 'absolute', bottom: 12, left: 12,
+                background: 'rgba(0,0,0,0.6)', color: '#fff',
+                fontSize: 11, fontWeight: 600, padding: '4px 10px', borderRadius: 100,
+                backdropFilter: 'blur(8px)',
+              }}>
+                2 min — why I built this
+              </div>
             </div>
             <div style={{
-              position: 'absolute', bottom: -16, right: -16,
+              position: 'absolute', bottom: -14, right: -14,
               background: ACCENT, color: '#fff',
-              fontSize: 11, fontWeight: 700, padding: '8px 16px',
+              fontSize: 11, fontWeight: 700, padding: '7px 14px',
               borderRadius: 100, boxShadow: `0 4px 20px ${ACCENT}55`,
               letterSpacing: '0.02em', textTransform: 'uppercase',
             }}>
@@ -591,6 +819,105 @@ function FounderSection() {
               <div style={{ fontSize: 12, color: '#9ca3af', marginTop: 2 }}>Founder, PaintFlow · Painting contractor</div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Customer-Facing Section ──────────────────────────────────────────────────
+function CustomerFacingSection() {
+  return (
+    <section style={{ padding: '88px 24px', background: '#f8f9fb', borderTop: '1px solid rgba(0,0,0,0.06)', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 52 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: ACCENT, marginBottom: 12 }}>What homeowners see</div>
+          <h2 style={{ fontSize: 'clamp(30px, 4vw, 44px)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1.07, color: '#0f1117', marginBottom: 12 }}>
+            Your customers see this.
+          </h2>
+          <p style={{ fontSize: 16, color: '#5a5f72', fontWeight: 300, maxWidth: 480, margin: '0 auto', lineHeight: 1.65 }}>
+            The quotes and invoices you send look polished and professional — with e-sign, deposit collection, and Stripe payments built in. Nothing for the homeowner to install or figure out.
+          </p>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 24 }}>
+
+          {/* Public Quote mockup */}
+          <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.09)', borderRadius: 20, overflow: 'hidden', boxShadow: '0 8px 40px rgba(0,0,0,0.07)' }}>
+            <div style={{ padding: '10px 14px', background: '#fafafa', borderBottom: '1px solid rgba(0,0,0,0.07)', display: 'flex', alignItems: 'center', gap: 6 }}>
+              {['#ff5f57','#ffbd2e','#28c840'].map(c => <span key={c} style={{ width: 8, height: 8, borderRadius: '50%', background: c, display: 'block' }} />)}
+              <div style={{ flex: 1, background: '#eee', borderRadius: 4, padding: '2px 10px', marginLeft: 4, fontSize: 9, color: '#aaa' }}>paintflow.io/q/henderson-exterior</div>
+            </div>
+            <div style={{ padding: 24 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
+                <div style={{ width: 32, height: 32, borderRadius: 8, background: ACCENT, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <span style={{ color: '#fff', fontSize: 14, fontWeight: 800 }}>G</span>
+                </div>
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: '#0f1117' }}>Glacier Painting</div>
+                  <div style={{ fontSize: 10, color: '#9ca3af' }}>Licensed & Insured · 5★ on Google</div>
+                </div>
+              </div>
+              <div style={{ fontSize: 16, fontWeight: 800, color: '#0f1117', marginBottom: 4, letterSpacing: '-0.02em' }}>Henderson Exterior</div>
+              <div style={{ fontSize: 12, color: '#9ca3af', marginBottom: 16 }}>Quote #Q-041 · Valid through Jun 15, 2026</div>
+              <div style={{ background: '#f8f9fb', borderRadius: 12, padding: '14px 16px', marginBottom: 16 }}>
+                {[['Exterior paint — 2 coats','$3,200'],['Prep & primer','$1,000']].map(([label, val]) => (
+                  <div key={label} style={{ display: 'grid', gridTemplateColumns: '1fr auto', marginBottom: 8 }}>
+                    <div style={{ fontSize: 12, color: '#374151' }}>{label}</div>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: '#0f1117' }}>{val}</div>
+                  </div>
+                ))}
+                <div style={{ borderTop: '1px solid rgba(0,0,0,0.07)', marginTop: 8, paddingTop: 10, display: 'grid', gridTemplateColumns: '1fr auto' }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: '#0f1117' }}>Total</div>
+                  <div style={{ fontSize: 13, fontWeight: 900, color: '#0f1117' }}>$4,200</div>
+                </div>
+              </div>
+              <button style={{ width: '100%', background: ACCENT, color: '#fff', border: 'none', borderRadius: 12, padding: '12px', fontSize: 13, fontWeight: 700, cursor: 'default', marginBottom: 8 }}>
+                ✍ Sign &amp; Pay $1,050 Deposit
+              </button>
+              <div style={{ fontSize: 11, color: '#9ca3af', textAlign: 'center' }}>Powered by Stripe · Secure payment</div>
+            </div>
+          </div>
+
+          {/* Public Invoice mockup */}
+          <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.09)', borderRadius: 20, overflow: 'hidden', boxShadow: '0 8px 40px rgba(0,0,0,0.07)' }}>
+            <div style={{ padding: '10px 14px', background: '#fafafa', borderBottom: '1px solid rgba(0,0,0,0.07)', display: 'flex', alignItems: 'center', gap: 6 }}>
+              {['#ff5f57','#ffbd2e','#28c840'].map(c => <span key={c} style={{ width: 8, height: 8, borderRadius: '50%', background: c, display: 'block' }} />)}
+              <div style={{ flex: 1, background: '#eee', borderRadius: 4, padding: '2px 10px', marginLeft: 4, fontSize: 9, color: '#aaa' }}>paintflow.io/i/henderson-exterior</div>
+            </div>
+            <div style={{ padding: 24 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
+                <div style={{ width: 32, height: 32, borderRadius: 8, background: ACCENT, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <span style={{ color: '#fff', fontSize: 14, fontWeight: 800 }}>G</span>
+                </div>
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: '#0f1117' }}>Glacier Painting</div>
+                  <div style={{ fontSize: 10, color: '#9ca3af' }}>Licensed & Insured · 5★ on Google</div>
+                </div>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
+                <div style={{ fontSize: 16, fontWeight: 800, color: '#0f1117', letterSpacing: '-0.02em' }}>Invoice #I-041</div>
+                <span style={{ fontSize: 11, fontWeight: 700, background: '#fff3d6', color: '#d97706', padding: '4px 10px', borderRadius: 100 }}>Due Jun 20</span>
+              </div>
+              <div style={{ fontSize: 12, color: '#9ca3af', marginBottom: 16 }}>Henderson Exterior</div>
+              <div style={{ background: '#f8f9fb', borderRadius: 12, padding: '14px 16px', marginBottom: 16 }}>
+                {[['Project total','$4,200',false],['Deposit paid','−$1,050',true]].map(([label, val, green]) => (
+                  <div key={label as string} style={{ display: 'grid', gridTemplateColumns: '1fr auto', marginBottom: 8 }}>
+                    <div style={{ fontSize: 12, color: '#374151' }}>{label}</div>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: green ? '#16a34a' : '#0f1117' }}>{val}</div>
+                  </div>
+                ))}
+                <div style={{ borderTop: '1px solid rgba(0,0,0,0.07)', marginTop: 8, paddingTop: 10, display: 'grid', gridTemplateColumns: '1fr auto' }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: '#0f1117' }}>Balance due</div>
+                  <div style={{ fontSize: 13, fontWeight: 900, color: '#0f1117' }}>$3,150</div>
+                </div>
+              </div>
+              <button style={{ width: '100%', background: '#16a34a', color: '#fff', border: 'none', borderRadius: 12, padding: '12px', fontSize: 13, fontWeight: 700, cursor: 'default', marginBottom: 8 }}>
+                Pay $3,150 with Stripe
+              </button>
+              <div style={{ fontSize: 11, color: '#9ca3af', textAlign: 'center' }}>Stripe · 256-bit encrypted · No account needed</div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -737,37 +1064,73 @@ function RateSheetCTA() {
   );
 }
 
+// ─── Not-For Section ──────────────────────────────────────────────────────────
+function NotForSection() {
+  return (
+    <section style={{ padding: '64px 24px', background: '#fff', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+      <div style={{ maxWidth: 720, margin: '0 auto' }}>
+        <div style={{ marginBottom: 28 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#9ca3af', marginBottom: 12 }}>Honest take</div>
+          <h2 style={{ fontSize: 'clamp(24px, 3vw, 34px)', fontWeight: 900, letterSpacing: '-0.03em', color: '#0f1117', marginBottom: 10, lineHeight: 1.1 }}>
+            Who PaintFlow isn't for.
+          </h2>
+          <p style={{ fontSize: 15, color: '#5a5f72', fontWeight: 300, lineHeight: 1.65 }}>
+            We'd rather tell you upfront than have you sign up and feel misled.
+          </p>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          {[
+            "You do 1–2 jobs a month and a spreadsheet works fine. PaintFlow is built for owners running multiple crews across multiple active jobs — if you're a solo operator with light volume, the overhead isn't worth it yet.",
+            "You need QuickBooks-native accounting today. PaintFlow handles invoicing and payment collection directly, but it doesn't sync to QuickBooks. That integration is on the roadmap — it's not here yet.",
+            "You primarily do commercial bid-and-walk-away work. PaintFlow is built for residential repeat-cycle shops — relationships, follow-ups, and margin visibility across a rolling job list. If your pipeline is mostly one-off commercial bids with long sales cycles, the CRM fit is looser.",
+          ].map((text, i) => (
+            <div key={i} style={{ display: 'flex', gap: 14, padding: '16px 20px', background: '#f8f9fb', borderRadius: 14, border: '1px solid rgba(0,0,0,0.06)' }}>
+              <div style={{ flexShrink: 0, marginTop: 3 }}>
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                  <circle cx="10" cy="10" r="9" stroke="#d1d5db" strokeWidth="1.5" />
+                  <path d="M7 10h6" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </div>
+              <p style={{ fontSize: 14, color: '#5a5f72', lineHeight: 1.65, fontWeight: 300, margin: 0 }}>{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── FAQ Section ──────────────────────────────────────────────────────────────
 function FAQSection() {
   const [open, setOpen] = useState<number | null>(null);
   const faqs = [
     {
-      q: 'Do my crew members need to install an app?',
-      a: 'No app installation needed. Crew members are invited via email and log in through a mobile-optimized web link — works on any smartphone browser. No download required.',
+      q: 'How is PaintFlow different from PaintScout or DripJobs?',
+      a: 'PaintScout and DripJobs are good at estimating and CRM basics, but neither gives you real job costing, live labor tracking, or margin visibility. PaintFlow was built specifically because those tools couldn\'t answer the most important question: "Did I actually make money on that job?" It\'s also the only one with lead-source revenue attribution — so you know which ads are actually driving revenue.',
     },
     {
-      q: 'Is there really a free trial?',
-      a: "Yes — 14 days free, no charge until the trial ends. We ask for a card upfront so there's no disruption if you decide to keep going, but you can cancel before day 14 and you won't be billed anything.",
+      q: 'What does it cost?',
+      a: '$99/month, or $79/month on an annual plan (billed as $948/year — saves you $240). Both plans include a 14-day free trial. We ask for a card upfront so there\'s no disruption if you decide to keep going, but cancel before day 14 and you won\'t be charged anything. No per-seat fees, no setup fees — one flat price for unlimited jobs and crew members.',
     },
     {
-      q: 'Can I cancel anytime?',
-      a: "Yes. Monthly plans can be cancelled at any time. Annual plans are billed upfront — if you cancel early we'll prorate a refund for unused months.",
+      q: 'How long does setup take?',
+      a: 'Most owners are up and running within an hour. We offer a free 30-minute onboarding call to walk you through your first job setup, estimating templates, and crew configuration.',
     },
     {
       q: 'Does PaintFlow work with QuickBooks?',
       a: "QuickBooks integration is on the roadmap. Right now, PaintFlow handles invoicing and payment collection natively — most customers find they no longer need QuickBooks once they're fully set up.",
     },
     {
-      q: 'How is PaintFlow different from PaintScout or DripJobs?',
-      a: 'PaintScout and DripJobs are good at estimating and CRM basics, but neither gives you real job costing, live labor tracking, or AI-powered business insights. PaintFlow was built specifically because those tools couldn\'t answer the most important question: "Did I actually make money on that job?"',
-    },
-    {
-      q: 'How long does setup take?',
-      a: 'Most contractors are up and running within an hour. We offer a free 30-minute onboarding call to walk you through your first job setup, estimating templates, and crew configuration.',
-    },
-    {
       q: 'What lead sources does PaintFlow sync with?',
       a: 'PaintFlow syncs leads from Meta (Facebook/Instagram) ads, Google ads, and your website contact form. New leads land directly in your pipeline automatically — no manual entry.',
+    },
+    {
+      q: 'Do my crew members need to install an app?',
+      a: 'No app installation needed. Crew members are invited via email and log in through a mobile-optimized web link — works on any smartphone browser. No download required.',
+    },
+    {
+      q: 'Can I cancel anytime?',
+      a: "Yes. Monthly plans can be cancelled at any time. Annual plans are billed upfront — if you cancel early we'll prorate a refund for unused months.",
     },
     {
       q: 'Is my data secure?',
@@ -1087,14 +1450,16 @@ export default function Landing() {
       <div style={{ fontFamily: "'Inter', sans-serif", color: '#0f1117', WebkitFontSmoothing: 'antialiased', paddingBottom: 72 }}>
         <Nav />
         <Hero />
+        <JobNarrativeSection />
         <ProblemSection />
         <PipelineSection />
         <TimeTrackingSection />
-        <AISection />
         <FeaturesSection />
         <FounderSection />
+        <CustomerFacingSection />
         <ComparisonSection />
         <RateSheetCTA />
+        <NotForSection />
         <FAQSection />
         <PricingSection />
         <Footer />
