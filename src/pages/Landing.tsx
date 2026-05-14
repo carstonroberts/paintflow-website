@@ -616,59 +616,6 @@ function TimeTrackingSection() {
 }
 
 // ─── AI Insights Section ──────────────────────────────────────────────────────
-function AISection() {
-  return (
-    <section style={{ background: '#0b0f1a', padding: '88px 24px', overflow: 'hidden', position: 'relative' }}>
-      <div style={{ position: 'absolute', top: '50%', left: '30%', transform: 'translate(-50%,-50%)', width: 600, height: 400, background: `radial-gradient(ellipse, ${ACCENT}25 0%, transparent 65%)`, filter: 'blur(60px)', pointerEvents: 'none' }} />
-      <div style={{ maxWidth: 1100, margin: '0 auto', position: 'relative', zIndex: 1 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: 64, alignItems: 'center' }}>
-          <div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(124,58,237,0.15)', border: '1px solid rgba(124,58,237,0.3)', color: '#a78bfa', fontSize: 12, fontWeight: 600, padding: '6px 14px', borderRadius: 100, marginBottom: 20 }}>
-              <span style={{ fontSize: 14 }}>✦</span> Powered by AI
-            </div>
-            <h2 style={{ fontSize: 'clamp(30px, 4vw, 44px)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1.06, color: '#fff', marginBottom: 18 }}>
-              Your business data,<br />working for you.
-            </h2>
-            <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', lineHeight: 1.7, fontWeight: 300, marginBottom: 28 }}>
-              PaintFlow's AI analyzes your jobs, margins, crew performance, and pipeline to surface insights you'd never spot on your own. No spreadsheets. No guesswork.
-            </p>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 14, padding: 0, margin: 0 }}>
-              {[
-                { label: 'Spot which job types consistently underperform', icon: '📉' },
-                { label: 'Identify your most profitable crew members', icon: '⭐' },
-                { label: 'Get AI recommendations based on your actual job data', icon: '💡' },
-                { label: 'Flag at-risk jobs before they blow the budget', icon: '🚨' },
-              ].map(item => (
-                <li key={item.label} style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                  <span style={{ fontSize: 18, flexShrink: 0 }}>{item.icon}</span>
-                  <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>{item.label}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            {[
-              { icon: '📉', title: 'Cabinet jobs running 22% over on labor', body: 'Your last 4 cabinet jobs averaged 22% over on labor hours. Consider adjusting your cabinet estimating rate or reviewing your prep process.', color: '#fbbf24', bg: 'rgba(251,191,36,0.08)', border: 'rgba(251,191,36,0.2)' },
-              { icon: '⭐', title: 'Marcus K. is your most profitable crew member', body: 'Marcus consistently finishes within 5% of budgeted hours. Consider leading larger jobs with him.', color: '#34d399', bg: 'rgba(52,211,153,0.08)', border: 'rgba(52,211,153,0.2)' },
-              { icon: '💡', title: 'Your exterior margin is trending down', body: 'Based on your last 6 exterior jobs, your realized margin is 4% below your target. Consider revisiting your labor rate or prep estimates.', color: '#a78bfa', bg: 'rgba(167,139,250,0.08)', border: 'rgba(167,139,250,0.2)' },
-            ].map(card => (
-              <div key={card.title} style={{ background: card.bg, border: `1px solid ${card.border}`, borderRadius: 16, padding: '16px 20px' }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                  <span style={{ fontSize: 20, flexShrink: 0, marginTop: 1 }}>{card.icon}</span>
-                  <div>
-                    <div style={{ fontSize: 13, fontWeight: 700, color: card.color, marginBottom: 4 }}>{card.title}</div>
-                    <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.55 }}>{card.body}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ─── Features Grid ────────────────────────────────────────────────────────────
 const FEATURES = [
   { title: 'Real Job Costing', desc: 'Compare estimated vs actual hours and materials on every job. See your real margin — not what you hoped for.', color: '#eff6ff', ic: '#2563eb', iconKey: 'chart' },
