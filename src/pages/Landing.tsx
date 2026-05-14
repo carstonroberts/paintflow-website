@@ -905,6 +905,8 @@ function ComparisonSection() {
   return (
     <section style={{ padding: '88px 24px' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+
+        {/* ── Section header ── */}
         <div style={{ textAlign: 'center', marginBottom: 52 }}>
           <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: ACCENT, marginBottom: 12 }}>vs. The competition</div>
           <h2 style={{ fontSize: 'clamp(30px, 4vw, 44px)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1.07, color: '#0f1117', marginBottom: 12 }}>
@@ -915,28 +917,75 @@ function ComparisonSection() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 0, maxWidth: 860, margin: '0 auto 0' }}>
+        {/* ── Pricing card headers ── */}
+        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 0, maxWidth: 860, margin: '0 auto' }}>
           <div />
-          <div style={{ background: ACCENT, borderRadius: '16px 16px 0 0', padding: '20px 16px', textAlign: 'center', position: 'relative' }}>
+
+          {/* PaintFlow */}
+          <div style={{ background: ACCENT, borderRadius: '16px 16px 0 0', padding: '20px 14px 18px', textAlign: 'left', position: 'relative' }}>
             <div style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)', background: '#16a34a', color: '#fff', fontSize: 10, fontWeight: 700, padding: '3px 10px', borderRadius: 100, letterSpacing: '0.05em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
               Best Value
             </div>
-            <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.7)', letterSpacing: '0.05em', marginBottom: 6, textTransform: 'uppercase' }}>PaintFlow</div>
-            <div style={{ fontSize: 32, fontWeight: 900, letterSpacing: '-0.04em', color: '#fff' }}>$99</div>
-            <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', marginTop: 2 }}>/mo · or $79 annual</div>
+            <div style={{ fontSize: 10, fontWeight: 700, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.06em', marginBottom: 6, textTransform: 'uppercase', textAlign: 'center' }}>PaintFlow</div>
+            <div style={{ textAlign: 'center', marginBottom: 14 }}>
+              <span style={{ fontSize: 28, fontWeight: 900, letterSpacing: '-0.04em', color: '#fff' }}>$99</span>
+              <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)', marginLeft: 4 }}>/mo · or $79 annual</span>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+              {['Everything included', 'Unlimited users', 'No add-ons, no per-seat'].map(item => (
+                <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 6 }}>
+                  <span style={{ color: '#86efac', fontSize: 11, fontWeight: 700, flexShrink: 0, marginTop: 1 }}>✓</span>
+                  <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.88)', lineHeight: 1.4 }}>{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div style={{ background: '#f8f9fb', borderRadius: '16px 16px 0 0', padding: '20px 16px', textAlign: 'center', border: '1px solid rgba(0,0,0,0.07)', borderBottom: 'none' }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: '#9ca3af', letterSpacing: '0.05em', marginBottom: 6, textTransform: 'uppercase' }}>PaintScout</div>
-            <div style={{ fontSize: 28, fontWeight: 900, letterSpacing: '-0.04em', color: '#374151' }}>$79+</div>
-            <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 2 }}>/user + CRM add-on</div>
+
+          {/* PaintScout */}
+          <div style={{ background: '#f8f9fb', borderRadius: '16px 16px 0 0', padding: '20px 14px 18px', textAlign: 'left', border: '1px solid rgba(0,0,0,0.07)', borderBottom: 'none' }}>
+            <div style={{ fontSize: 10, fontWeight: 700, color: '#9ca3af', letterSpacing: '0.06em', marginBottom: 6, textTransform: 'uppercase', textAlign: 'center' }}>PaintScout</div>
+            <div style={{ textAlign: 'center', marginBottom: 14 }}>
+              <span style={{ fontSize: 22, fontWeight: 900, letterSpacing: '-0.04em', color: '#374151' }}>$119</span>
+              <div style={{ fontSize: 10, color: '#9ca3af', marginTop: 2 }}>/mo · Sales tier, 1 user</div>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+              {[
+                'Operations add-on ($99/mo)',
+                '$20/user beyond 1',
+                'Wisetack fees on financing',
+              ].map(item => (
+                <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 5 }}>
+                  <span style={{ color: '#d97706', fontSize: 11, fontWeight: 800, flexShrink: 0, lineHeight: 1.4 }}>+</span>
+                  <span style={{ fontSize: 11, color: '#6b7280', lineHeight: 1.4 }}>{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div style={{ background: '#f8f9fb', borderRadius: '16px 16px 0 0', padding: '20px 16px', textAlign: 'center', border: '1px solid rgba(0,0,0,0.07)', borderBottom: 'none', borderLeft: 'none' }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: '#9ca3af', letterSpacing: '0.05em', marginBottom: 6, textTransform: 'uppercase' }}>DripJobs</div>
-            <div style={{ fontSize: 32, fontWeight: 900, letterSpacing: '-0.04em', color: '#374151' }}>$97</div>
-            <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 2 }}>/mo</div>
+
+          {/* DripJobs */}
+          <div style={{ background: '#f8f9fb', borderRadius: '16px 16px 0 0', padding: '20px 14px 18px', textAlign: 'left', border: '1px solid rgba(0,0,0,0.07)', borderBottom: 'none', borderLeft: 'none' }}>
+            <div style={{ fontSize: 10, fontWeight: 700, color: '#9ca3af', letterSpacing: '0.06em', marginBottom: 6, textTransform: 'uppercase', textAlign: 'center' }}>DripJobs</div>
+            <div style={{ textAlign: 'center', marginBottom: 14 }}>
+              <span style={{ fontSize: 22, fontWeight: 900, letterSpacing: '-0.04em', color: '#374151' }}>$97</span>
+              <div style={{ fontSize: 10, color: '#9ca3af', marginTop: 2 }}>/mo · Pro tier, 1 user</div>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+              {[
+                'Advanced tier ($147/mo) for full features',
+                'Job costing add-on ($49/mo)',
+                'Two-way texting add-on ($25/mo)',
+                'Additional users (contact for pricing)',
+              ].map(item => (
+                <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 5 }}>
+                  <span style={{ color: '#d97706', fontSize: 11, fontWeight: 800, flexShrink: 0, lineHeight: 1.4 }}>+</span>
+                  <span style={{ fontSize: 11, color: '#6b7280', lineHeight: 1.4 }}>{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
+        {/* ── Feature checklist table ── */}
         <div style={{ maxWidth: 860, margin: '0 auto', overflow: 'hidden', borderRadius: '0 0 16px 16px', border: '1px solid rgba(0,0,0,0.08)' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <tbody>
@@ -964,17 +1013,53 @@ function ComparisonSection() {
                   <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.6)' }}>flat · $79 annual</div>
                 </td>
                 <td style={{ padding: '16px 16px', textAlign: 'center', borderLeft: '1px solid rgba(255,255,255,0.08)' }}>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: 'rgba(255,255,255,0.5)', letterSpacing: '-0.03em' }}>$79+/user</div>
-                  <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', marginTop: 2 }}>+ CRM add-on</div>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: 'rgba(255,255,255,0.45)', letterSpacing: '-0.02em', textDecoration: 'line-through' }}>$119+/mo</div>
+                  <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.28)', marginTop: 2 }}>Sales tier</div>
                 </td>
                 <td style={{ padding: '16px 16px', textAlign: 'center', borderLeft: '1px solid rgba(255,255,255,0.08)' }}>
-                  <div style={{ fontSize: 18, fontWeight: 700, color: 'rgba(255,255,255,0.5)', letterSpacing: '-0.03em', textDecoration: 'line-through' }}>$97</div>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: 'rgba(255,255,255,0.45)', letterSpacing: '-0.02em', textDecoration: 'line-through' }}>$97+/mo</div>
+                  <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.28)', marginTop: 2 }}>Pro tier</div>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
 
+        {/* ── 3-person shop callout ── */}
+        <div style={{ maxWidth: 860, margin: '16px auto 0', background: '#fff', border: '1px solid rgba(0,0,0,0.1)', borderRadius: 16, padding: '20px 24px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: 8, marginBottom: 16 }}>
+            <div style={{ fontSize: 14, fontWeight: 600, color: '#0f1117' }}>What a 3-person painting shop actually pays</div>
+            <div style={{ fontSize: 11, color: '#9ca3af' }}>Full features, multi-user</div>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
+
+            {/* PaintFlow */}
+            <div style={{ borderLeft: `3px solid ${ACCENT}`, paddingLeft: 16, paddingTop: 4, paddingBottom: 4 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, color: ACCENT, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 6 }}>PaintFlow</div>
+              <div style={{ fontSize: 26, fontWeight: 900, letterSpacing: '-0.04em', color: '#0f1117', lineHeight: 1 }}>$99<span style={{ fontSize: 13, fontWeight: 500, color: '#5a5f72', letterSpacing: 0 }}>/mo</span></div>
+              <div style={{ fontSize: 11, color: '#5a5f72', marginTop: 6 }}>Flat. Everything included.</div>
+            </div>
+
+            {/* DripJobs */}
+            <div style={{ background: '#f8f9fb', borderRadius: 12, padding: '14px 16px' }}>
+              <div style={{ fontSize: 10, fontWeight: 700, color: '#9ca3af', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 6 }}>DripJobs</div>
+              <div style={{ fontSize: 22, fontWeight: 900, letterSpacing: '-0.04em', color: '#374151', lineHeight: 1 }}>from $221<span style={{ fontSize: 13, fontWeight: 500, letterSpacing: 0 }}>/mo</span></div>
+              <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 6, lineHeight: 1.5 }}>Advanced $147 + Job Costing $49 + Chat $25</div>
+            </div>
+
+            {/* PaintScout */}
+            <div style={{ background: '#f8f9fb', borderRadius: 12, padding: '14px 16px' }}>
+              <div style={{ fontSize: 10, fontWeight: 700, color: '#9ca3af', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 6 }}>PaintScout</div>
+              <div style={{ fontSize: 22, fontWeight: 900, letterSpacing: '-0.04em', color: '#374151', lineHeight: 1 }}>$258<span style={{ fontSize: 13, fontWeight: 500, letterSpacing: 0 }}>/mo</span></div>
+              <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 6, lineHeight: 1.5 }}>Sales $119 + Operations $99 + 2 extra seats</div>
+            </div>
+          </div>
+          <p style={{ fontSize: 11, color: '#c4c9d4', fontStyle: 'italic', margin: '14px 0 0', lineHeight: 1.6 }}>
+            Estimates based on published rates from dripjobs.com/pricing and paintscout.com/pricing as of May 2026. DripJobs additional-user pricing is unpublished — 3-user cost is higher than shown. Add-on prices vary by plan.
+          </p>
+        </div>
+
+        {/* ── Captions ── */}
         <p style={{ textAlign: 'center', fontSize: 12, color: '#9ca3af', marginTop: 20 }}>
           ● Highlighted rows = features exclusive to PaintFlow
         </p>
@@ -982,6 +1067,7 @@ function ComparisonSection() {
           Competitor pricing reflects published rates as of May 2026. PaintScout and DripJobs are trademarks of their respective owners; we're not affiliated.
         </p>
 
+        {/* ── Compare page links ── */}
         <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
           <a href="/compare/paintscout" style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
