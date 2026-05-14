@@ -1163,8 +1163,8 @@ function FAQSection() {
       a: 'PaintScout and DripJobs are good at estimating and CRM basics, but neither gives you real job costing, live labor tracking, or margin visibility. PaintFlow was built specifically because those tools couldn\'t answer the most important question: "Did I actually make money on that job?" It\'s also the only one with lead-source revenue attribution — so you know which ads are actually driving revenue.',
     },
     {
-      q: 'What does it cost?',
-      a: '$99/month, or $79/month on an annual plan (billed as $948/year — saves you $240). Both plans include a 14-day free trial. We ask for a card upfront so there\'s no disruption if you decide to keep going, but cancel before day 14 and you won\'t be charged anything. No per-seat fees, no setup fees — one flat price for unlimited jobs and crew members.',
+      q: 'What happens to my data if I cancel?',
+      a: 'Your data stays exportable. You can pull every client, job, quote, and invoice as CSV at any time, including the 14 days after cancellation. We don\'t hold your data hostage — if PaintFlow isn\'t working for you, you take everything with you.',
     },
     {
       q: 'How long does setup take?',
@@ -1515,16 +1515,16 @@ export default function Landing() {
         <Hero />
         <JobNarrativeSection />
         <ProblemSection />
+        <FounderSection />
         <PipelineSection />
         <TimeTrackingSection />
         <FeaturesSection />
-        <FounderSection />
         <CustomerFacingSection />
         <ComparisonSection />
-        <RateSheetCTA />
         <NotForSection />
-        <FAQSection />
         <PricingSection />
+        <FAQSection />
+        <RateSheetCTA />
         <Footer />
         <StickyBar />
       </div>
