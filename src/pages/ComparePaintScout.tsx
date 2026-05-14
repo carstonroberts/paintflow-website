@@ -279,7 +279,7 @@ function FeatureTable() {
           </div>
           <div style={{ textAlign: 'center' }}>
             <div style={{ fontSize: 13, fontWeight: 800, color: '#374151', letterSpacing: '-0.01em' }}>PaintScout</div>
-            <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 1 }}>$79/user</div>
+            <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 1 }}>$79+/user · CRM add-on extra</div>
           </div>
         </div>
 

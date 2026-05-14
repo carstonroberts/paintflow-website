@@ -82,7 +82,7 @@ function Nav() {
             Paint<span style={{ color: ACCENT }}>Flow</span>
           </span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 10 : 16 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 8 : 12 }}>
           {!isMobile && (
             <button
               onClick={() => window.location.href = 'https://app.getpaintflow.com/login'}
@@ -90,16 +90,28 @@ function Nav() {
               Log in
             </button>
           )}
+          {!isMobile && (
+            <a
+              href={DEMO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: ACCENT, fontSize: 13, fontWeight: 600,
+                padding: '9px 18px', borderRadius: 10, textDecoration: 'none',
+                letterSpacing: '-0.01em', display: 'inline-block', whiteSpace: 'nowrap',
+                border: `1.5px solid ${ACCENT}55`,
+              }}>
+              Free Demo
+            </a>
+          )}
           <a
-            href={DEMO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="https://app.getpaintflow.com/login"
             style={{
-              background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 600,
+              background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 700,
               padding: isMobile ? '8px 16px' : '9px 20px', borderRadius: 10, textDecoration: 'none',
               letterSpacing: '-0.01em', display: 'inline-block', whiteSpace: 'nowrap',
             }}>
-            {isMobile ? 'Free Demo →' : 'Schedule a Free Demo →'}
+            {isMobile ? 'Free Trial' : 'Start free trial'}
           </a>
         </div>
       </div>
@@ -155,9 +167,9 @@ function Hero() {
 
         {/* Founder credibility line */}
         <p style={{
-          textAlign: 'center', fontSize: 14, color: 'rgba(255,255,255,0.4)',
-          maxWidth: 520, margin: '0 auto 24px', lineHeight: 1.6,
-          fontStyle: 'italic', fontWeight: 400, letterSpacing: '-0.01em',
+          textAlign: 'center', fontSize: 19, color: 'rgba(255,255,255,0.85)',
+          maxWidth: 560, margin: '0 auto 24px', lineHeight: 1.55,
+          fontStyle: 'normal', fontWeight: 400, letterSpacing: '-0.02em',
         }}>
           Built on a job site, not in an office — by a painter who runs his crews on it every day.
         </p>
@@ -168,15 +180,13 @@ function Hero() {
           color: 'rgba(255,255,255,0.62)',
           maxWidth: 520, margin: '0 auto 36px', lineHeight: 1.65,
         }}>
-          PaintFlow is the CRM built for painting contractors — with real job costing, live labor tracking, and everything you need to run your crews profitably.
+          PaintFlow is the CRM built for painting contractors — with real job costing, live labor tracking, and everything you need to run your business profitably and actually know your numbers.
         </p>
 
         {/* CTA row */}
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 16, flexWrap: 'wrap', marginBottom: 16 }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 14, flexWrap: 'wrap', marginBottom: 16 }}>
           <a
-            href={DEMO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="https://app.getpaintflow.com/login"
             style={{
               background: ACCENT, color: '#fff', fontWeight: 700, fontSize: 16,
               padding: '16px 36px', borderRadius: 14, textDecoration: 'none',
@@ -188,23 +198,31 @@ function Hero() {
             onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-2px)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 8px 32px ${ACCENT}66`; }}
             onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.transform = ''; (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 4px 24px ${ACCENT}55`; }}
           >
-            Schedule a Free Demo →
+            Start 14-day free trial →
           </a>
-          <button
-            onClick={() => scrollToPricing()}
+          <a
+            href={DEMO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
-              color: 'rgba(255,255,255,0.65)',
+              color: 'rgba(255,255,255,0.75)',
               fontSize: 14, fontWeight: 500,
-              background: 'none', border: 'none', cursor: 'pointer',
+              textDecoration: 'none',
+              border: '1.5px solid rgba(255,255,255,0.25)',
+              padding: '14px 24px', borderRadius: 14,
+              display: 'inline-block',
+              transition: 'border-color 0.15s, color 0.15s',
             }}
+            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.5)'; (e.currentTarget as HTMLAnchorElement).style.color = '#fff'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.25)'; (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.75)'; }}
           >
-            View pricing ↓
-          </button>
+            Schedule a free demo
+          </a>
         </div>
 
         {/* Trust line */}
         <p style={{ textAlign: 'center', fontSize: 12, color: 'rgba(255,255,255,0.35)', marginBottom: 48 }}>
-          No commitment · 30-min call · See it live before you buy
+          No credit card required · 14 days free · Cancel anytime
         </p>
 
         {/* Social proof bar */}
@@ -277,7 +295,7 @@ function JobNarrativeSection() {
             <span style={{ display: 'inline-block', width: 6, height: 6, borderRadius: '50%', background: '#16a34a', animation: 'pulse-dot 2s ease-in-out infinite', flexShrink: 0 }} />
             <span style={{ fontSize: 11, fontWeight: 700, color: '#0f1117' }}>New Lead</span>
           </div>
-          <div style={{ padding: '12px 14px' }}>
+          <div style={{ padding: '14px 18px' }}>
             <div style={{ fontSize: 12, fontWeight: 700, color: '#0f1117', marginBottom: 6 }}>Henderson Exterior</div>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, background: '#eff6ff', borderRadius: 100, padding: '3px 9px', fontSize: 10, fontWeight: 700, color: ACCENT }}>📣 Meta Ad</span>
             <div style={{ fontSize: 10, color: '#9ca3af', marginTop: 8 }}>Arrived 9:01 PM · today</div>
@@ -294,7 +312,7 @@ function JobNarrativeSection() {
             <div style={{ fontSize: 11, fontWeight: 700, color: '#0f1117' }}>Quote #Q-041</div>
             <div style={{ fontSize: 10, color: '#9ca3af' }}>Henderson Exterior · $4,200</div>
           </div>
-          <div style={{ padding: '12px 14px' }}>
+          <div style={{ padding: '14px 18px' }}>
             <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap', marginBottom: 8 }}>
               <span style={{ fontSize: 10, fontWeight: 700, background: '#e4f5ec', color: '#16a34a', padding: '3px 8px', borderRadius: 100 }}>✓ Signed</span>
               <span style={{ fontSize: 10, fontWeight: 700, background: '#e4f5ec', color: '#16a34a', padding: '3px 8px', borderRadius: 100 }}>✓ Deposit paid</span>
@@ -312,7 +330,7 @@ function JobNarrativeSection() {
           <div style={{ padding: '10px 14px', borderBottom: '1px solid rgba(0,0,0,0.07)' }}>
             <div style={{ fontSize: 11, fontWeight: 700, color: '#0f1117' }}>Labor — Day 1</div>
           </div>
-          <div style={{ padding: '12px 14px' }}>
+          <div style={{ padding: '14px 18px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
               <div style={{ flex: 1, height: 6, background: '#f3f4f6', borderRadius: 100, overflow: 'hidden' }}>
                 <div style={{ width: '38%', height: '100%', background: `linear-gradient(90deg, ${ACCENT}, #60a5fa)`, borderRadius: 100 }} />
@@ -337,7 +355,7 @@ function JobNarrativeSection() {
             <div style={{ fontSize: 11, fontWeight: 700, color: '#0f1117' }}>Invoice #I-041</div>
             <span style={{ fontSize: 10, fontWeight: 700, background: '#e4f5ec', color: '#16a34a', padding: '3px 8px', borderRadius: 100 }}>✓ Paid</span>
           </div>
-          <div style={{ padding: '12px 14px' }}>
+          <div style={{ padding: '14px 18px' }}>
             <div style={{ fontSize: 20, fontWeight: 900, letterSpacing: '-0.03em', color: '#0f1117', marginBottom: 2 }}>$3,150</div>
             <div style={{ fontSize: 10, color: '#9ca3af' }}>Balance after deposit · Stripe</div>
           </div>
@@ -352,7 +370,7 @@ function JobNarrativeSection() {
           <div style={{ padding: '10px 14px', borderBottom: '1px solid rgba(0,0,0,0.07)' }}>
             <div style={{ fontSize: 11, fontWeight: 700, color: '#0f1117' }}>Henderson Exterior</div>
           </div>
-          <div style={{ padding: '12px 14px' }}>
+          <div style={{ padding: '14px 18px' }}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
               <div style={{ background: '#f8f9fb', borderRadius: 10, padding: '10px', textAlign: 'center' }}>
                 <div style={{ fontSize: 9, color: '#9ca3af', fontWeight: 600, marginBottom: 3, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Revenue</div>
@@ -381,7 +399,7 @@ function JobNarrativeSection() {
             See how a single job moves through PaintFlow — from the first ping to the final margin number.
           </p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 20, alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20, alignItems: 'start' }}>
           {steps.map((step, i) => (
             <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -622,7 +640,6 @@ const FEATURES = [
   { title: 'Live Labor Tracking', desc: "Crew clocks in from their phone. See who's on site and how many hours are burned vs budgeted in real time.", color: '#e4f5ec', ic: '#16a34a', iconKey: 'clock' },
   { title: 'Smart Estimating', desc: 'Set your labor rate, paint coverage, and target margin. Hours, gallons, and final price — calculated automatically.', color: '#fff3d6', ic: '#d97706', iconKey: 'doc' },
   { title: 'Crew Efficiency Scores', desc: 'Track which painters consistently hit their targets. Find out where your margin is actually going.', color: '#ede9fe', ic: '#7c3aed', iconKey: 'users' },
-  { title: 'AI Weekly Summary', desc: 'A Gemini-powered weekly digest flags which job types are underperforming and which crew members are hitting their targets — delivered to your inbox, no extra dashboard.', color: '#ede9fe', ic: '#7c3aed', iconKey: 'chart' },
   { title: 'Pipeline Management', desc: 'Move jobs through 9 stages. Leads sync automatically from Meta ads, Google ads, and your website.', color: '#eff6ff', ic: '#2563eb', iconKey: 'board' },
   { title: 'Invoicing & Payments', desc: "Deposit gates job scheduling. Jobs can't be booked until you're paid — built into the workflow.", color: '#e4f5ec', ic: '#16a34a', iconKey: 'card' },
   { title: 'Text & Email Automations', desc: 'Follow-up sequences, estimate reminders, and job confirmations — sent automatically so nothing slips.', color: '#fff3d6', ic: '#d97706', iconKey: 'mail' },
@@ -783,7 +800,7 @@ function CustomerFacingSection() {
             Your customers see this.
           </h2>
           <p style={{ fontSize: 16, color: '#5a5f72', fontWeight: 300, maxWidth: 480, margin: '0 auto', lineHeight: 1.65 }}>
-            The quotes and invoices you send look polished and professional — with e-sign, deposit collection, and Stripe payments built in. Nothing for the homeowner to install or figure out.
+            The quotes and invoices you send look polished and professional — with e-sign, deposit confirmation, and Stripe payments on invoices built in. Nothing for the homeowner to install or figure out.
           </p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 24 }}>
@@ -797,11 +814,11 @@ function CustomerFacingSection() {
             <div style={{ padding: 24 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
                 <div style={{ width: 32, height: 32, borderRadius: 8, background: ACCENT, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <span style={{ color: '#fff', fontSize: 14, fontWeight: 800 }}>G</span>
+                  <span style={{ color: '#fff', fontSize: 14, fontWeight: 800 }}>Y</span>
                 </div>
                 <div>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: '#0f1117' }}>Glacier Painting</div>
-                  <div style={{ fontSize: 10, color: '#9ca3af' }}>Licensed & Insured · 5★ on Google</div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: '#0f1117' }}>Your Company</div>
+                  <div style={{ fontSize: 10, color: '#9ca3af' }}>Your Logo · Licensed & Insured</div>
                 </div>
               </div>
               <div style={{ fontSize: 16, fontWeight: 800, color: '#0f1117', marginBottom: 4, letterSpacing: '-0.02em' }}>Henderson Exterior</div>
@@ -834,11 +851,11 @@ function CustomerFacingSection() {
             <div style={{ padding: 24 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
                 <div style={{ width: 32, height: 32, borderRadius: 8, background: ACCENT, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <span style={{ color: '#fff', fontSize: 14, fontWeight: 800 }}>G</span>
+                  <span style={{ color: '#fff', fontSize: 14, fontWeight: 800 }}>Y</span>
                 </div>
                 <div>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: '#0f1117' }}>Glacier Painting</div>
-                  <div style={{ fontSize: 10, color: '#9ca3af' }}>Licensed & Insured · 5★ on Google</div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: '#0f1117' }}>Your Company</div>
+                  <div style={{ fontSize: 10, color: '#9ca3af' }}>Your Logo · Licensed & Insured</div>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
@@ -910,8 +927,8 @@ function ComparisonSection() {
           </div>
           <div style={{ background: '#f8f9fb', borderRadius: '16px 16px 0 0', padding: '20px 16px', textAlign: 'center', border: '1px solid rgba(0,0,0,0.07)', borderBottom: 'none' }}>
             <div style={{ fontSize: 11, fontWeight: 700, color: '#9ca3af', letterSpacing: '0.05em', marginBottom: 6, textTransform: 'uppercase' }}>PaintScout</div>
-            <div style={{ fontSize: 32, fontWeight: 900, letterSpacing: '-0.04em', color: '#374151' }}>$149</div>
-            <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 2 }}>/mo</div>
+            <div style={{ fontSize: 28, fontWeight: 900, letterSpacing: '-0.04em', color: '#374151' }}>$79+</div>
+            <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 2 }}>/user + CRM add-on</div>
           </div>
           <div style={{ background: '#f8f9fb', borderRadius: '16px 16px 0 0', padding: '20px 16px', textAlign: 'center', border: '1px solid rgba(0,0,0,0.07)', borderBottom: 'none', borderLeft: 'none' }}>
             <div style={{ fontSize: 11, fontWeight: 700, color: '#9ca3af', letterSpacing: '0.05em', marginBottom: 6, textTransform: 'uppercase' }}>DripJobs</div>
@@ -947,7 +964,8 @@ function ComparisonSection() {
                   <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.6)' }}>flat · $79 annual</div>
                 </td>
                 <td style={{ padding: '16px 16px', textAlign: 'center', borderLeft: '1px solid rgba(255,255,255,0.08)' }}>
-                  <div style={{ fontSize: 18, fontWeight: 700, color: 'rgba(255,255,255,0.5)', letterSpacing: '-0.03em', textDecoration: 'line-through' }}>$149</div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: 'rgba(255,255,255,0.5)', letterSpacing: '-0.03em' }}>$79+/user</div>
+                  <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', marginTop: 2 }}>+ CRM add-on</div>
                 </td>
                 <td style={{ padding: '16px 16px', textAlign: 'center', borderLeft: '1px solid rgba(255,255,255,0.08)' }}>
                   <div style={{ fontSize: 18, fontWeight: 700, color: 'rgba(255,255,255,0.5)', letterSpacing: '-0.03em', textDecoration: 'line-through' }}>$97</div>
@@ -959,6 +977,9 @@ function ComparisonSection() {
 
         <p style={{ textAlign: 'center', fontSize: 12, color: '#9ca3af', marginTop: 20 }}>
           ● Highlighted rows = features exclusive to PaintFlow
+        </p>
+        <p style={{ textAlign: 'center', fontSize: 11, color: '#c4c9d4', marginTop: 10, fontStyle: 'italic', maxWidth: 680, margin: '10px auto 0' }}>
+          Competitor pricing reflects published rates as of May 2026. PaintScout and DripJobs are trademarks of their respective owners; we're not affiliated.
         </p>
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
@@ -1322,7 +1343,7 @@ function StickyBar() {
       <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
         <button
           onClick={() => scrollToPricing()}
-          style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 500 }}>
+          style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 500 }}>
           View pricing
         </button>
         <a
@@ -1330,11 +1351,20 @@ function StickyBar() {
           target="_blank"
           rel="noopener noreferrer"
           style={{
+            color: 'rgba(255,255,255,0.65)', fontSize: 13, fontWeight: 500,
+            padding: '10px 18px', borderRadius: 10, textDecoration: 'none',
+            border: '1px solid rgba(255,255,255,0.18)', display: 'inline-block',
+          }}>
+          Schedule a demo
+        </a>
+        <a
+          href="https://app.getpaintflow.com/login"
+          style={{
             background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 700,
             padding: '10px 22px', borderRadius: 10, textDecoration: 'none',
             letterSpacing: '-0.01em', display: 'inline-block',
           }}>
-          Schedule a Free Demo →
+          Start free trial →
         </a>
       </div>
     </div>
