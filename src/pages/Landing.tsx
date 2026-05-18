@@ -270,11 +270,14 @@ function Hero() {
                 app.paintflow.io/dashboard
               </div>
             </div>
-            <img
-              src="/dashboard.png"
-              alt="PaintFlow Dashboard"
-              style={{ width: '100%', display: 'block', maxHeight: 480, objectFit: 'cover', objectPosition: 'top' }}
-            />
+            <picture>
+              <source srcSet="/dashboard.webp" type="image/webp" />
+              <img
+                src="/dashboard.png"
+                alt="PaintFlow dashboard — dark mode, showing pipeline, revenue, and job stats"
+                style={{ width: '100%', display: 'block', maxHeight: 480, objectFit: 'cover', objectPosition: 'top' }}
+              />
+            </picture>
           </div>
         </div>
       </div>
@@ -442,6 +445,21 @@ function ProblemSection() {
             PaintFlow closes the loop — from estimate to final margin — so you know exactly where the money went on every single job.
           </p>
         </div>
+        {/* Job costing screenshot + card */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        {/* App screenshot */}
+        <div style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(0,0,0,0.09)', boxShadow: '0 8px 40px rgba(0,0,0,0.07)' }}>
+          <picture>
+            <source srcSet="/screenshots/job-costing.webp" type="image/webp" />
+            <img
+              src="/screenshots/job-costing.png"
+              alt="PaintFlow job costing actuals — labor accuracy, material accuracy, and realized profit"
+              loading="lazy"
+              decoding="async"
+              style={{ width: '100%', display: 'block', objectFit: 'cover', objectPosition: 'top', maxHeight: 260 }}
+            />
+          </picture>
+        </div>
         {/* Job costing card */}
         <div style={{
           background: '#fff', border: '1px solid rgba(0,0,0,0.09)',
@@ -485,6 +503,7 @@ function ProblemSection() {
             </div>
           </div>
         </div>
+        </div>{/* end screenshot+card column */}
       </div>
     </section>
   );
@@ -633,7 +652,46 @@ function TimeTrackingSection() {
   );
 }
 
-// ─── AI Insights Section ──────────────────────────────────────────────────────
+// ─── Schedule Section ─────────────────────────────────────────────────────────
+function ScheduleSection() {
+  return (
+    <section style={{ background: '#f8f9fb', borderTop: '1px solid rgba(0,0,0,0.06)', borderBottom: '1px solid rgba(0,0,0,0.06)', padding: '88px 24px' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: 64, alignItems: 'center' }}>
+        {/* Schedule screenshot */}
+        <div style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(0,0,0,0.09)', boxShadow: '0 8px 40px rgba(0,0,0,0.07)' }}>
+          <picture>
+            <source srcSet="/screenshots/schedule.webp" type="image/webp" />
+            <img
+              src="/screenshots/schedule.png"
+              alt="PaintFlow schedule — monthly calendar view with jobs and quote appointments"
+              loading="lazy"
+              decoding="async"
+              style={{ width: '100%', display: 'block', objectFit: 'cover', objectPosition: 'top', maxHeight: 400 }}
+            />
+          </picture>
+        </div>
+        <div>
+          <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: ACCENT, marginBottom: 14 }}>Scheduling</div>
+          <h2 style={{ fontSize: 'clamp(30px, 4vw, 44px)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1.06, color: '#0f1117', marginBottom: 18 }}>
+            Every job.<br />Every date.<br />One calendar.
+          </h2>
+          <p style={{ fontSize: 16, color: '#5a5f72', lineHeight: 1.7, fontWeight: 300, marginBottom: 24 }}>
+            Quote appointments, project start dates, and scheduled jobs all live in one calendar. See what's coming, spot conflicts, and keep your crew moving without juggling spreadsheets.
+          </p>
+          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, padding: 0, margin: 0 }}>
+            {['Quote & project dates in one view', 'Color-coded event types', 'Tap any day to see what\'s scheduled', 'Syncs with jobs as they move through the pipeline'].map(item => (
+              <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 14, color: '#0f1117', fontWeight: 500 }}>
+                <CheckIcon color={ACCENT} size={20} />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Features Grid ────────────────────────────────────────────────────────────
 const FEATURES = [
   { title: 'Real Job Costing', desc: 'Compare estimated vs actual hours and materials on every job. See your real margin — not what you hoped for.', color: '#eff6ff', ic: '#2563eb', iconKey: 'chart' },
@@ -675,16 +733,36 @@ function FeaturesSection() {
           ))}
         </div>
 
-        {/* AI insight callout — one real example, not oversold */}
-        <div style={{ marginTop: 32, background: 'rgba(124,58,237,0.05)', border: '1px solid rgba(124,58,237,0.15)', borderRadius: 16, padding: '20px 24px', display: 'flex', gap: 16, alignItems: 'flex-start', flexWrap: 'wrap' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(124,58,237,0.1)', border: '1px solid rgba(124,58,237,0.2)', color: '#7c3aed', fontSize: 11, fontWeight: 700, padding: '5px 12px', borderRadius: 100, flexShrink: 0 }}>
-            <span>✦</span> Gemini AI
-          </div>
-          <div style={{ flex: 1, minWidth: 240 }}>
-            <div style={{ fontSize: 13, fontWeight: 700, color: '#7c3aed', marginBottom: 4 }}>Example weekly insight: "Cabinet jobs running 22% over on labor"</div>
-            <div style={{ fontSize: 13, color: '#5a5f72', lineHeight: 1.6, fontWeight: 300 }}>
-              Your last 4 cabinet jobs averaged 22% over on labor hours. Consider adjusting your estimating rate or reviewing your prep process. — <em>Gemini-powered weekly summary, based on your actual job data.</em>
+        {/* AI Insights callout — two-column with screenshot */}
+        <div style={{ marginTop: 32, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 32, alignItems: 'center', background: 'rgba(124,58,237,0.04)', border: '1px solid rgba(124,58,237,0.13)', borderRadius: 20, padding: '32px 32px' }}>
+          <div>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(124,58,237,0.1)', border: '1px solid rgba(124,58,237,0.2)', color: '#7c3aed', fontSize: 11, fontWeight: 700, padding: '5px 12px', borderRadius: 100, marginBottom: 16 }}>
+              <span>✦</span> Gemini AI
             </div>
+            <h3 style={{ fontSize: 'clamp(20px, 2.5vw, 26px)', fontWeight: 800, letterSpacing: '-0.03em', color: '#0f1117', marginBottom: 10, lineHeight: 1.2 }}>
+              Business insights that actually tell you something.
+            </h3>
+            <p style={{ fontSize: 14, color: '#5a5f72', lineHeight: 1.7, fontWeight: 300, marginBottom: 16 }}>
+              Gemini analyzes your real job data and surfaces patterns you'd never catch manually. Win rate trends, labor overruns by job type, revenue by lead source — all explained in plain language.
+            </p>
+            <div style={{ background: '#fff', borderRadius: 12, padding: '14px 16px', border: '1px solid rgba(124,58,237,0.12)' }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: '#7c3aed', marginBottom: 6 }}>Example weekly insight</div>
+              <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, fontWeight: 400, margin: 0, fontStyle: 'italic' }}>
+                "Your last 4 cabinet jobs averaged 22% over on labor. Consider adjusting your estimate rate or reviewing your prep process."
+              </p>
+            </div>
+          </div>
+          <div style={{ borderRadius: 14, overflow: 'hidden', border: '1px solid rgba(124,58,237,0.15)', boxShadow: '0 8px 32px rgba(124,58,237,0.08)' }}>
+            <picture>
+              <source srcSet="/screenshots/insights.webp" type="image/webp" />
+              <img
+                src="/screenshots/insights.png"
+                alt="PaintFlow insights page — revenue received, win rate, job efficiency stats"
+                loading="lazy"
+                decoding="async"
+                style={{ width: '100%', display: 'block', objectFit: 'cover', objectPosition: 'top', maxHeight: 280 }}
+              />
+            </picture>
           </div>
         </div>
       </div>
@@ -1518,6 +1596,7 @@ export default function Landing() {
         <FounderSection />
         <PipelineSection />
         <TimeTrackingSection />
+        <ScheduleSection />
         <FeaturesSection />
         <CustomerFacingSection />
         <ComparisonSection />
