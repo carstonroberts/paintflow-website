@@ -152,7 +152,7 @@ function Hero() {
           lineHeight: 1.03, color: '#ffffff',
           marginBottom: 20, maxWidth: 800, margin: '0 auto 20px',
         }}>
-          Finally know if your<br />
+          Stop losing $400 a job to<br />
           <span style={{
             background: 'linear-gradient(90deg, #3b82f6 0%, #93c5fd 40%, #3b82f6 60%, #1d4ed8 100%)',
             backgroundSize: '200% auto',
@@ -161,7 +161,7 @@ function Hero() {
             backgroundClip: 'text',
             animation: 'shimmer 3s linear infinite',
           }}>
-            jobs are profitable.
+            overruns you don't catch.
           </span>
         </h1>
 
@@ -180,7 +180,7 @@ function Hero() {
           color: 'rgba(255,255,255,0.62)',
           maxWidth: 520, margin: '0 auto 36px', lineHeight: 1.65,
         }}>
-          PaintFlow is the CRM built for painting contractors — with real job costing, live labor tracking, and everything you need to run your business profitably and actually know your numbers.
+          PaintFlow is the CRM built for painting contractors — real job costing, live labor tracking, and the only system that tells you which jobs actually made you money.
         </p>
 
         {/* CTA row */}
@@ -267,7 +267,7 @@ function Hero() {
               <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#ffbd2e', display: 'block', flexShrink: 0 }} />
               <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#28c840', display: 'block', flexShrink: 0 }} />
               <div style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 6, padding: '4px 12px', marginLeft: 8, fontSize: 10, color: 'rgba(255,255,255,0.3)', fontWeight: 500, border: '1px solid rgba(255,255,255,0.07)' }}>
-                app.paintflow.io/dashboard
+                app.getpaintflow.com/dashboard
               </div>
             </div>
             <picture>
@@ -559,29 +559,6 @@ function PipelineSection() {
             ))}
           </ul>
 
-          {/* Lead attribution callout */}
-          <div style={{ marginTop: 24, background: `${ACCENT}08`, border: `1px solid ${ACCENT}25`, borderRadius: 14, padding: '16px 20px' }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: ACCENT, marginBottom: 6 }}>💡 Which ad actually paid off?</div>
-            <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, fontWeight: 400, margin: '0 0 12px' }}>
-              Find out which $500 Facebook ad became $40K of jobs. Lead-source revenue attribution is built in — every closed job traces back to where the lead came from.
-            </p>
-            <div style={{ background: '#fff', borderRadius: 10, padding: '12px 14px', border: '1px solid rgba(0,0,0,0.07)' }}>
-              <div style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#9ca3af', marginBottom: 10 }}>Revenue by Lead Source</div>
-              {[
-                { source: 'Meta Ads', pct: 68, rev: '$42,800', color: ACCENT },
-                { source: 'Google', pct: 22, rev: '$13,900', color: '#7c3aed' },
-                { source: 'Referral', pct: 10, rev: '$6,300', color: '#16a34a' },
-              ].map(row => (
-                <div key={row.source} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 7 }}>
-                  <div style={{ width: 56, fontSize: 10, color: '#5a5f72', fontWeight: 600, flexShrink: 0 }}>{row.source}</div>
-                  <div style={{ flex: 1, height: 6, background: '#f3f4f6', borderRadius: 100, overflow: 'hidden' }}>
-                    <div style={{ width: `${row.pct}%`, height: '100%', background: row.color, borderRadius: 100 }} />
-                  </div>
-                  <div style={{ width: 48, fontSize: 10, fontWeight: 700, color: '#0f1117', textAlign: 'right', flexShrink: 0 }}>{row.rev}</div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -695,13 +672,13 @@ function ScheduleSection() {
 // ─── Features Grid ────────────────────────────────────────────────────────────
 const FEATURES = [
   { title: 'Real Job Costing', desc: 'Compare estimated vs actual hours and materials on every job. See your real margin — not what you hoped for.', color: '#eff6ff', ic: '#2563eb', iconKey: 'chart' },
+  { title: 'Catch the Leak Early', desc: 'Live labor budget alerts fire when a job crosses 75% of estimated hours. Adjust before the margin disappears, not after.', color: '#fff3d6', ic: '#d97706', iconKey: 'chart' },
   { title: 'Live Labor Tracking', desc: "Crew clocks in from their phone. See who's on site and how many hours are burned vs budgeted in real time.", color: '#e4f5ec', ic: '#16a34a', iconKey: 'clock' },
   { title: 'Smart Estimating', desc: 'Set your labor rate, paint coverage, and target margin. Hours, gallons, and final price — calculated automatically.', color: '#fff3d6', ic: '#d97706', iconKey: 'doc' },
+  { title: 'Know Which Ads Actually Pay', desc: 'Every closed job traces back to the ad, channel, or referral that sourced it. Find the $500 Facebook spend that became $40K in jobs.', color: '#e4f5ec', ic: '#16a34a', iconKey: 'board' },
   { title: 'Crew Efficiency Scores', desc: 'Track which painters consistently hit their targets. Find out where your margin is actually going.', color: '#ede9fe', ic: '#7c3aed', iconKey: 'users' },
-  { title: 'Pipeline Management', desc: 'Move jobs through 9 stages. Leads sync automatically from Meta ads, Google ads, and your website.', color: '#eff6ff', ic: '#2563eb', iconKey: 'board' },
   { title: 'Invoicing & Payments', desc: "Deposit gates job scheduling. Jobs can't be booked until you're paid — built into the workflow.", color: '#e4f5ec', ic: '#16a34a', iconKey: 'card' },
   { title: 'Text & Email Automations', desc: 'Follow-up sequences, estimate reminders, and job confirmations — sent automatically so nothing slips.', color: '#fff3d6', ic: '#d97706', iconKey: 'mail' },
-  { title: 'Digital Crew Sheets', desc: 'Print-ready job sheets with colors, notes, and hours. Financials hidden — your crew gets only what they need.', color: '#ede9fe', ic: '#7c3aed', iconKey: 'doc' },
 ];
 
 function FeaturesSection() {
@@ -887,7 +864,7 @@ function CustomerFacingSection() {
           <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.09)', borderRadius: 20, overflow: 'hidden', boxShadow: '0 8px 40px rgba(0,0,0,0.07)' }}>
             <div style={{ padding: '10px 14px', background: '#fafafa', borderBottom: '1px solid rgba(0,0,0,0.07)', display: 'flex', alignItems: 'center', gap: 6 }}>
               {['#ff5f57','#ffbd2e','#28c840'].map(c => <span key={c} style={{ width: 8, height: 8, borderRadius: '50%', background: c, display: 'block' }} />)}
-              <div style={{ flex: 1, background: '#eee', borderRadius: 4, padding: '2px 10px', marginLeft: 4, fontSize: 9, color: '#aaa' }}>paintflow.io/q/henderson-exterior</div>
+              <div style={{ flex: 1, background: '#eee', borderRadius: 4, padding: '2px 10px', marginLeft: 4, fontSize: 9, color: '#aaa' }}>getpaintflow.com/q/henderson-exterior</div>
             </div>
             <div style={{ padding: 24 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
@@ -924,7 +901,7 @@ function CustomerFacingSection() {
           <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.09)', borderRadius: 20, overflow: 'hidden', boxShadow: '0 8px 40px rgba(0,0,0,0.07)' }}>
             <div style={{ padding: '10px 14px', background: '#fafafa', borderBottom: '1px solid rgba(0,0,0,0.07)', display: 'flex', alignItems: 'center', gap: 6 }}>
               {['#ff5f57','#ffbd2e','#28c840'].map(c => <span key={c} style={{ width: 8, height: 8, borderRadius: '50%', background: c, display: 'block' }} />)}
-              <div style={{ flex: 1, background: '#eee', borderRadius: 4, padding: '2px 10px', marginLeft: 4, fontSize: 9, color: '#aaa' }}>paintflow.io/i/henderson-exterior</div>
+              <div style={{ flex: 1, background: '#eee', borderRadius: 4, padding: '2px 10px', marginLeft: 4, fontSize: 9, color: '#aaa' }}>getpaintflow.com/i/henderson-exterior</div>
             </div>
             <div style={{ padding: 24 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
@@ -1241,6 +1218,10 @@ function FAQSection() {
       a: 'PaintScout and DripJobs are good at estimating and CRM basics, but neither gives you real job costing, live labor tracking, or margin visibility. PaintFlow was built specifically because those tools couldn\'t answer the most important question: "Did I actually make money on that job?" It\'s also the only one with lead-source revenue attribution — so you know which ads are actually driving revenue.',
     },
     {
+      q: "What's your refund guarantee?",
+      a: "If you run a full job through PaintFlow — quote to invoice — within your first 60 days and it didn't earn its keep, we'll refund every dollar. Monthly customers get their most recent month back and keep using PaintFlow through the end of their paid period. Annual customers get a prorated refund for unused months. Email carston@getpaintflow.com to request — it goes straight to me. Full details on our refund policy page.",
+    },
+    {
       q: 'What happens to my data if I cancel?',
       a: 'Your data stays exportable. You can pull every client, job, quote, and invoice as CSV at any time, including the 14 days after cancellation. We don\'t hold your data hostage — if PaintFlow isn\'t working for you, you take everything with you.',
     },
@@ -1262,7 +1243,7 @@ function FAQSection() {
     },
     {
       q: 'Can I cancel anytime?',
-      a: "Yes. Monthly plans can be cancelled at any time. Annual plans are billed upfront — if you cancel early we'll prorate a refund for unused months.",
+      a: "Yes. Monthly plans cancel from your billing settings anytime — you keep access through the end of your current paid period. Annual plans are prepaid for the year. The 60-day refund guarantee (see our refund policy) covers either plan if PaintFlow doesn't fit your shop.",
     },
     {
       q: 'Is my data secure?',
@@ -1340,6 +1321,37 @@ function PricingSection() {
           <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.45)', fontWeight: 300 }}>One plan. Everything included. No per-seat fees.</p>
         </div>
 
+        {/* Founding Member scarcity banner */}
+        {/* Update this number as Founding Member slots fill — values: 5, 4, 3, 2, 1 */}
+        <div style={{ maxWidth: 860, margin: '0 auto 20px', background: 'rgba(217,119,6,0.1)', border: '1px solid rgba(217,119,6,0.3)', borderRadius: 14, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <span style={{ fontSize: 10, fontWeight: 800, color: '#d97706', letterSpacing: '0.08em', textTransform: 'uppercase', background: 'rgba(217,119,6,0.15)', border: '1px solid rgba(217,119,6,0.3)', borderRadius: 100, padding: '4px 10px', whiteSpace: 'nowrap' }}>
+              Founding Member Program
+            </span>
+            <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>
+              <strong style={{ color: '#fbbf24' }}>3 of 5 spots remaining</strong> — $49/mo locked in for life after 90 days free. By application.
+            </span>
+          </div>
+          <a
+            href={DEMO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ fontSize: 13, fontWeight: 700, color: '#fbbf24', textDecoration: 'none', whiteSpace: 'nowrap', border: '1px solid rgba(251,191,36,0.4)', borderRadius: 10, padding: '8px 16px' }}
+          >
+            Schedule a call →
+          </a>
+        </div>
+
+        {/* 60-day refund guarantee callout */}
+        <div style={{ maxWidth: 860, margin: '0 auto 24px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 16, padding: '28px 28px', boxShadow: '0 0 40px rgba(59,130,246,0.08)' }}>
+          <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.85)', fontWeight: 400, lineHeight: 1.65, margin: '0 0 12px' }}>
+            Run one full job through PaintFlow — quote to invoice — within your first 60 days. If it didn't earn its keep, I'll refund every dollar. — Carston
+          </p>
+          <div style={{ textAlign: 'right' }}>
+            <a href="/refund" style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', textDecoration: 'underline' }}>see refund policy</a>
+          </div>
+        </div>
+
         {/* Two cards side by side */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20, maxWidth: 860, margin: '0 auto' }}>
 
@@ -1395,6 +1407,9 @@ function PricingSection() {
                   or <span style={{ textDecoration: 'underline' }}>schedule a free demo first</span>
                 </a>
               </div>
+              <div style={{ textAlign: 'center', marginTop: 10, fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>
+                ✓ 60-day refund: run one job, decide after — <a href="/refund" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'underline' }}>see refund policy</a>
+              </div>
             </div>
           </div>
 
@@ -1444,6 +1459,9 @@ function PricingSection() {
                 style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', textDecoration: 'none' }}>
                 or <span style={{ textDecoration: 'underline' }}>schedule a free demo first</span>
               </a>
+            </div>
+            <div style={{ textAlign: 'center', marginTop: 10, fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>
+              ✓ 60-day refund: run one job, decide after — <a href="/refund" style={{ color: 'rgba(255,255,255,0.35)', textDecoration: 'underline' }}>see refund policy</a>
             </div>
           </div>
         </div>
@@ -1553,6 +1571,7 @@ function Footer() {
           { label: 'vs DripJobs', href: '/compare/dripjobs', external: false },
           { label: 'Privacy', href: '/privacy', external: false },
           { label: 'Terms', href: '/terms', external: false },
+          { label: 'Refund Policy', href: '/refund', external: false },
           { label: 'Log in', href: 'https://app.getpaintflow.com/login', external: false },
         ].map(link => (
           <a
