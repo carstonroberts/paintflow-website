@@ -199,7 +199,6 @@ const COMPARE_GROUPS: Group[] = [
     rows: [
       { feature: 'Built-in CRM (no add-on)', pf: 'yes', ps: 'addon', note: 'PaintScout CRM is a paid add-on; PaintFlow includes it' },
       { feature: 'Visual pipeline / deal stages', pf: 'yes', ps: 'partial' },
-      { feature: 'Gmail lead sync (inbound)', pf: 'yes', ps: 'no' },
       { feature: 'Meta / Google / web lead capture', pf: 'yes', ps: 'partial' },
     ],
   },

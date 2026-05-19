@@ -191,7 +191,6 @@ const COMPARE_GROUPS: Group[] = [
     group: 'CRM & Pipeline',
     rows: [
       { feature: 'Visual pipeline / deal stages', pf: 'yes', dj: 'yes' },
-      { feature: 'Gmail lead sync (inbound)', pf: 'yes', dj: 'no' },
       { feature: 'Meta / Google / web lead capture', pf: 'yes', dj: 'partial' },
       { feature: '9-stage pipeline, optimized for painting', pf: 'yes', dj: 'partial' },
     ],
@@ -201,8 +200,8 @@ const COMPARE_GROUPS: Group[] = [
     rows: [
       { feature: 'Live labor budget health indicator', pf: 'yes', dj: 'no', highlight: true },
       { feature: 'Crew time clock (mobile web)', pf: 'yes', dj: 'no', highlight: true },
-      { feature: 'Estimated vs actual hours per job', pf: 'yes', dj: 'no', highlight: true },
-      { feature: 'Post-job profitability analysis', pf: 'yes', dj: 'no', highlight: true },
+      { feature: 'Estimated vs actual hours per job', pf: 'yes', dj: 'partial', note: 'DripJobs offers a Job Costing add-on at $49/mo on Pro/Advanced plans', highlight: true },
+      { feature: 'Post-job profitability analysis', pf: 'yes', dj: 'partial', note: 'Available via DripJobs Job Costing add-on ($49/mo)', highlight: true },
       { feature: 'Crew efficiency scoring', pf: 'yes', dj: 'no', highlight: true },
       { feature: 'Payroll export', pf: 'yes', dj: 'no', highlight: true },
     ],
@@ -402,7 +401,7 @@ function PricingCompare() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 20 }}>
           {[
             { name: 'PaintFlow', price: '$99', sub: '/mo · unlimited users', note: 'or $79/mo billed annually', highlight: true, features: ['Full pipeline & job costing', 'Live labor time clock', 'Text & email automations', 'Invoicing & payment collection', 'Meta/Google/website lead sync', 'Unlimited crew & clients'] },
-            { name: 'DripJobs', price: '$97+', sub: '/mo · Pro plan', note: 'Feature-based tiering; see dripjobs.com for current pricing', highlight: false, features: ['Sales automation & drip sequences', '40+ message templates', 'Automated review requests', 'Basic pipeline', 'No native job costing', 'No live labor tracking'] },
+            { name: 'DripJobs', price: '$97+', sub: '/mo · Pro plan', note: 'Feature-based tiering; see dripjobs.com for current pricing', highlight: false, features: ['Sales automation & drip sequences', '40+ message templates', 'Automated review requests', 'Basic pipeline', 'Job costing available as $49/mo add-on', 'No live labor tracking'] },
           ].map(plan => (
             <div key={plan.name} style={{
               borderRadius: 20, padding: 28,
