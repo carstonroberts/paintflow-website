@@ -105,7 +105,7 @@ function Nav() {
             </a>
           )}
           <a
-            href="https://app.getpaintflow.com/login"
+            href="https://app.getpaintflow.com/checkout"
             style={{
               background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 700,
               padding: isMobile ? '8px 16px' : '9px 20px', borderRadius: 10, textDecoration: 'none',
@@ -186,7 +186,7 @@ function Hero() {
         {/* CTA row */}
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 14, flexWrap: 'wrap', marginBottom: 16 }}>
           <a
-            href="https://app.getpaintflow.com/login"
+            href="https://app.getpaintflow.com/checkout"
             style={{
               background: ACCENT, color: '#fff', fontWeight: 700, fontSize: 16,
               padding: '16px 36px', borderRadius: 14, textDecoration: 'none',
