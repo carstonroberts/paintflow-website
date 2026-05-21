@@ -1540,7 +1540,7 @@ function StickyBar() {
           Schedule a demo
         </a>
         <a
-          href="https://app.getpaintflow.com/login"
+          href="https://app.getpaintflow.com/checkout"
           style={{
             background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 700,
             padding: '10px 22px', borderRadius: 10, textDecoration: 'none',
