@@ -282,7 +282,7 @@ export default function RateCalculator() {
               <div className="font-extrabold text-lg mb-2">Knowing the rate is only half the battle.</div>
               <p className="text-[#5a5f72] font-light text-sm leading-relaxed mb-5">
                 Most painting contractors know what they <em>should</em> charge — but have no idea if they're actually hitting those numbers on every job. Labor runs over by 15%, materials get under-quoted, and by the time the job is done you're not sure if you made money or lost it.<br /><br />
-                PaintFlow tracks your estimated vs actual hours, materials, and margin on every single job. You'll know your real profitability — not just your hoped-for profitability.
+                PaintStride tracks your estimated vs actual hours, materials, and margin on every single job. You'll know your real profitability — not just your hoped-for profitability.
               </p>
               <a
                 href="https://calendly.com/carstonroberts/30min"
@@ -290,7 +290,7 @@ export default function RateCalculator() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 bg-[#2563eb] text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:opacity-90 transition-opacity"
               >
-                See How PaintFlow Works →
+                See How PaintStride Works →
               </a>
             </div>
 

@@ -1,4 +1,4 @@
-const RAILWAY_URL = 'https://paintflow-crm-production.up.railway.app'
+const RAILWAY_URL = 'https://paintstride-crm-production.up.railway.app'
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') return res.status(405).end()

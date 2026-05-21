@@ -18,14 +18,14 @@ export default function Privacy() {
           <div>
             <h2 style={{ fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em', color: '#0f1117', marginBottom: 10 }}>What we collect</h2>
             <p style={{ fontSize: 15, color: '#5a5f72', lineHeight: 1.75, fontWeight: 300 }}>
-              We collect information you provide directly — your name, email, business name, and billing details — as well as data you enter about your jobs, clients, and crew within PaintFlow.
+              We collect information you provide directly — your name, email, business name, and billing details — as well as data you enter about your jobs, clients, and crew within PaintStride.
             </p>
           </div>
 
           <div>
             <h2 style={{ fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em', color: '#0f1117', marginBottom: 10 }}>How we use it</h2>
             <p style={{ fontSize: 15, color: '#5a5f72', lineHeight: 1.75, fontWeight: 300 }}>
-              We use your data to provide and improve PaintFlow, process payments, send product updates, and respond to support requests. We do not sell your data to third parties.
+              We use your data to provide and improve PaintStride, process payments, send product updates, and respond to support requests. We do not sell your data to third parties.
             </p>
           </div>
 
@@ -53,7 +53,7 @@ export default function Privacy() {
           <div>
             <h2 style={{ fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em', color: '#0f1117', marginBottom: 10 }}>Contact</h2>
             <p style={{ fontSize: 15, color: '#5a5f72', lineHeight: 1.75, fontWeight: 300 }}>
-              Questions about privacy? Email <a href="mailto:carston@getpaintflow.com" style={{ color: ACCENT, textDecoration: 'none' }}>carston@getpaintflow.com</a>.
+              Questions about privacy? Email <a href="mailto:carston@paintstride.com" style={{ color: ACCENT, textDecoration: 'none' }}>carston@paintstride.com</a>.
             </p>
           </div>
 

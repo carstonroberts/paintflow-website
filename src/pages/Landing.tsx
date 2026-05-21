@@ -77,15 +77,15 @@ function Nav() {
     }}>
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 20px', height: 60, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src="/logo.png" alt="PaintFlow" style={{ width: 32, height: 32, borderRadius: 8 }} />
+          <img src="/logo.png" alt="PaintStride" style={{ width: 32, height: 32, borderRadius: 8 }} />
           <span style={{ fontWeight: 800, fontSize: 18, letterSpacing: '-0.03em', color: '#0f1117' }}>
-            Paint<span style={{ color: ACCENT }}>Flow</span>
+            Paint<span style={{ color: ACCENT }}>Stride</span>
           </span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 8 : 12 }}>
           {!isMobile && (
             <button
-              onClick={() => window.location.href = 'https://app.getpaintflow.com/login'}
+              onClick={() => window.location.href = 'https://app.paintstride.com/login'}
               style={{ fontSize: 13, color: '#5a5f72', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 500 }}>
               Log in
             </button>
@@ -105,7 +105,7 @@ function Nav() {
             </a>
           )}
           <a
-            href="https://app.getpaintflow.com/checkout"
+            href="https://app.paintstride.com/checkout"
             style={{
               background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 700,
               padding: isMobile ? '8px 16px' : '9px 20px', borderRadius: 10, textDecoration: 'none',
@@ -180,13 +180,13 @@ function Hero() {
           color: 'rgba(255,255,255,0.62)',
           maxWidth: 520, margin: '0 auto 36px', lineHeight: 1.65,
         }}>
-          PaintFlow is the CRM built for painting contractors — real job costing, live labor tracking, and the only system that tells you which jobs actually made you money.
+          PaintStride is the CRM built for painting contractors — real job costing, live labor tracking, and the only system that tells you which jobs actually made you money.
         </p>
 
         {/* CTA row */}
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 14, flexWrap: 'wrap', marginBottom: 16 }}>
           <a
-            href="https://app.getpaintflow.com/checkout"
+            href="https://app.paintstride.com/checkout"
             style={{
               background: ACCENT, color: '#fff', fontWeight: 700, fontSize: 16,
               padding: '16px 36px', borderRadius: 14, textDecoration: 'none',
@@ -267,14 +267,14 @@ function Hero() {
               <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#ffbd2e', display: 'block', flexShrink: 0 }} />
               <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#28c840', display: 'block', flexShrink: 0 }} />
               <div style={{ flex: 1, background: 'rgba(255,255,255,0.07)', borderRadius: 6, padding: '4px 12px', marginLeft: 8, fontSize: 10, color: 'rgba(255,255,255,0.3)', fontWeight: 500, border: '1px solid rgba(255,255,255,0.07)' }}>
-                app.getpaintflow.com/dashboard
+                app.paintstride.com/dashboard
               </div>
             </div>
             <picture>
               <source srcSet="/dashboard.webp" type="image/webp" />
               <img
                 src="/dashboard.png"
-                alt="PaintFlow dashboard — dark mode, showing pipeline, revenue, and job stats"
+                alt="PaintStride dashboard — dark mode, showing pipeline, revenue, and job stats"
                 style={{ width: '100%', display: 'block', maxHeight: 480, objectFit: 'cover', objectPosition: 'top' }}
               />
             </picture>
@@ -399,7 +399,7 @@ function JobNarrativeSection() {
             Henderson Exterior — lead to paid.
           </h2>
           <p style={{ fontSize: 15, color: '#5a5f72', fontWeight: 300, maxWidth: 440, margin: '0 auto', lineHeight: 1.6 }}>
-            See how a single job moves through PaintFlow — from the first ping to the final margin number.
+            See how a single job moves through PaintStride — from the first ping to the final margin number.
           </p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20, alignItems: 'start' }}>
@@ -442,7 +442,7 @@ function ProblemSection() {
             Most contractors track revenue, not cost. You quote 24 hours, the crew runs 31, and you don't find out until you're already on the next job.
           </p>
           <p style={{ fontSize: 16, color: '#5a5f72', lineHeight: 1.7, fontWeight: 300 }}>
-            PaintFlow closes the loop — from estimate to final margin — so you know exactly where the money went on every single job.
+            PaintStride closes the loop — from estimate to final margin — so you know exactly where the money went on every single job.
           </p>
         </div>
         {/* Job costing screenshot + card */}
@@ -453,7 +453,7 @@ function ProblemSection() {
             <source srcSet="/screenshots/job-costing.webp" type="image/webp" />
             <img
               src="/screenshots/job-costing.png"
-              alt="PaintFlow job costing actuals — labor accuracy, material accuracy, and realized profit"
+              alt="PaintStride job costing actuals — labor accuracy, material accuracy, and realized profit"
               loading="lazy"
               decoding="async"
               style={{ width: '100%', display: 'block', objectFit: 'cover', objectPosition: 'top', maxHeight: 260 }}
@@ -640,7 +640,7 @@ function ScheduleSection() {
             <source srcSet="/screenshots/schedule.webp" type="image/webp" />
             <img
               src="/screenshots/schedule.png"
-              alt="PaintFlow schedule — monthly calendar view with jobs and quote appointments"
+              alt="PaintStride schedule — monthly calendar view with jobs and quote appointments"
               loading="lazy"
               decoding="async"
               style={{ width: '100%', display: 'block', objectFit: 'cover', objectPosition: 'top', maxHeight: 400 }}
@@ -734,7 +734,7 @@ function FeaturesSection() {
               <source srcSet="/screenshots/insights.webp" type="image/webp" />
               <img
                 src="/screenshots/insights.png"
-                alt="PaintFlow insights page — revenue received, win rate, job efficiency stats"
+                alt="PaintStride insights page — revenue received, win rate, job efficiency stats"
                 loading="lazy"
                 decoding="async"
                 style={{ width: '100%', display: 'block', objectFit: 'cover', objectPosition: 'top', maxHeight: 280 }}
@@ -823,7 +823,7 @@ function FounderSection() {
             color: '#0f1117', fontStyle: 'italic', marginBottom: 28,
             borderLeft: `3px solid ${ACCENT}`, paddingLeft: 24,
           }}>
-            "I was tired of not knowing where my money was going. I was too busy working to fill out data sheets. So with the help of modern technology, I developed PaintFlow to give myself and other contractors an affordable, hands-off solution to have access to all the data your painting business needs."
+            "I was tired of not knowing where my money was going. I was too busy working to fill out data sheets. So with the help of modern technology, I developed PaintStride to give myself and other contractors an affordable, hands-off solution to have access to all the data your painting business needs."
           </blockquote>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
             <div style={{
@@ -835,7 +835,7 @@ function FounderSection() {
             </div>
             <div>
               <div style={{ fontSize: 14, fontWeight: 700, color: '#0f1117' }}>Carston Roberts</div>
-              <div style={{ fontSize: 12, color: '#9ca3af', marginTop: 2 }}>Founder, PaintFlow · Painting contractor</div>
+              <div style={{ fontSize: 12, color: '#9ca3af', marginTop: 2 }}>Founder, PaintStride · Painting contractor</div>
             </div>
           </div>
         </div>
@@ -864,7 +864,7 @@ function CustomerFacingSection() {
           <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.09)', borderRadius: 20, overflow: 'hidden', boxShadow: '0 8px 40px rgba(0,0,0,0.07)' }}>
             <div style={{ padding: '10px 14px', background: '#fafafa', borderBottom: '1px solid rgba(0,0,0,0.07)', display: 'flex', alignItems: 'center', gap: 6 }}>
               {['#ff5f57','#ffbd2e','#28c840'].map(c => <span key={c} style={{ width: 8, height: 8, borderRadius: '50%', background: c, display: 'block' }} />)}
-              <div style={{ flex: 1, background: '#eee', borderRadius: 4, padding: '2px 10px', marginLeft: 4, fontSize: 9, color: '#aaa' }}>getpaintflow.com/q/henderson-exterior</div>
+              <div style={{ flex: 1, background: '#eee', borderRadius: 4, padding: '2px 10px', marginLeft: 4, fontSize: 9, color: '#aaa' }}>paintstride.com/q/henderson-exterior</div>
             </div>
             <div style={{ padding: 24 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
@@ -901,7 +901,7 @@ function CustomerFacingSection() {
           <div style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.09)', borderRadius: 20, overflow: 'hidden', boxShadow: '0 8px 40px rgba(0,0,0,0.07)' }}>
             <div style={{ padding: '10px 14px', background: '#fafafa', borderBottom: '1px solid rgba(0,0,0,0.07)', display: 'flex', alignItems: 'center', gap: 6 }}>
               {['#ff5f57','#ffbd2e','#28c840'].map(c => <span key={c} style={{ width: 8, height: 8, borderRadius: '50%', background: c, display: 'block' }} />)}
-              <div style={{ flex: 1, background: '#eee', borderRadius: 4, padding: '2px 10px', marginLeft: 4, fontSize: 9, color: '#aaa' }}>getpaintflow.com/i/henderson-exterior</div>
+              <div style={{ flex: 1, background: '#eee', borderRadius: 4, padding: '2px 10px', marginLeft: 4, fontSize: 9, color: '#aaa' }}>paintstride.com/i/henderson-exterior</div>
             </div>
             <div style={{ padding: 24 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
@@ -968,7 +968,7 @@ function ComparisonSection() {
             All the features.<br />One flat price.
           </h2>
           <p style={{ fontSize: 16, color: '#5a5f72', fontWeight: 300, maxWidth: 480, margin: '0 auto', lineHeight: 1.65 }}>
-            PaintScout and DripJobs are great at parts of the job. PaintFlow is the only one that closes the loop from estimate to final margin — at a flat rate, no per-seat fees.
+            PaintScout and DripJobs are great at parts of the job. PaintStride is the only one that closes the loop from estimate to final margin — at a flat rate, no per-seat fees.
           </p>
         </div>
 
@@ -976,12 +976,12 @@ function ComparisonSection() {
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 0, maxWidth: 860, margin: '0 auto' }}>
           <div />
 
-          {/* PaintFlow */}
+          {/* PaintStride */}
           <div style={{ background: ACCENT, borderRadius: '16px 16px 0 0', padding: '20px 14px 18px', textAlign: 'left', position: 'relative' }}>
             <div style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)', background: '#16a34a', color: '#fff', fontSize: 10, fontWeight: 700, padding: '3px 10px', borderRadius: 100, letterSpacing: '0.05em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
               Best Value
             </div>
-            <div style={{ fontSize: 10, fontWeight: 700, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.06em', marginBottom: 6, textTransform: 'uppercase', textAlign: 'center' }}>PaintFlow</div>
+            <div style={{ fontSize: 10, fontWeight: 700, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.06em', marginBottom: 6, textTransform: 'uppercase', textAlign: 'center' }}>PaintStride</div>
             <div style={{ textAlign: 'center', marginBottom: 14 }}>
               <span style={{ fontSize: 28, fontWeight: 900, letterSpacing: '-0.04em', color: '#fff' }}>$99</span>
               <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)', marginLeft: 4 }}>/mo · or $79 annual</span>
@@ -1088,9 +1088,9 @@ function ComparisonSection() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
 
-            {/* PaintFlow */}
+            {/* PaintStride */}
             <div style={{ borderLeft: `3px solid ${ACCENT}`, paddingLeft: 16, paddingTop: 4, paddingBottom: 4 }}>
-              <div style={{ fontSize: 10, fontWeight: 700, color: ACCENT, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 6 }}>PaintFlow</div>
+              <div style={{ fontSize: 10, fontWeight: 700, color: ACCENT, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 6 }}>PaintStride</div>
               <div style={{ fontSize: 26, fontWeight: 900, letterSpacing: '-0.04em', color: '#0f1117', lineHeight: 1 }}>$99<span style={{ fontSize: 13, fontWeight: 500, color: '#5a5f72', letterSpacing: 0 }}>/mo</span></div>
               <div style={{ fontSize: 11, color: '#5a5f72', marginTop: 6 }}>Flat. Everything included.</div>
             </div>
@@ -1116,7 +1116,7 @@ function ComparisonSection() {
 
         {/* ── Captions ── */}
         <p style={{ textAlign: 'center', fontSize: 12, color: '#9ca3af', marginTop: 20 }}>
-          ● Highlighted rows = features exclusive to PaintFlow
+          ● Highlighted rows = features exclusive to PaintStride
         </p>
         <p style={{ textAlign: 'center', fontSize: 11, color: '#c4c9d4', marginTop: 10, fontStyle: 'italic', maxWidth: 680, margin: '10px auto 0' }}>
           Competitor pricing reflects published rates as of May 2026. PaintScout and DripJobs are trademarks of their respective owners; we're not affiliated.
@@ -1130,7 +1130,7 @@ function ComparisonSection() {
             padding: '12px 22px', borderRadius: 12, textDecoration: 'none',
             border: `1px solid ${ACCENT}40`,
           }}>
-            PaintFlow vs PaintScout →
+            PaintStride vs PaintScout →
           </a>
           <a href="/compare/dripjobs" style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
@@ -1138,7 +1138,7 @@ function ComparisonSection() {
             padding: '12px 22px', borderRadius: 12, textDecoration: 'none',
             border: `1px solid ${ACCENT}40`,
           }}>
-            PaintFlow vs DripJobs →
+            PaintStride vs DripJobs →
           </a>
         </div>
       </div>
@@ -1158,10 +1158,10 @@ function RateSheetCTA() {
         display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20,
       }}>
         <div>
-          <div style={{ fontSize: 16, fontWeight: 700, color: '#0f1117', marginBottom: 6 }}>See how PaintFlow tracks your real margin on every job.</div>
+          <div style={{ fontSize: 16, fontWeight: 700, color: '#0f1117', marginBottom: 6 }}>See how PaintStride tracks your real margin on every job.</div>
           <p style={{ fontSize: 14, color: '#5a5f72', fontWeight: 300 }}>14-day free trial — full access, no credit card required to start.</p>
         </div>
-        <a href="https://app.getpaintflow.com/checkout?plan=monthly" style={{
+        <a href="https://app.paintstride.com/checkout?plan=monthly" style={{
           background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 600,
           padding: '12px 24px', borderRadius: 12, textDecoration: 'none',
           whiteSpace: 'nowrap', flexShrink: 0,
@@ -1181,7 +1181,7 @@ function NotForSection() {
         <div style={{ marginBottom: 28 }}>
           <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#9ca3af', marginBottom: 12 }}>Honest take</div>
           <h2 style={{ fontSize: 'clamp(24px, 3vw, 34px)', fontWeight: 900, letterSpacing: '-0.03em', color: '#0f1117', marginBottom: 10, lineHeight: 1.1 }}>
-            Who PaintFlow isn't for.
+            Who PaintStride isn't for.
           </h2>
           <p style={{ fontSize: 15, color: '#5a5f72', fontWeight: 300, lineHeight: 1.65 }}>
             We'd rather tell you upfront than have you sign up and feel misled.
@@ -1189,9 +1189,9 @@ function NotForSection() {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {[
-            "You do 1–2 jobs a month and a spreadsheet works fine. PaintFlow is built for owners running multiple crews across multiple active jobs — if you're a solo operator with light volume, the overhead isn't worth it yet.",
-            "You need QuickBooks-native accounting today. PaintFlow handles invoicing and payment collection directly, but it doesn't sync to QuickBooks. That integration is on the roadmap — it's not here yet.",
-            "You primarily do commercial bid-and-walk-away work. PaintFlow is built for residential repeat-cycle shops — relationships, follow-ups, and margin visibility across a rolling job list. If your pipeline is mostly one-off commercial bids with long sales cycles, the CRM fit is looser.",
+            "You do 1–2 jobs a month and a spreadsheet works fine. PaintStride is built for owners running multiple crews across multiple active jobs — if you're a solo operator with light volume, the overhead isn't worth it yet.",
+            "You need QuickBooks-native accounting today. PaintStride handles invoicing and payment collection directly, but it doesn't sync to QuickBooks. That integration is on the roadmap — it's not here yet.",
+            "You primarily do commercial bid-and-walk-away work. PaintStride is built for residential repeat-cycle shops — relationships, follow-ups, and margin visibility across a rolling job list. If your pipeline is mostly one-off commercial bids with long sales cycles, the CRM fit is looser.",
           ].map((text, i) => (
             <div key={i} style={{ display: 'flex', gap: 14, padding: '16px 20px', background: '#f8f9fb', borderRadius: 14, border: '1px solid rgba(0,0,0,0.06)' }}>
               <div style={{ flexShrink: 0, marginTop: 3 }}>
@@ -1214,28 +1214,28 @@ function FAQSection() {
   const [open, setOpen] = useState<number | null>(null);
   const faqs = [
     {
-      q: 'How is PaintFlow different from PaintScout or DripJobs?',
-      a: 'PaintScout and DripJobs are good at estimating and CRM basics, but neither gives you real job costing, live labor tracking, or margin visibility. PaintFlow was built specifically because those tools couldn\'t answer the most important question: "Did I actually make money on that job?" It\'s also the only one with lead-source revenue attribution — so you know which ads are actually driving revenue.',
+      q: 'How is PaintStride different from PaintScout or DripJobs?',
+      a: 'PaintScout and DripJobs are good at estimating and CRM basics, but neither gives you real job costing, live labor tracking, or margin visibility. PaintStride was built specifically because those tools couldn\'t answer the most important question: "Did I actually make money on that job?" It\'s also the only one with lead-source revenue attribution — so you know which ads are actually driving revenue.',
     },
     {
       q: "What's your refund guarantee?",
-      a: "If you run a full job through PaintFlow — quote to invoice — within your first 60 days and it didn't earn its keep, we'll refund every dollar. Monthly customers get their most recent month back and keep using PaintFlow through the end of their paid period. Annual customers get a prorated refund for unused months. Email carston@getpaintflow.com to request — it goes straight to me. Full details on our refund policy page.",
+      a: "If you run a full job through PaintStride — quote to invoice — within your first 60 days and it didn't earn its keep, we'll refund every dollar. Monthly customers get their most recent month back and keep using PaintStride through the end of their paid period. Annual customers get a prorated refund for unused months. Email carston@paintstride.com to request — it goes straight to me. Full details on our refund policy page.",
     },
     {
       q: 'What happens to my data if I cancel?',
-      a: 'Your data stays exportable. You can pull every client, job, quote, and invoice as CSV at any time, including the 14 days after cancellation. We don\'t hold your data hostage — if PaintFlow isn\'t working for you, you take everything with you.',
+      a: 'Your data stays exportable. You can pull every client, job, quote, and invoice as CSV at any time, including the 14 days after cancellation. We don\'t hold your data hostage — if PaintStride isn\'t working for you, you take everything with you.',
     },
     {
       q: 'How long does setup take?',
       a: 'Most owners are up and running within an hour. We offer a free 30-minute onboarding call to walk you through your first job setup, estimating templates, and crew configuration.',
     },
     {
-      q: 'Does PaintFlow work with QuickBooks?',
-      a: "QuickBooks integration is on the roadmap. Right now, PaintFlow handles invoicing and payment collection natively — most customers find they no longer need QuickBooks once they're fully set up.",
+      q: 'Does PaintStride work with QuickBooks?',
+      a: "QuickBooks integration is on the roadmap. Right now, PaintStride handles invoicing and payment collection natively — most customers find they no longer need QuickBooks once they're fully set up.",
     },
     {
-      q: 'What lead sources does PaintFlow sync with?',
-      a: 'PaintFlow syncs leads from Meta (Facebook/Instagram) ads, Google ads, and your website contact form. New leads land directly in your pipeline automatically — no manual entry.',
+      q: 'What lead sources does PaintStride sync with?',
+      a: 'PaintStride syncs leads from Meta (Facebook/Instagram) ads, Google ads, and your website contact form. New leads land directly in your pipeline automatically — no manual entry.',
     },
     {
       q: 'Do my crew members need to install an app?',
@@ -1243,7 +1243,7 @@ function FAQSection() {
     },
     {
       q: 'Can I cancel anytime?',
-      a: "Yes. Monthly plans cancel from your billing settings anytime — you keep access through the end of your current paid period. Annual plans are prepaid for the year. The 60-day refund guarantee (see our refund policy) covers either plan if PaintFlow doesn't fit your shop.",
+      a: "Yes. Monthly plans cancel from your billing settings anytime — you keep access through the end of your current paid period. Annual plans are prepaid for the year. The 60-day refund guarantee (see our refund policy) covers either plan if PaintStride doesn't fit your shop.",
     },
     {
       q: 'Is my data secure?',
@@ -1345,7 +1345,7 @@ function PricingSection() {
         {/* 60-day refund guarantee callout */}
         <div style={{ maxWidth: 860, margin: '0 auto 24px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 16, padding: '28px 28px', boxShadow: '0 0 40px rgba(59,130,246,0.08)' }}>
           <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.85)', fontWeight: 400, lineHeight: 1.65, margin: '0 0 12px' }}>
-            Run one full job through PaintFlow — quote to invoice — within your first 60 days. If it didn't earn its keep, I'll refund every dollar. — Carston
+            Run one full job through PaintStride — quote to invoice — within your first 60 days. If it didn't earn its keep, I'll refund every dollar. — Carston
           </p>
           <div style={{ textAlign: 'right' }}>
             <a href="/refund" style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', textDecoration: 'underline' }}>see refund policy</a>
@@ -1389,7 +1389,7 @@ function PricingSection() {
                 ))}
               </ul>
               <button
-                onClick={() => window.location.href = 'https://app.getpaintflow.com/checkout?plan=annual'}
+                onClick={() => window.location.href = 'https://app.paintstride.com/checkout?plan=annual'}
                 style={{
                   width: '100%', padding: '16px', borderRadius: 14, border: 'none', cursor: 'pointer',
                   background: '#fff', color: ACCENT,
@@ -1441,7 +1441,7 @@ function PricingSection() {
               ))}
             </ul>
             <button
-              onClick={() => window.location.href = 'https://app.getpaintflow.com/checkout?plan=monthly'}
+              onClick={() => window.location.href = 'https://app.paintstride.com/checkout?plan=monthly'}
               style={{
                 width: '100%', padding: '16px', borderRadius: 14,
                 border: '1px solid rgba(255,255,255,0.15)', cursor: 'pointer',
@@ -1519,7 +1519,7 @@ function StickyBar() {
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
         <img src="/logo.png" alt="" style={{ width: 24, height: 24, borderRadius: 6 }} />
         <span style={{ fontSize: 14, fontWeight: 600, color: '#fff', letterSpacing: '-0.01em' }}>
-          PaintFlow — <span style={{ color: 'rgba(255,255,255,0.5)', fontWeight: 400 }}>14-day free trial · $99/mo · or $79 annual</span>
+          PaintStride — <span style={{ color: 'rgba(255,255,255,0.5)', fontWeight: 400 }}>14-day free trial · $99/mo · or $79 annual</span>
         </span>
       </div>
       <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
@@ -1540,7 +1540,7 @@ function StickyBar() {
           Schedule a demo
         </a>
         <a
-          href="https://app.getpaintflow.com/checkout"
+          href="https://app.paintstride.com/checkout"
           style={{
             background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 700,
             padding: '10px 22px', borderRadius: 10, textDecoration: 'none',
@@ -1560,7 +1560,7 @@ function Footer() {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginBottom: 8 }}>
         <img src="/logo.png" alt="" style={{ width: 28, height: 28, borderRadius: 7 }} />
         <span style={{ fontWeight: 800, fontSize: 16, letterSpacing: '-0.03em', color: '#0f1117' }}>
-          Paint<span style={{ color: ACCENT }}>Flow</span>
+          Paint<span style={{ color: ACCENT }}>Stride</span>
         </span>
       </div>
       <p style={{ fontSize: 13, color: '#9ca3af', marginBottom: 20 }}>Built by a painting contractor, for painting contractors.</p>
@@ -1572,7 +1572,7 @@ function Footer() {
           { label: 'Privacy', href: '/privacy', external: false },
           { label: 'Terms', href: '/terms', external: false },
           { label: 'Refund Policy', href: '/refund', external: false },
-          { label: 'Log in', href: 'https://app.getpaintflow.com/login', external: false },
+          { label: 'Log in', href: 'https://app.paintstride.com/login', external: false },
         ].map(link => (
           <a
             key={link.label}
@@ -1585,7 +1585,7 @@ function Footer() {
           </a>
         ))}
       </div>
-      <p style={{ fontSize: 11, color: '#d1d5db', marginTop: 24 }}>© 2026 PaintFlow. All rights reserved.</p>
+      <p style={{ fontSize: 11, color: '#d1d5db', marginTop: 24 }}>© 2026 PaintStride. All rights reserved.</p>
     </footer>
   );
 }
