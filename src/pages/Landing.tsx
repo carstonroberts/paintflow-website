@@ -1304,7 +1304,7 @@ function FoundingMemberBanner() {
           Founding Member Program
         </span>
         <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>
-          <strong style={{ color: '#fbbf24' }}>{data.remaining} of {data.cap} spots remaining</strong> — $49/mo locked in for life after 90 days free. By application.
+          <strong style={{ color: '#fbbf24' }}>{data.cap - data.remaining} of {data.cap} spots claimed</strong> — {data.remaining} remaining · $49/mo locked in for life after 90 days free.
         </span>
       </div>
       <a
