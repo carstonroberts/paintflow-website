@@ -767,43 +767,16 @@ function FounderSection() {
                     style={{ width:'100%', height:'100%', border:'none', display:'block' }} />
                 ─────────────────────────────────────────────────────────────── */}
             <div style={{
-              width: 360, height: 240, borderRadius: 20,
+              width: 360, height: 440, borderRadius: 20,
               border: '1px solid rgba(0,0,0,0.09)',
-              overflow: 'hidden', background: '#0f1117',
+              overflow: 'hidden',
               boxShadow: '0 8px 40px rgba(0,0,0,0.10)',
-              position: 'relative',
             }}>
-              {/* Placeholder — swap for real embed above */}
-              <video
+              <img
+                src="/founder.png"
+                alt="Carston Roberts, founder of PaintFlow"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                poster="/founder.png"
               />
-              {/* Play-button overlay */}
-              <div style={{
-                position: 'absolute', inset: 0,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                background: 'rgba(0,0,0,0.35)',
-                pointerEvents: 'none',
-              }}>
-                <div style={{
-                  width: 56, height: 56, borderRadius: '50%',
-                  background: 'rgba(255,255,255,0.92)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
-                }}>
-                  <svg width="22" height="22" viewBox="0 0 20 20" fill={ACCENT}>
-                    <path d="M6.3 4.7a1 1 0 011.5-.87l8 5a1 1 0 010 1.74l-8 5A1 1 0 016.3 14.7V5.3z" />
-                  </svg>
-                </div>
-              </div>
-              <div style={{
-                position: 'absolute', bottom: 12, left: 12,
-                background: 'rgba(0,0,0,0.6)', color: '#fff',
-                fontSize: 11, fontWeight: 600, padding: '4px 10px', borderRadius: 100,
-                backdropFilter: 'blur(8px)',
-              }}>
-                2 min — why I built this
-              </div>
             </div>
             <div style={{
               position: 'absolute', bottom: -14, right: -14,
