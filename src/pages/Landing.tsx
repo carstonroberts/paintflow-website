@@ -753,7 +753,7 @@ function FounderSection() {
     <section style={{ padding: '88px 24px', background: '#fff' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 64, alignItems: 'center' }}>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <div style={{ position: 'relative' }}>
+          <div style={{ position: 'relative', width: '100%', maxWidth: 360 }}>
             {/* ── FOUNDER VIDEO SLOT ──────────────────────────────────────────
                 Drop your Loom or YouTube embed src here once you have the URL.
                 Option A (Loom):
@@ -767,19 +767,19 @@ function FounderSection() {
                     style={{ width:'100%', height:'100%', border:'none', display:'block' }} />
                 ─────────────────────────────────────────────────────────────── */}
             <div style={{
-              width: 360, height: 440, borderRadius: 20,
+              width: '100%', height: 440, borderRadius: 20,
               border: '1px solid rgba(0,0,0,0.09)',
               overflow: 'hidden',
               boxShadow: '0 8px 40px rgba(0,0,0,0.10)',
             }}>
               <img
                 src="/founder.png"
-                alt="Carston Roberts, founder of PaintFlow"
+                alt="Carston Roberts, founder of PaintStride"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
             </div>
             <div style={{
-              position: 'absolute', bottom: -14, right: -14,
+              position: 'absolute', bottom: -14, right: 0,
               background: ACCENT, color: '#fff',
               fontSize: 11, fontWeight: 700, padding: '7px 14px',
               borderRadius: 100, boxShadow: `0 4px 20px ${ACCENT}55`,
