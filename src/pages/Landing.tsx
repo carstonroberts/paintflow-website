@@ -1309,6 +1309,43 @@ const PLAN_FEATURES = [
   'Unlimited jobs & clients',
 ];
 
+function FoundingMemberBanner() {
+  const [data, setData] = useState<{ remaining: number; cap: number } | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const apiUrl = (import.meta.env.VITE_API_URL as string | undefined) || 'https://paintstride-crm-production.up.railway.app';
+    fetch(`${apiUrl}/api/founding-members/remaining`)
+      .then(r => r.json())
+      .then(json => setData({ remaining: json.remaining, cap: json.cap }))
+      .catch(() => setData(null))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading || !data || data.remaining === 0) return null;
+
+  return (
+    <div style={{ maxWidth: 860, margin: '0 auto 20px', background: 'rgba(217,119,6,0.1)', border: '1px solid rgba(217,119,6,0.3)', borderRadius: 14, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <span style={{ fontSize: 10, fontWeight: 800, color: '#d97706', letterSpacing: '0.08em', textTransform: 'uppercase', background: 'rgba(217,119,6,0.15)', border: '1px solid rgba(217,119,6,0.3)', borderRadius: 100, padding: '4px 10px', whiteSpace: 'nowrap' }}>
+          Founding Member Program
+        </span>
+        <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>
+          <strong style={{ color: '#fbbf24' }}>{data.remaining} of {data.cap} spots remaining</strong> — $49/mo locked in for life after 90 days free. By application.
+        </span>
+      </div>
+      <a
+        href={DEMO_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ fontSize: 13, fontWeight: 700, color: '#fbbf24', textDecoration: 'none', whiteSpace: 'nowrap', border: '1px solid rgba(251,191,36,0.4)', borderRadius: 10, padding: '8px 16px' }}
+      >
+        Schedule a call →
+      </a>
+    </div>
+  );
+}
+
 function PricingSection() {
   return (
     <section id="pricing" style={{ background: '#0b0f1a', padding: '88px 24px' }}>
@@ -1321,26 +1358,7 @@ function PricingSection() {
           <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.45)', fontWeight: 300 }}>One plan. Everything included. No per-seat fees.</p>
         </div>
 
-        {/* Founding Member scarcity banner */}
-        {/* Update this number as Founding Member slots fill — values: 5, 4, 3, 2, 1 */}
-        <div style={{ maxWidth: 860, margin: '0 auto 20px', background: 'rgba(217,119,6,0.1)', border: '1px solid rgba(217,119,6,0.3)', borderRadius: 14, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <span style={{ fontSize: 10, fontWeight: 800, color: '#d97706', letterSpacing: '0.08em', textTransform: 'uppercase', background: 'rgba(217,119,6,0.15)', border: '1px solid rgba(217,119,6,0.3)', borderRadius: 100, padding: '4px 10px', whiteSpace: 'nowrap' }}>
-              Founding Member Program
-            </span>
-            <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>
-              <strong style={{ color: '#fbbf24' }}>3 of 5 spots remaining</strong> — $49/mo locked in for life after 90 days free. By application.
-            </span>
-          </div>
-          <a
-            href={DEMO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ fontSize: 13, fontWeight: 700, color: '#fbbf24', textDecoration: 'none', whiteSpace: 'nowrap', border: '1px solid rgba(251,191,36,0.4)', borderRadius: 10, padding: '8px 16px' }}
-          >
-            Schedule a call →
-          </a>
-        </div>
+        <FoundingMemberBanner />
 
         {/* 60-day refund guarantee callout */}
         <div style={{ maxWidth: 860, margin: '0 auto 24px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 16, padding: '28px 28px', boxShadow: '0 0 40px rgba(59,130,246,0.08)' }}>
