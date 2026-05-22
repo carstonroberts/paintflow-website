@@ -796,7 +796,7 @@ function FounderSection() {
             color: '#0f1117', fontStyle: 'italic', marginBottom: 28,
             borderLeft: `3px solid ${ACCENT}`, paddingLeft: 24,
           }}>
-            "I was tired of not knowing where my money was going. I was too busy working to fill out data sheets. So with the help of modern technology, I developed PaintStride to give myself and other contractors an affordable, hands-off solution to have access to all the data your painting business needs."
+            "I was tired of not knowing where my money was going. I was too busy working to fill out data sheets. I developed PaintStride to give myself and other painting businesses an affordable, hands-off solution to have access to all the data your painting business needs."
           </blockquote>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
             <div style={{
