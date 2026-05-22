@@ -946,7 +946,7 @@ function ComparisonSection() {
         </div>
 
         {/* ── Pricing card headers + feature table (horizontal scroll on mobile) ── */}
-        <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' as any, maxWidth: 860, margin: '0 auto' }}>
+        <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' as any, maxWidth: 860, margin: '0 auto', paddingTop: 16 }}>
          <div style={{ minWidth: 520 }}>
 
           {/* Pricing card headers */}
