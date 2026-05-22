@@ -18,24 +18,24 @@ export default function Terms() {
           <div>
             <h2 style={{ fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em', color: '#0f1117', marginBottom: 10 }}>Acceptance of Terms</h2>
             <p style={{ fontSize: 15, color: '#5a5f72', lineHeight: 1.75, fontWeight: 300 }}>
-              By accessing or using PaintFlow, you agree to be bound by these Terms of Service. If you do not agree, do not use the service.
+              By accessing or using PaintStride, you agree to be bound by these Terms of Service. If you do not agree, do not use the service.
             </p>
           </div>
 
           <div>
             <h2 style={{ fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em', color: '#0f1117', marginBottom: 10 }}>Use of Service</h2>
             <p style={{ fontSize: 15, color: '#5a5f72', lineHeight: 1.75, fontWeight: 300 }}>
-              PaintFlow is a business management platform for painting contractors. You are responsible for maintaining the confidentiality of your account credentials and all activity that occurs under your account.
+              PaintStride is a business management platform for painting contractors. You are responsible for maintaining the confidentiality of your account credentials and all activity that occurs under your account.
             </p>
           </div>
 
           <div>
             <h2 style={{ fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em', color: '#0f1117', marginBottom: 10 }}>Subscription & Billing</h2>
             <p style={{ fontSize: 15, color: '#5a5f72', lineHeight: 1.75, fontWeight: 300 }}>
-              PaintFlow is offered on a subscription basis. Fees are billed in advance on a monthly or annual basis. You authorize us to charge your payment method on a recurring basis until you cancel.
+              PaintStride is offered on a subscription basis. Fees are billed in advance on a monthly or annual basis. You authorize us to charge your payment method on a recurring basis until you cancel.
             </p>
             <p style={{ fontSize: 15, color: '#5a5f72', lineHeight: 1.75, fontWeight: 300, marginTop: 12 }}>
-              Refunds are governed by our <a href="/refund" style={{ color: ACCENT, textDecoration: 'none' }}>Refund Policy</a>. In short: 60-day money-back guarantee tied to running one full job through PaintFlow.
+              Refunds are governed by our <a href="/refund" style={{ color: ACCENT, textDecoration: 'none' }}>Refund Policy</a>. In short: 60-day money-back guarantee tied to running one full job through PaintStride.
             </p>
           </div>
 
@@ -49,21 +49,21 @@ export default function Terms() {
           <div>
             <h2 style={{ fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em', color: '#0f1117', marginBottom: 10 }}>Limitation of Liability</h2>
             <p style={{ fontSize: 15, color: '#5a5f72', lineHeight: 1.75, fontWeight: 300 }}>
-              PaintFlow is provided "as is" without warranties of any kind. Our liability to you for any claim arising from these terms or your use of the service is limited to the amount you paid us in the 12 months preceding the claim.
+              PaintStride is provided "as is" without warranties of any kind. Our liability to you for any claim arising from these terms or your use of the service is limited to the amount you paid us in the 12 months preceding the claim.
             </p>
           </div>
 
           <div>
             <h2 style={{ fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em', color: '#0f1117', marginBottom: 10 }}>Changes to Terms</h2>
             <p style={{ fontSize: 15, color: '#5a5f72', lineHeight: 1.75, fontWeight: 300 }}>
-              We may update these terms from time to time. We'll notify you of material changes via email. Continued use of PaintFlow after changes take effect constitutes acceptance.
+              We may update these terms from time to time. We'll notify you of material changes via email. Continued use of PaintStride after changes take effect constitutes acceptance.
             </p>
           </div>
 
           <div>
             <h2 style={{ fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em', color: '#0f1117', marginBottom: 10 }}>Contact</h2>
             <p style={{ fontSize: 15, color: '#5a5f72', lineHeight: 1.75, fontWeight: 300 }}>
-              Questions about these terms? Email <a href="mailto:carston@getpaintflow.com" style={{ color: ACCENT, textDecoration: 'none' }}>carston@getpaintflow.com</a>.
+              Questions about these terms? Email <a href="mailto:carston@paintstride.com" style={{ color: ACCENT, textDecoration: 'none' }}>carston@paintstride.com</a>.
             </p>
           </div>
 

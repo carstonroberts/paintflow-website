@@ -1,5 +1,19 @@
 {
   "rewrites": [
     { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "getpaintflow.com" }],
+      "destination": "https://paintstride.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.getpaintflow.com" }],
+      "destination": "https://paintstride.com/:path*",
+      "permanent": true
+    }
   ]
 }

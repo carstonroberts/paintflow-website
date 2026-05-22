@@ -39,9 +39,9 @@ function Nav() {
     }}>
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px', height: 60, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <a href="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
-          <img src="/logo.png" alt="PaintFlow" style={{ width: 32, height: 32, borderRadius: 8 }} />
+          <img src="/logo.png" alt="PaintStride" style={{ width: 32, height: 32, borderRadius: 8 }} />
           <span style={{ fontWeight: 800, fontSize: 18, letterSpacing: '-0.03em', color: '#0f1117' }}>
-            Paint<span style={{ color: ACCENT }}>Flow</span>
+            Paint<span style={{ color: ACCENT }}>Stride</span>
           </span>
         </a>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
@@ -51,7 +51,7 @@ function Nav() {
             Free Demo
           </a>
           <button
-            onClick={() => window.location.href = 'https://app.getpaintflow.com/login'}
+            onClick={() => window.location.href = 'https://app.paintstride.com/login'}
             style={{ fontSize: 13, color: '#5a5f72', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 500 }}
             className="cmp-hide-mobile">
             Log in
@@ -85,7 +85,7 @@ function Hero() {
             letterSpacing: '0.01em',
           }}>
             <span className="cmp-pulse-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#93c5fd', display: 'inline-block' }} />
-            PaintFlow vs DripJobs · Honest comparison
+            PaintStride vs DripJobs · Honest comparison
           </div>
         </div>
 
@@ -104,7 +104,7 @@ function Hero() {
           color: 'rgba(255,255,255,0.7)',
           maxWidth: 660, margin: '0 auto 40px', lineHeight: 1.65,
         }}>
-          DripJobs is built around sales automation — drip sequences, two-way texting, review requests. PaintFlow goes further: real job costing, live labor tracking, and post-job profitability. Here's the honest comparison.
+          DripJobs is built around sales automation — drip sequences, two-way texting, review requests. PaintStride goes further: real job costing, live labor tracking, and post-job profitability. Here's the honest comparison.
         </p>
 
         <div className="cmp-fade-up cmp-fade-up-4 cmp-verdict-grid" style={{
@@ -125,7 +125,7 @@ function Hero() {
             border: '1px solid rgba(59,130,246,0.4)',
             borderRadius: 16, padding: '22px 24px',
           }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: '#93c5fd', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>PaintFlow</div>
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#93c5fd', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>PaintStride</div>
             <div style={{ fontSize: 16, fontWeight: 700, color: '#fff', marginBottom: 6, letterSpacing: '-0.01em' }}>Operations + profitability system</div>
             <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)', lineHeight: 1.55 }}>Job costing, live labor tracking, payroll export, crew efficiency, post-job margin. Built and run by an actual painting contractor.</div>
           </div>
@@ -155,8 +155,8 @@ function SummaryStrip() {
           <div className="cmp-stack-mobile" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 28 }}>
             {[
               { icon: '📨', title: 'If your problem is follow-up', body: "DripJobs is purpose-built for drip sequences and review requests. They've focused there for years." },
-              { icon: '💰', title: 'If your problem is profit', body: 'DripJobs has no job costing, no labor tracking, no payroll. PaintFlow was built specifically for this.' },
-              { icon: '🛠️', title: 'If reliability matters', body: 'DripJobs reviews call out frequent bugs and 6am notification firings. PaintFlow is built and used daily by a painter.' },
+              { icon: '💰', title: 'If your problem is profit', body: 'DripJobs has no job costing, no labor tracking, no payroll. PaintStride was built specifically for this.' },
+              { icon: '🛠️', title: 'If reliability matters', body: 'DripJobs reviews call out frequent bugs and 6am notification firings. PaintStride is built and used daily by a painter.' },
             ].map(c => (
               <div key={c.title}>
                 <div style={{ fontSize: 28, marginBottom: 10 }}>{c.icon}</div>
@@ -179,7 +179,7 @@ const COMPARE_GROUPS: Group[] = [
   {
     group: 'Sales & Follow-up Automation',
     rows: [
-      { feature: 'Automated drip sequences for leads', pf: 'partial', dj: 'yes', note: 'DripJobs is purpose-built around this; PaintFlow has follow-ups but fewer templates today' },
+      { feature: 'Automated drip sequences for leads', pf: 'partial', dj: 'yes', note: 'DripJobs is purpose-built around this; PaintStride has follow-ups but fewer templates today' },
       { feature: '40+ pre-built text & email templates', pf: 'partial', dj: 'yes', note: 'DripJobs has the deepest template library' },
       { feature: 'Outbound SMS automation', pf: 'yes', dj: 'yes' },
       { feature: 'Automated review requests post-job', pf: 'yes', dj: 'yes' },
@@ -218,7 +218,7 @@ const COMPARE_GROUPS: Group[] = [
   {
     group: 'Platform & Reliability',
     rows: [
-      { feature: 'Mobile-optimized web app (no install)', pf: 'yes', dj: 'partial', note: 'DripJobs has native iOS/Android apps; PaintFlow works in any mobile browser with no download' },
+      { feature: 'Mobile-optimized web app (no install)', pf: 'yes', dj: 'partial', note: 'DripJobs has native iOS/Android apps; PaintStride works in any mobile browser with no download' },
       { feature: 'Low learning curve / quick setup', pf: 'yes', dj: 'partial' },
       { feature: 'Built by an active painting contractor', pf: 'yes', dj: 'no' },
     ],
@@ -264,7 +264,7 @@ function FeatureTable() {
         }}>
           <div style={{ fontSize: 11, fontWeight: 700, color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.08em', paddingLeft: 16 }}>Feature</div>
           <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: 13, fontWeight: 800, color: ACCENT, letterSpacing: '-0.01em' }}>PaintFlow</div>
+            <div style={{ fontSize: 13, fontWeight: 800, color: ACCENT, letterSpacing: '-0.01em' }}>PaintStride</div>
             <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 1 }}>$99 flat</div>
           </div>
           <div style={{ textAlign: 'center' }}>
@@ -365,7 +365,7 @@ function BestForSection() {
             "Strong fit for solo operators who close on speed-to-lead and don't yet need to track labor or margin.",
           )}
           {card(
-            'PaintFlow is best if…',
+            'PaintStride is best if…',
             ACCENT,
             '#fff',
             `${ACCENT}55`,
@@ -394,13 +394,13 @@ function PricingCompare() {
             One flat rate.<br />No per-seat fees.
           </h2>
           <p style={{ fontSize: 15, color: '#5a5f72', fontWeight: 300, maxWidth: 520, margin: '0 auto', lineHeight: 1.65 }}>
-            PaintFlow is <strong style={{ color: '#0f1117' }}>$99/mo</strong> flat — no matter how many crew members, estimators, or office staff you add. Or save $240/year with an annual plan at $79/mo.
+            PaintStride is <strong style={{ color: '#0f1117' }}>$99/mo</strong> flat — no matter how many crew members, estimators, or office staff you add. Or save $240/year with an annual plan at $79/mo.
           </p>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 20 }}>
           {[
-            { name: 'PaintFlow', price: '$99', sub: '/mo · unlimited users', note: 'or $79/mo billed annually', highlight: true, features: ['Full pipeline & job costing', 'Live labor time clock', 'Text & email automations', 'Invoicing & payment collection', 'Meta/Google/website lead sync', 'Unlimited crew & clients'] },
+            { name: 'PaintStride', price: '$99', sub: '/mo · unlimited users', note: 'or $79/mo billed annually', highlight: true, features: ['Full pipeline & job costing', 'Live labor time clock', 'Text & email automations', 'Invoicing & payment collection', 'Meta/Google/website lead sync', 'Unlimited crew & clients'] },
             { name: 'DripJobs', price: '$97+', sub: '/mo · Pro plan', note: 'Feature-based tiering; see dripjobs.com for current pricing', highlight: false, features: ['Sales automation & drip sequences', '40+ message templates', 'Automated review requests', 'Basic pipeline', 'Job costing available as $49/mo add-on', 'No live labor tracking'] },
           ].map(plan => (
             <div key={plan.name} style={{
@@ -432,7 +432,7 @@ function PricingCompare() {
         </div>
 
         <p style={{ marginTop: 20, fontSize: 12, color: '#9ca3af', textAlign: 'center', lineHeight: 1.6 }}>
-          DripJobs pricing is feature-tiered; see <a href="https://dripjobs.com" target="_blank" rel="noopener noreferrer" style={{ color: '#9ca3af' }}>dripjobs.com</a> for current plans. PaintFlow's $99/mo is flat for all features and unlimited users.
+          DripJobs pricing is feature-tiered; see <a href="https://dripjobs.com" target="_blank" rel="noopener noreferrer" style={{ color: '#9ca3af' }}>dripjobs.com</a> for current plans. PaintStride's $99/mo is flat for all features and unlimited users.
         </p>
       </div>
     </section>
@@ -441,9 +441,9 @@ function PricingCompare() {
 
 function ReliabilitySection() {
   const complaints = [
-    { tag: 'Send-time controls', body: 'PaintFlow lets you control when automations fire — no surprise texts going out at 6am.' },
-    { tag: 'Steep learning curve', body: 'DripJobs has a deep feature set that takes time to configure. PaintFlow is designed to be running within an hour.' },
-    { tag: 'Built for painters', body: 'PaintFlow is built and used daily by an active painting contractor — every feature ships because it solves a real problem on real jobs.' },
+    { tag: 'Send-time controls', body: 'PaintStride lets you control when automations fire — no surprise texts going out at 6am.' },
+    { tag: 'Steep learning curve', body: 'DripJobs has a deep feature set that takes time to configure. PaintStride is designed to be running within an hour.' },
+    { tag: 'Built for painters', body: 'PaintStride is built and used daily by an active painting contractor — every feature ships because it solves a real problem on real jobs.' },
   ];
 
   return (
@@ -454,23 +454,23 @@ function ReliabilitySection() {
           <div>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#fca5a5', fontSize: 12, fontWeight: 600, padding: '6px 14px', borderRadius: 100, marginBottom: 20 }}>
               <span className="cmp-pulse-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#fca5a5', display: 'inline-block' }} />
-              Where PaintFlow fits better
+              Where PaintStride fits better
             </div>
             <h2 style={{ fontSize: 'clamp(30px, 4vw, 44px)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1.06, color: '#fff', marginBottom: 18 }}>
               Software your crew<br />actually trusts.
             </h2>
             <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, fontWeight: 300, marginBottom: 24 }}>
-              DripJobs is a mature sales automation platform. The tradeoff: more complexity to configure, and no native job costing. PaintFlow's focus is on what happens after the sale — labor tracking, margin, and crew efficiency.
+              DripJobs is a mature sales automation platform. The tradeoff: more complexity to configure, and no native job costing. PaintStride's focus is on what happens after the sale — labor tracking, margin, and crew efficiency.
             </p>
             <div style={{
               background: 'rgba(37,99,235,0.12)',
               border: '1px solid rgba(59,130,246,0.3)',
               borderRadius: 16, padding: '20px 22px',
             }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: '#93c5fd', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>The PaintFlow approach</div>
+              <div style={{ fontSize: 11, fontWeight: 700, color: '#93c5fd', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>The PaintStride approach</div>
               <div style={{ fontSize: 14, color: '#fff', fontWeight: 600, marginBottom: 8, lineHeight: 1.5 }}>Built by a painter, used on real jobs every day.</div>
               <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6 }}>
-                Carston runs PaintFlow on his own painting business. If something breaks, it breaks for him too — and gets fixed the same day. Notifications respect send-time windows. The app is fast because it has to be.
+                Carston runs PaintStride on his own painting business. If something breaks, it breaks for him too — and gets fixed the same day. Notifications respect send-time windows. The app is fast because it has to be.
               </div>
             </div>
           </div>
@@ -552,7 +552,7 @@ function CTA() {
           See it on <span style={{ color: '#fbbf24' }}>your own jobs.</span>
         </h2>
         <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.7)', lineHeight: 1.65, fontWeight: 300, maxWidth: 540, margin: '0 auto 36px' }}>
-          We'll walk through your last 3 jobs together and show you exactly what PaintFlow would have told you about labor, margin, and crew performance.
+          We'll walk through your last 3 jobs together and show you exactly what PaintStride would have told you about labor, margin, and crew performance.
         </p>
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: 14, flexWrap: 'wrap', marginBottom: 24 }}>
@@ -574,7 +574,7 @@ function CTA() {
               padding: '16px 28px', borderRadius: 14, cursor: 'pointer',
               textDecoration: 'none', backdropFilter: 'blur(8px)',
             }}>
-            See full PaintFlow tour
+            See full PaintStride tour
           </a>
         </div>
 
@@ -595,7 +595,7 @@ function Footer() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <img src="/logo.png" alt="" style={{ width: 24, height: 24, borderRadius: 6 }} />
           <span style={{ fontSize: 13, fontWeight: 700, color: '#fff', letterSpacing: '-0.01em' }}>
-            Paint<span style={{ color: '#93c5fd' }}>Flow</span>
+            Paint<span style={{ color: '#93c5fd' }}>Stride</span>
           </span>
           <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', marginLeft: 6 }}>© 2026</span>
         </div>
@@ -665,7 +665,7 @@ const styles = `
 export default function CompareDripJobs() {
   useEffect(() => {
     const prevTitle = document.title;
-    document.title = 'PaintFlow vs DripJobs — Which is Right for Your Painting Business?';
+    document.title = 'PaintStride vs DripJobs — Which is Right for Your Painting Business?';
     return () => { document.title = prevTitle; };
   }, []);
 

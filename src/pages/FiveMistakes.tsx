@@ -126,7 +126,7 @@ export default function FiveMistakes() {
             </button>
 
             <div className="bg-[#0f1117] text-white rounded-2xl px-6 py-6 mb-4">
-              <div className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-2">Free Guide — PaintFlow</div>
+              <div className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-2">Free Guide — PaintStride</div>
               <div className="text-xl font-extrabold tracking-tight mb-2">5 Mistakes Costing You Money on Every Job</div>
               <p className="text-white/55 text-sm font-light leading-relaxed">
                 These aren't rare mistakes — they happen on almost every job at almost every painting company. The ones who fix them are the ones who actually scale.
@@ -151,9 +151,9 @@ export default function FiveMistakes() {
 
             {/* Pitch */}
             <div className="bg-[#0f1117] rounded-2xl px-8 py-10 text-center mb-6">
-              <div className="font-extrabold text-xl text-white mb-3">PaintFlow tracks all of this automatically.</div>
+              <div className="font-extrabold text-xl text-white mb-3">PaintStride tracks all of this automatically.</div>
               <p className="text-white/60 font-light text-sm leading-relaxed max-w-md mx-auto mb-6">
-                Every one of these mistakes is solved by having the right data in front of you. PaintFlow was built by a painting contractor specifically to track job costing, labor budgets, deposit status, and post-job profitability — so you always know where your money is going.
+                Every one of these mistakes is solved by having the right data in front of you. PaintStride was built by a painting contractor specifically to track job costing, labor budgets, deposit status, and post-job profitability — so you always know where your money is going.
               </p>
               <a
                 href="https://calendly.com/carstonroberts/30min"
@@ -161,7 +161,7 @@ export default function FiveMistakes() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 bg-white text-[#0f1117] text-sm font-semibold px-6 py-3 rounded-xl hover:opacity-90 transition-opacity mb-6"
               >
-                See How PaintFlow Works →
+                See How PaintStride Works →
               </a>
               <div className="flex flex-wrap justify-center gap-2">
                 {['Job costing', 'Live labor tracking', 'Deposit gates', 'Follow-up automations', 'Post-job analysis', '$99/month'].map(tag => (

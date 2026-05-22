@@ -9,9 +9,9 @@ export default function Nav() {
     <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-black/10 h-15">
       <div className="max-w-4xl mx-auto px-6 h-full flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5">
-          <img src="/logo.png" alt="PaintFlow" className="w-8 h-8 rounded-lg" />
+          <img src="/logo.png" alt="PaintStride" className="w-8 h-8 rounded-lg" />
           <span className="font-extrabold text-xl tracking-tight text-[#0f1117]">
-            Paint<span className="text-[#2563eb]">Flow</span>
+            Paint<span className="text-[#2563eb]">Stride</span>
           </span>
         </Link>
 
@@ -25,7 +25,7 @@ export default function Nav() {
             </Link>
           )}
           <a
-            href="https://app.getpaintflow.com/login"
+            href="https://app.paintstride.com/login"
             className="text-sm text-[#5a5f72] hover:text-[#0f1117] transition-colors hidden sm:block"
           >
             Log in

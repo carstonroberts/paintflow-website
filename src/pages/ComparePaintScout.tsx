@@ -47,9 +47,9 @@ function Nav() {
     }}>
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px', height: 60, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <a href="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
-          <img src="/logo.png" alt="PaintFlow" style={{ width: 32, height: 32, borderRadius: 8 }} />
+          <img src="/logo.png" alt="PaintStride" style={{ width: 32, height: 32, borderRadius: 8 }} />
           <span style={{ fontWeight: 800, fontSize: 18, letterSpacing: '-0.03em', color: '#0f1117' }}>
-            Paint<span style={{ color: ACCENT }}>Flow</span>
+            Paint<span style={{ color: ACCENT }}>Stride</span>
           </span>
         </a>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
@@ -59,7 +59,7 @@ function Nav() {
             Free Demo
           </a>
           <button
-            onClick={() => window.location.href = 'https://app.getpaintflow.com/login'}
+            onClick={() => window.location.href = 'https://app.paintstride.com/login'}
             style={{ fontSize: 13, color: '#5a5f72', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 500 }}
             className="cmp-hide-mobile">
             Log in
@@ -93,7 +93,7 @@ function Hero() {
             letterSpacing: '0.01em',
           }}>
             <span className="cmp-pulse-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#93c5fd', display: 'inline-block' }} />
-            PaintFlow vs PaintScout · Honest comparison
+            PaintStride vs PaintScout · Honest comparison
           </div>
         </div>
 
@@ -112,7 +112,7 @@ function Hero() {
           color: 'rgba(255,255,255,0.7)',
           maxWidth: 640, margin: '0 auto 40px', lineHeight: 1.65,
         }}>
-          PaintScout builds beautiful, dynamic estimates. PaintFlow tells you whether those estimates actually made you money. Here's an honest look at where each one wins — and where they don't.
+          PaintScout builds beautiful, dynamic estimates. PaintStride tells you whether those estimates actually made you money. Here's an honest look at where each one wins — and where they don't.
         </p>
 
         <div className="cmp-fade-up cmp-fade-up-4 cmp-verdict-grid" style={{
@@ -133,7 +133,7 @@ function Hero() {
             border: '1px solid rgba(59,130,246,0.4)',
             borderRadius: 16, padding: '22px 24px',
           }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: '#93c5fd', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>PaintFlow</div>
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#93c5fd', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>PaintStride</div>
             <div style={{ fontSize: 16, fontWeight: 700, color: '#fff', marginBottom: 6, letterSpacing: '-0.01em' }}>Operations + profitability system</div>
             <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)', lineHeight: 1.55 }}>Job costing, live labor tracking, payroll, post-job margin — built for owners who care about what's left after the job is done.</div>
           </div>
@@ -163,8 +163,8 @@ function SummaryStrip() {
           <div className="cmp-stack-mobile" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 28 }}>
             {[
               { icon: '📐', title: 'If you only need beautiful estimates', body: 'PaintScout is the gold standard. Customers love the dynamic, customizable quotes.' },
-              { icon: '💰', title: 'If you need to know your actual margin', body: 'PaintFlow closes the loop from estimate to final profit — PaintScout stops at "quote signed."' },
-              { icon: '💵', title: "If you're adding office staff or crew leads", body: "PaintScout's tiered plans limit or price by user count depending on the plan. PaintFlow is flat $99/mo with no user cap." },
+              { icon: '💰', title: 'If you need to know your actual margin', body: 'PaintStride closes the loop from estimate to final profit — PaintScout stops at "quote signed."' },
+              { icon: '💵', title: "If you're adding office staff or crew leads", body: "PaintScout's tiered plans limit or price by user count depending on the plan. PaintStride is flat $99/mo with no user cap." },
             ].map(c => (
               <div key={c.title}>
                 <div style={{ fontSize: 28, marginBottom: 10 }}>{c.icon}</div>
@@ -197,7 +197,7 @@ const COMPARE_GROUPS: Group[] = [
   {
     group: 'CRM & Pipeline',
     rows: [
-      { feature: 'Built-in CRM (no add-on)', pf: 'yes', ps: 'addon', note: 'PaintScout CRM is a paid add-on; PaintFlow includes it' },
+      { feature: 'Built-in CRM (no add-on)', pf: 'yes', ps: 'addon', note: 'PaintScout CRM is a paid add-on; PaintStride includes it' },
       { feature: 'Visual pipeline / deal stages', pf: 'yes', ps: 'partial' },
       { feature: 'Meta / Google / web lead capture', pf: 'yes', ps: 'partial' },
     ],
@@ -218,16 +218,16 @@ const COMPARE_GROUPS: Group[] = [
     rows: [
       { feature: 'Invoicing & payment collection', pf: 'yes', ps: 'yes' },
       { feature: 'Deposit-gated job scheduling', pf: 'yes', ps: 'no' },
-      { feature: 'Customer financing', pf: 'no', ps: 'yes', note: "PaintScout integrates Wisetack; PaintFlow doesn't (yet)" },
+      { feature: 'Customer financing', pf: 'no', ps: 'yes', note: "PaintScout integrates Wisetack; PaintStride doesn't (yet)" },
       { feature: 'Digital crew sheets (financials hidden)', pf: 'yes', ps: 'no' },
     ],
   },
   {
     group: 'Platform',
     rows: [
-      { feature: 'Third-party integrations (Zapier etc.)', pf: 'partial', ps: 'yes', note: 'PaintScout has more integrations today; PaintFlow is newer' },
-      { feature: 'Mobile-optimized web app (no install)', pf: 'yes', ps: 'partial', note: 'PaintScout has a native mobile app; PaintFlow works in any mobile browser' },
-      { feature: 'Built-in CRM included in base price', pf: 'yes', ps: 'addon', note: 'PaintScout CRM is a paid add-on; PaintFlow includes it' },
+      { feature: 'Third-party integrations (Zapier etc.)', pf: 'partial', ps: 'yes', note: 'PaintScout has more integrations today; PaintStride is newer' },
+      { feature: 'Mobile-optimized web app (no install)', pf: 'yes', ps: 'partial', note: 'PaintScout has a native mobile app; PaintStride works in any mobile browser' },
+      { feature: 'Built-in CRM included in base price', pf: 'yes', ps: 'addon', note: 'PaintScout CRM is a paid add-on; PaintStride includes it' },
     ],
   },
 ];
@@ -273,7 +273,7 @@ function FeatureTable() {
         }}>
           <div style={{ fontSize: 11, fontWeight: 700, color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.08em', paddingLeft: 16 }}>Feature</div>
           <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: 13, fontWeight: 800, color: ACCENT, letterSpacing: '-0.01em' }}>PaintFlow</div>
+            <div style={{ fontSize: 13, fontWeight: 800, color: ACCENT, letterSpacing: '-0.01em' }}>PaintStride</div>
             <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 1 }}>$99 flat</div>
           </div>
           <div style={{ textAlign: 'center' }}>
@@ -374,7 +374,7 @@ function BestForSection() {
             'Strong fit for solo estimators and small shops that win on quote quality, not operational discipline.',
           )}
           {card(
-            'PaintFlow is best if…',
+            'PaintStride is best if…',
             ACCENT,
             '#fff',
             `${ACCENT}55`,
@@ -403,13 +403,13 @@ function PricingCompare() {
             One flat rate.<br />Everything included.
           </h2>
           <p style={{ fontSize: 15, color: '#5a5f72', fontWeight: 300, maxWidth: 520, margin: '0 auto', lineHeight: 1.65 }}>
-            PaintFlow is <strong style={{ color: '#0f1117' }}>$99/mo flat</strong> — CRM, estimating, job costing, invoicing, and crew management, all included. Or save $240/year at $79/mo annual. PaintScout uses tiered plans and charges for the CRM as an add-on; see their site for current pricing.
+            PaintStride is <strong style={{ color: '#0f1117' }}>$99/mo flat</strong> — CRM, estimating, job costing, invoicing, and crew management, all included. Or save $240/year at $79/mo annual. PaintScout uses tiered plans and charges for the CRM as an add-on; see their site for current pricing.
           </p>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 20 }}>
           {[
-            { name: 'PaintFlow', price: '$99', sub: '/mo · unlimited users', note: 'or $79/mo billed annually', highlight: true, features: ['Full pipeline & CRM included', 'Job costing & margin tracking', 'Live labor time clock', 'Invoicing & Stripe payments', 'Text & email automations', 'Unlimited crew & clients'] },
+            { name: 'PaintStride', price: '$99', sub: '/mo · unlimited users', note: 'or $79/mo billed annually', highlight: true, features: ['Full pipeline & CRM included', 'Job costing & margin tracking', 'Live labor time clock', 'Invoicing & Stripe payments', 'Text & email automations', 'Unlimited crew & clients'] },
             { name: 'PaintScout', price: 'Tiered', sub: '· see paintscout.com', note: 'CRM available as paid add-on', highlight: false, features: ['Industry-leading estimate builder', 'Customer-facing interactive quotes', 'Room-by-room dimensions', 'Wisetack client financing', 'Native mobile app', 'CRM requires add-on purchase'] },
           ].map(plan => (
             <div key={plan.name} style={{
@@ -441,7 +441,7 @@ function PricingCompare() {
         </div>
 
         <p style={{ marginTop: 20, fontSize: 12, color: '#9ca3af', textAlign: 'center', lineHeight: 1.6 }}>
-          PaintScout pricing is tiered; see <a href="https://paintscout.com" target="_blank" rel="noopener noreferrer" style={{ color: '#9ca3af' }}>paintscout.com</a> for current plans. PaintFlow's $99/mo is flat for all features and unlimited users.
+          PaintScout pricing is tiered; see <a href="https://paintscout.com" target="_blank" rel="noopener noreferrer" style={{ color: '#9ca3af' }}>paintscout.com</a> for current plans. PaintStride's $99/mo is flat for all features and unlimited users.
         </p>
       </div>
     </section>
@@ -470,7 +470,7 @@ function HonestyStrip() {
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {[
                   'Their estimating UI is more refined — especially for customer-facing dynamic quotes.',
-                  "Wisetack financing is built in; PaintFlow doesn't offer customer financing yet.",
+                  "Wisetack financing is built in; PaintStride doesn't offer customer financing yet.",
                   "More third-party integrations available today — we're a newer, smaller company.",
                   'Larger user base means more community resources, templates, and support content.',
                 ].map((line, i) => (
@@ -500,7 +500,7 @@ function CTA() {
           See it on <span style={{ color: '#fbbf24' }}>your own jobs.</span>
         </h2>
         <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.7)', lineHeight: 1.65, fontWeight: 300, maxWidth: 540, margin: '0 auto 36px' }}>
-          We'll walk through your last 3 jobs together and show you exactly what PaintFlow would have told you about labor, margin, and crew performance.
+          We'll walk through your last 3 jobs together and show you exactly what PaintStride would have told you about labor, margin, and crew performance.
         </p>
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: 14, flexWrap: 'wrap', marginBottom: 24 }}>
@@ -522,7 +522,7 @@ function CTA() {
               padding: '16px 28px', borderRadius: 14, cursor: 'pointer',
               textDecoration: 'none', backdropFilter: 'blur(8px)',
             }}>
-            See full PaintFlow tour
+            See full PaintStride tour
           </a>
         </div>
 
@@ -543,7 +543,7 @@ function Footer() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <img src="/logo.png" alt="" style={{ width: 24, height: 24, borderRadius: 6 }} />
           <span style={{ fontSize: 13, fontWeight: 700, color: '#fff', letterSpacing: '-0.01em' }}>
-            Paint<span style={{ color: '#93c5fd' }}>Flow</span>
+            Paint<span style={{ color: '#93c5fd' }}>Stride</span>
           </span>
           <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', marginLeft: 6 }}>© 2026</span>
         </div>
@@ -605,7 +605,7 @@ const styles = `
 export default function ComparePaintScout() {
   useEffect(() => {
     const prevTitle = document.title;
-    document.title = 'PaintFlow vs PaintScout — Which is Right for Your Painting Business?';
+    document.title = 'PaintStride vs PaintScout — Which is Right for Your Painting Business?';
     return () => { document.title = prevTitle; };
   }, []);
 

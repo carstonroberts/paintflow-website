@@ -15,7 +15,7 @@ export default function Refund() {
 
         {/* Intro */}
         <p style={{ fontSize: 17, color: '#374151', lineHeight: 1.75, fontWeight: 400, marginBottom: 40 }}>
-          We back PaintFlow with a 60-day money-back guarantee.
+          We back PaintStride with a 60-day money-back guarantee.
         </p>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 36 }}>
@@ -24,7 +24,7 @@ export default function Refund() {
           <div>
             <h2 style={{ fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em', color: '#0f1117', marginBottom: 10 }}>The guarantee</h2>
             <p style={{ fontSize: 15, color: '#5a5f72', lineHeight: 1.75, fontWeight: 300 }}>
-              Run one full job through PaintFlow — quote to invoice — within your first 60 days from signup. If it didn't earn its keep, we'll refund every dollar.
+              Run one full job through PaintStride — quote to invoice — within your first 60 days from signup. If it didn't earn its keep, we'll refund every dollar.
             </p>
           </div>
 
@@ -32,7 +32,7 @@ export default function Refund() {
           <div>
             <h2 style={{ fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em', color: '#0f1117', marginBottom: 10 }}>What counts as one full job</h2>
             <p style={{ fontSize: 15, color: '#5a5f72', lineHeight: 1.75, fontWeight: 300 }}>
-              A job that moves through the quote stage to a sent invoice within PaintFlow. The job doesn't need to be fully paid — sending the invoice is the completion marker.
+              A job that moves through the quote stage to a sent invoice within PaintStride. The job doesn't need to be fully paid — sending the invoice is the completion marker.
             </p>
           </div>
 
@@ -40,7 +40,7 @@ export default function Refund() {
           <div>
             <h2 style={{ fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em', color: '#0f1117', marginBottom: 10 }}>How to request a refund</h2>
             <p style={{ fontSize: 15, color: '#5a5f72', lineHeight: 1.75, fontWeight: 300 }}>
-              Email <a href="mailto:carston@getpaintflow.com" style={{ color: ACCENT, textDecoration: 'none' }}>carston@getpaintflow.com</a> from the address on your account. Mention which job you ran. We process refunds within 2 business days.
+              Email <a href="mailto:carston@paintstride.com" style={{ color: ACCENT, textDecoration: 'none' }}>carston@paintstride.com</a> from the address on your account. Mention which job you ran. We process refunds within 2 business days.
             </p>
           </div>
 
@@ -75,7 +75,7 @@ export default function Refund() {
           <div>
             <h2 style={{ fontSize: 20, fontWeight: 800, letterSpacing: '-0.02em', color: '#0f1117', marginBottom: 10 }}>Questions</h2>
             <p style={{ fontSize: 15, color: '#5a5f72', lineHeight: 1.75, fontWeight: 300 }}>
-              Reply to any email from us, or write to <a href="mailto:carston@getpaintflow.com" style={{ color: ACCENT, textDecoration: 'none' }}>carston@getpaintflow.com</a> directly. The address goes to the founder.
+              Reply to any email from us, or write to <a href="mailto:carston@paintstride.com" style={{ color: ACCENT, textDecoration: 'none' }}>carston@paintstride.com</a> directly. The address goes to the founder.
             </p>
           </div>
 
