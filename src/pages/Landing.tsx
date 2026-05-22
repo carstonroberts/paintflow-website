@@ -1285,6 +1285,13 @@ const PLAN_FEATURES = [
 function FoundingMemberBanner() {
   const [data, setData] = useState<{ remaining: number; cap: number } | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 640);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   useEffect(() => {
     const apiUrl = (import.meta.env.VITE_API_URL as string | undefined) || 'https://paintstride-crm-production.up.railway.app';
@@ -1298,12 +1305,19 @@ function FoundingMemberBanner() {
   if (loading || !data || data.remaining === 0) return null;
 
   return (
-    <div style={{ maxWidth: 860, margin: '0 auto 20px', background: 'rgba(217,119,6,0.1)', border: '1px solid rgba(217,119,6,0.3)', borderRadius: 14, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <span style={{ fontSize: 10, fontWeight: 800, color: '#d97706', letterSpacing: '0.08em', textTransform: 'uppercase', background: 'rgba(217,119,6,0.15)', border: '1px solid rgba(217,119,6,0.3)', borderRadius: 100, padding: '4px 10px', whiteSpace: 'nowrap' }}>
+    <div style={{
+      maxWidth: 860, margin: '0 auto 20px',
+      background: 'rgba(217,119,6,0.1)', border: '1px solid rgba(217,119,6,0.3)', borderRadius: 14,
+      padding: isMobile ? '14px 16px' : '14px 22px',
+      display: 'flex', flexDirection: isMobile ? 'column' : 'row',
+      alignItems: isMobile ? 'flex-start' : 'center',
+      justifyContent: 'space-between', gap: isMobile ? 12 : 16,
+    }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+        <span style={{ fontSize: 10, fontWeight: 800, color: '#d97706', letterSpacing: '0.08em', textTransform: 'uppercase', background: 'rgba(217,119,6,0.15)', border: '1px solid rgba(217,119,6,0.3)', borderRadius: 100, padding: '4px 10px', whiteSpace: 'nowrap', alignSelf: 'flex-start' }}>
           Founding Member Program
         </span>
-        <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>
+        <span style={{ fontSize: isMobile ? 13 : 14, color: 'rgba(255,255,255,0.75)', fontWeight: 500, lineHeight: 1.5 }}>
           <strong style={{ color: '#fbbf24' }}>{data.cap - data.remaining} of {data.cap} spots claimed</strong> — {data.remaining} remaining · $49/mo locked in for life after 90 days free.
         </span>
       </div>
@@ -1311,7 +1325,12 @@ function FoundingMemberBanner() {
         href={DEMO_URL}
         target="_blank"
         rel="noopener noreferrer"
-        style={{ fontSize: 13, fontWeight: 700, color: '#fbbf24', textDecoration: 'none', whiteSpace: 'nowrap', border: '1px solid rgba(251,191,36,0.4)', borderRadius: 10, padding: '8px 16px' }}
+        style={{
+          fontSize: 13, fontWeight: 700, color: '#fbbf24', textDecoration: 'none',
+          border: '1px solid rgba(251,191,36,0.4)', borderRadius: 10, padding: '8px 16px',
+          whiteSpace: 'nowrap', display: 'block',
+          textAlign: 'center', alignSelf: isMobile ? 'stretch' : 'auto',
+        }}
       >
         Schedule a call →
       </a>
