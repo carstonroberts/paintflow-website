@@ -1510,55 +1510,83 @@ function PricingSection() {
 // ─── Sticky Bar ───────────────────────────────────────────────────────────────
 function StickyBar() {
   const [visible, setVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
   useEffect(() => {
-    const fn = () => setVisible(window.scrollY > 500);
-    window.addEventListener('scroll', fn, { passive: true });
-    return () => window.removeEventListener('scroll', fn);
+    const onScroll = () => setVisible(window.scrollY > 500);
+    const onResize = () => setIsMobile(window.innerWidth < 640);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    };
   }, []);
+
   return (
     <div style={{
       position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 99,
       background: 'rgba(15,17,23,0.97)',
       backdropFilter: 'blur(16px)',
       borderTop: '1px solid rgba(255,255,255,0.08)',
-      padding: '14px 24px',
+      padding: isMobile ? '12px 16px' : '14px 24px',
       transform: visible ? 'translateY(0)' : 'translateY(100%)',
       transition: 'transform 0.3s cubic-bezier(0.32,0.72,0,1)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 20, flexWrap: 'wrap',
+      display: 'flex', alignItems: 'center', justifyContent: isMobile ? 'space-between' : 'center',
+      gap: isMobile ? 12 : 20,
     }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <img src="/logo.png" alt="" style={{ width: 24, height: 24, borderRadius: 6 }} />
-        <span style={{ fontSize: 14, fontWeight: 600, color: '#fff', letterSpacing: '-0.01em' }}>
-          PaintStride — <span style={{ color: 'rgba(255,255,255,0.5)', fontWeight: 400 }}>14-day free trial · $99/mo · or $79 annual</span>
-        </span>
-      </div>
-      <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-        <button
-          onClick={() => scrollToPricing()}
-          style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 500 }}>
-          View pricing
-        </button>
-        <a
-          href={DEMO_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            color: 'rgba(255,255,255,0.65)', fontSize: 13, fontWeight: 500,
-            padding: '10px 18px', borderRadius: 10, textDecoration: 'none',
-            border: '1px solid rgba(255,255,255,0.18)', display: 'inline-block',
-          }}>
-          Schedule a demo
-        </a>
-        <a
-          href="https://app.paintstride.com/checkout"
-          style={{
-            background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 700,
-            padding: '10px 22px', borderRadius: 10, textDecoration: 'none',
-            letterSpacing: '-0.01em', display: 'inline-block',
-          }}>
-          Start free trial →
-        </a>
-      </div>
+      {isMobile ? (
+        <>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <span style={{ fontSize: 13, fontWeight: 700, color: '#fff', letterSpacing: '-0.01em' }}>PaintStride</span>
+            <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', fontWeight: 400 }}>14-day free trial · $99/mo</span>
+          </div>
+          <a
+            href="https://app.paintstride.com/checkout"
+            style={{
+              background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 700,
+              padding: '10px 20px', borderRadius: 10, textDecoration: 'none',
+              letterSpacing: '-0.01em', display: 'inline-block', whiteSpace: 'nowrap',
+            }}>
+            Start free trial →
+          </a>
+        </>
+      ) : (
+        <>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <img src="/logo.png" alt="" style={{ width: 24, height: 24, borderRadius: 6 }} />
+            <span style={{ fontSize: 14, fontWeight: 600, color: '#fff', letterSpacing: '-0.01em' }}>
+              PaintStride — <span style={{ color: 'rgba(255,255,255,0.5)', fontWeight: 400 }}>14-day free trial · $99/mo · or $79 annual</span>
+            </span>
+          </div>
+          <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+            <button
+              onClick={() => scrollToPricing()}
+              style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 500 }}>
+              View pricing
+            </button>
+            <a
+              href={DEMO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: 'rgba(255,255,255,0.65)', fontSize: 13, fontWeight: 500,
+                padding: '10px 18px', borderRadius: 10, textDecoration: 'none',
+                border: '1px solid rgba(255,255,255,0.18)', display: 'inline-block',
+              }}>
+              Schedule a demo
+            </a>
+            <a
+              href="https://app.paintstride.com/checkout"
+              style={{
+                background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 700,
+                padding: '10px 22px', borderRadius: 10, textDecoration: 'none',
+                letterSpacing: '-0.01em', display: 'inline-block',
+              }}>
+              Start free trial →
+            </a>
+          </div>
+        </>
+      )}
     </div>
   );
 }
