@@ -945,8 +945,12 @@ function ComparisonSection() {
           </p>
         </div>
 
-        {/* ── Pricing card headers ── */}
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 0, maxWidth: 860, margin: '0 auto' }}>
+        {/* ── Pricing card headers + feature table (horizontal scroll on mobile) ── */}
+        <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' as any, maxWidth: 860, margin: '0 auto' }}>
+         <div style={{ minWidth: 520 }}>
+
+          {/* Pricing card headers */}
+          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 0 }}>
           <div />
 
           {/* PaintStride */}
@@ -1014,7 +1018,7 @@ function ComparisonSection() {
         </div>
 
         {/* ── Feature checklist table ── */}
-        <div style={{ maxWidth: 860, margin: '0 auto', overflow: 'hidden', borderRadius: '0 0 16px 16px', border: '1px solid rgba(0,0,0,0.08)' }}>
+        <div style={{ overflow: 'hidden', borderRadius: '0 0 16px 16px', border: '1px solid rgba(0,0,0,0.08)' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <tbody>
               {COMPARE_ROWS.map((row, i) => (
@@ -1052,6 +1056,8 @@ function ComparisonSection() {
             </tbody>
           </table>
         </div>
+        </div>{/* end minWidth wrapper */}
+        </div>{/* end overflowX scroll wrapper */}
 
         {/* ── 3-person shop callout ── */}
         <div style={{ maxWidth: 860, margin: '16px auto 0', background: '#fff', border: '1px solid rgba(0,0,0,0.1)', borderRadius: 16, padding: '20px 24px' }}>
