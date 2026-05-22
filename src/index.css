@@ -27,6 +27,7 @@ body {
   color: #0f1117;
   -webkit-font-smoothing: antialiased;
   margin: 0;
+  overflow-x: hidden;
 }
 
 #root { min-height: 100vh; }
