@@ -527,7 +527,6 @@ function CTA() {
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: 28, flexWrap: 'wrap', fontSize: 12, color: 'rgba(255,255,255,0.4)', fontWeight: 500 }}>
-          <span>✓ No credit card</span>
           <span>✓ Cancel anytime</span>
           <span>✓ Same day setup</span>
         </div>

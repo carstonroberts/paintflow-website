@@ -222,7 +222,7 @@ function Hero() {
 
         {/* Trust line */}
         <p style={{ textAlign: 'center', fontSize: 12, color: 'rgba(255,255,255,0.35)', marginBottom: 48 }}>
-          No credit card required · 14 days free · Cancel anytime
+          14 days free · Cancel anytime
         </p>
 
         {/* Social proof bar */}
@@ -233,7 +233,7 @@ function Hero() {
           marginBottom: 0,
         }}>
           {[
-            { num: '14 days', label: 'Free trial, no card required' },
+            { num: '14 days', label: 'Free trial, cancel anytime' },
             { num: '$99/mo', label: 'Flat rate, no per-seat fees' },
             { num: '9 stages', label: 'Built-in pipeline' },
             { num: '< 1 hr', label: 'Average setup time' },
@@ -1138,7 +1138,7 @@ function RateSheetCTA() {
       }}>
         <div>
           <div style={{ fontSize: 16, fontWeight: 700, color: '#0f1117', marginBottom: 6 }}>See how PaintStride tracks your real margin on every job.</div>
-          <p style={{ fontSize: 14, color: '#5a5f72', fontWeight: 300 }}>14-day free trial — full access, no credit card required to start.</p>
+          <p style={{ fontSize: 14, color: '#5a5f72', fontWeight: 300 }}>14-day free trial — full access. Cancel anytime.</p>
         </div>
         <a href="https://app.paintstride.com/checkout?plan=monthly" style={{
           background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 600,
