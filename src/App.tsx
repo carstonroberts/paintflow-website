@@ -1,4 +1,6 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import posthog from 'posthog-js'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import Landing from './pages/Landing'
@@ -9,6 +11,25 @@ import CompareDripJobs from './pages/CompareDripJobs'
 import Refund from './pages/Refund'
 import Terms from './pages/Terms'
 import Privacy from './pages/Privacy'
+
+// SPA route changes don't trigger PostHog's automatic pageview (it only fires
+// on initial load), so capture one manually on every location change.
+function PostHogPageview() {
+  const location = useLocation()
+  const isFirstRender = useRef(true)
+  useEffect(() => {
+    // The initial pageview is captured by posthog.init (capture_pageview: true);
+    // only capture subsequent client-side route changes here.
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
+    if (import.meta.env.VITE_POSTHOG_KEY) {
+      posthog.capture('$pageview')
+    }
+  }, [location])
+  return null
+}
 
 // Layout with shared Nav/Footer for resource pages
 function ResourceLayout({ children }: { children: React.ReactNode }) {
@@ -24,6 +45,7 @@ function ResourceLayout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <BrowserRouter>
+      <PostHogPageview />
       <Routes>
         {/* Landing has its own Nav and Footer built in */}
         <Route path="/" element={<Landing />} />

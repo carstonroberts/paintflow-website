@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { appUrl } from '../lib/appLink';
 
 
 const ACCENT = '#2563eb';
@@ -51,7 +52,7 @@ function Nav() {
             Free Demo
           </a>
           <button
-            onClick={() => window.location.href = 'https://app.paintstride.com/login'}
+            onClick={() => window.location.href = appUrl('/login')}
             style={{ fontSize: 13, color: '#5a5f72', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 500 }}
             className="cmp-hide-mobile">
             Log in

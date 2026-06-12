@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { appUrl } from '../lib/appLink';
 
 
 const DEMO_URL = 'https://calendly.com/carstonroberts/30min';
@@ -85,7 +86,7 @@ function Nav() {
         <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 8 : 12 }}>
           {!isMobile && (
             <button
-              onClick={() => window.location.href = 'https://app.paintstride.com/login'}
+              onClick={() => window.location.href = appUrl('/login')}
               style={{ fontSize: 13, color: '#5a5f72', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 500 }}>
               Log in
             </button>
@@ -105,7 +106,7 @@ function Nav() {
             </a>
           )}
           <a
-            href="https://app.paintstride.com/checkout"
+            href={appUrl('/checkout')}
             style={{
               background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 700,
               padding: isMobile ? '8px 16px' : '9px 20px', borderRadius: 10, textDecoration: 'none',
@@ -186,7 +187,7 @@ function Hero() {
         {/* CTA row */}
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 14, flexWrap: 'wrap', marginBottom: 16 }}>
           <a
-            href="https://app.paintstride.com/checkout"
+            href={appUrl('/checkout')}
             style={{
               background: ACCENT, color: '#fff', fontWeight: 700, fontSize: 16,
               padding: '16px 36px', borderRadius: 14, textDecoration: 'none',
@@ -1140,7 +1141,7 @@ function RateSheetCTA() {
           <div style={{ fontSize: 16, fontWeight: 700, color: '#0f1117', marginBottom: 6 }}>See how PaintStride tracks your real margin on every job.</div>
           <p style={{ fontSize: 14, color: '#5a5f72', fontWeight: 300 }}>14-day free trial — full access. Cancel anytime.</p>
         </div>
-        <a href="https://app.paintstride.com/checkout?plan=monthly" style={{
+        <a href={appUrl('/checkout?plan=monthly')} style={{
           background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 600,
           padding: '12px 24px', borderRadius: 12, textDecoration: 'none',
           whiteSpace: 'nowrap', flexShrink: 0,
@@ -1405,7 +1406,7 @@ function PricingSection() {
                 ))}
               </ul>
               <button
-                onClick={() => window.location.href = 'https://app.paintstride.com/checkout?plan=annual'}
+                onClick={() => window.location.href = appUrl('/checkout?plan=annual')}
                 style={{
                   width: '100%', padding: '16px', borderRadius: 14, border: 'none', cursor: 'pointer',
                   background: '#fff', color: ACCENT,
@@ -1457,7 +1458,7 @@ function PricingSection() {
               ))}
             </ul>
             <button
-              onClick={() => window.location.href = 'https://app.paintstride.com/checkout?plan=monthly'}
+              onClick={() => window.location.href = appUrl('/checkout?plan=monthly')}
               style={{
                 width: '100%', padding: '16px', borderRadius: 14,
                 border: '1px solid rgba(255,255,255,0.15)', cursor: 'pointer',
@@ -1547,7 +1548,7 @@ function StickyBar() {
             <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', fontWeight: 400 }}>14-day free trial · $99/mo</span>
           </div>
           <a
-            href="https://app.paintstride.com/checkout"
+            href={appUrl('/checkout')}
             style={{
               background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 700,
               padding: '10px 20px', borderRadius: 10, textDecoration: 'none',
@@ -1582,7 +1583,7 @@ function StickyBar() {
               Schedule a demo
             </a>
             <a
-              href="https://app.paintstride.com/checkout"
+              href={appUrl('/checkout')}
               style={{
                 background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 700,
                 padding: '10px 22px', borderRadius: 10, textDecoration: 'none',
@@ -1616,7 +1617,7 @@ function Footer() {
           { label: 'Privacy', href: '/privacy', external: false },
           { label: 'Terms', href: '/terms', external: false },
           { label: 'Refund Policy', href: '/refund', external: false },
-          { label: 'Log in', href: 'https://app.paintstride.com/login', external: false },
+          { label: 'Log in', href: appUrl('/login'), external: false },
         ].map(link => (
           <a
             key={link.label}

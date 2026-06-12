@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import GetStartedButton from './GetStartedButton'
+import { appUrl } from '../lib/appLink'
 
 export default function Nav() {
   const { pathname } = useLocation()
@@ -25,7 +26,7 @@ export default function Nav() {
             </Link>
           )}
           <a
-            href="https://app.paintstride.com/login"
+            href={appUrl('/login')}
             className="text-sm text-[#5a5f72] hover:text-[#0f1117] transition-colors hidden sm:block"
           >
             Log in
