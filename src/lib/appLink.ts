@@ -44,6 +44,22 @@ export function captureUtms(): void {
 }
 
 /**
+ * Read a single stored first-touch utm_* value (e.g. utm_campaign) captured by
+ * captureUtms(). Returns undefined when nothing was captured or storage is
+ * unavailable. Used to attach campaign attribution to analytics events.
+ */
+export function getStoredUtm(key: (typeof UTM_KEYS)[number]): string | undefined {
+  try {
+    const raw = sessionStorage.getItem(STORAGE_KEY)
+    if (!raw) return undefined
+    const utms = JSON.parse(raw) as Record<string, string>
+    return utms[key]
+  } catch {
+    return undefined
+  }
+}
+
+/**
  * Build an app.paintstride.com URL, appending any stored utm_* params.
  * Params already present in `path` (e.g. ?plan=monthly, ?founding=1) survive;
  * they also take precedence over stored utms on key collision.

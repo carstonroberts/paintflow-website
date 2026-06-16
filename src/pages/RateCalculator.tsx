@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { BASE, STATES, calcMultipliers, type WorkType, type CompanySize, type Experience } from '../data/stateRates'
+import { openDemo, DEMO_URL } from '../lib/demo'
 
 function fmt(n: number) {
   return '$' + Math.round(n).toLocaleString()
@@ -285,7 +286,8 @@ export default function RateCalculator() {
                 PaintStride tracks your estimated vs actual hours, materials, and margin on every single job. You'll know your real profitability — not just your hoped-for profitability.
               </p>
               <a
-                href="https://calendly.com/carstonroberts/30min"
+                href={DEMO_URL}
+                onClick={openDemo}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 bg-[#2563eb] text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:opacity-90 transition-opacity"

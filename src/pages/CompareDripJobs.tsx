@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { appUrl } from '../lib/appLink';
+import { openDemo, DEMO_URL } from '../lib/demo';
 
 
 const ACCENT = '#2563eb';
-const DEMO_URL = 'https://calendly.com/carstonroberts/30min';
 
 function CheckIcon({ size = 18 }: { size?: number }) {
   return (
@@ -46,7 +46,7 @@ function Nav() {
           </span>
         </a>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <a href={DEMO_URL} target="_blank" rel="noopener noreferrer"
+          <a href={DEMO_URL} onClick={openDemo} target="_blank" rel="noopener noreferrer"
             style={{ fontSize: 13, color: '#5a5f72', textDecoration: 'none', fontWeight: 500 }}
             className="cmp-hide-mobile">
             Free Demo
@@ -57,7 +57,7 @@ function Nav() {
             className="cmp-hide-mobile">
             Log in
           </button>
-          <a href={DEMO_URL} target="_blank" rel="noopener noreferrer"
+          <a href={DEMO_URL} onClick={openDemo} target="_blank" rel="noopener noreferrer"
             style={{
               background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 600,
               padding: '9px 20px', borderRadius: 10, border: 'none', cursor: 'pointer',
@@ -557,7 +557,7 @@ function CTA() {
         </p>
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: 14, flexWrap: 'wrap', marginBottom: 24 }}>
-          <a href={DEMO_URL} target="_blank" rel="noopener noreferrer"
+          <a href={DEMO_URL} onClick={openDemo} target="_blank" rel="noopener noreferrer"
             style={{
               background: ACCENT, color: '#fff', fontWeight: 700, fontSize: 16,
               padding: '16px 36px', borderRadius: 14, border: 'none', cursor: 'pointer',

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { appUrl } from '../lib/appLink';
+import { trackTrialCheckout } from '../lib/metaPixel';
+import { openDemo, DEMO_URL } from '../lib/demo';
 
-
-const DEMO_URL = 'https://calendly.com/carstonroberts/30min';
 
 const ACCENT = '#2563eb';
 
@@ -94,6 +94,7 @@ function Nav() {
           {!isMobile && (
             <a
               href={DEMO_URL}
+              onClick={openDemo}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -107,6 +108,7 @@ function Nav() {
           )}
           <a
             href={appUrl('/checkout')}
+            onClick={() => trackTrialCheckout()}
             style={{
               background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 700,
               padding: isMobile ? '8px 16px' : '9px 20px', borderRadius: 10, textDecoration: 'none',
@@ -188,6 +190,7 @@ function Hero() {
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 14, flexWrap: 'wrap', marginBottom: 16 }}>
           <a
             href={appUrl('/checkout')}
+            onClick={() => trackTrialCheckout()}
             style={{
               background: ACCENT, color: '#fff', fontWeight: 700, fontSize: 16,
               padding: '16px 36px', borderRadius: 14, textDecoration: 'none',
@@ -203,6 +206,7 @@ function Hero() {
           </a>
           <a
             href={DEMO_URL}
+            onClick={openDemo}
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -1141,7 +1145,7 @@ function RateSheetCTA() {
           <div style={{ fontSize: 16, fontWeight: 700, color: '#0f1117', marginBottom: 6 }}>See how PaintStride tracks your real margin on every job.</div>
           <p style={{ fontSize: 14, color: '#5a5f72', fontWeight: 300 }}>14-day free trial — full access. Cancel anytime.</p>
         </div>
-        <a href={appUrl('/checkout?plan=monthly')} style={{
+        <a href={appUrl('/checkout?plan=monthly')} onClick={() => trackTrialCheckout('monthly')} style={{
           background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 600,
           padding: '12px 24px', borderRadius: 12, textDecoration: 'none',
           whiteSpace: 'nowrap', flexShrink: 0,
@@ -1330,6 +1334,7 @@ function FoundingMemberBanner() {
       </div>
       <a
         href={DEMO_URL}
+        onClick={openDemo}
         target="_blank"
         rel="noopener noreferrer"
         style={{
@@ -1406,7 +1411,7 @@ function PricingSection() {
                 ))}
               </ul>
               <button
-                onClick={() => window.location.href = appUrl('/checkout?plan=annual')}
+                onClick={() => { trackTrialCheckout('annual'); window.location.href = appUrl('/checkout?plan=annual'); }}
                 style={{
                   width: '100%', padding: '16px', borderRadius: 14, border: 'none', cursor: 'pointer',
                   background: '#fff', color: ACCENT,
@@ -1419,7 +1424,7 @@ function PricingSection() {
                 Start Free Trial — 14 days free
               </button>
               <div style={{ textAlign: 'center', marginTop: 12 }}>
-                <a href={DEMO_URL} target="_blank" rel="noopener noreferrer"
+                <a href={DEMO_URL} onClick={openDemo} target="_blank" rel="noopener noreferrer"
                   style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', textDecoration: 'none' }}>
                   or <span style={{ textDecoration: 'underline' }}>schedule a free demo first</span>
                 </a>
@@ -1458,7 +1463,7 @@ function PricingSection() {
               ))}
             </ul>
             <button
-              onClick={() => window.location.href = appUrl('/checkout?plan=monthly')}
+              onClick={() => { trackTrialCheckout('monthly'); window.location.href = appUrl('/checkout?plan=monthly'); }}
               style={{
                 width: '100%', padding: '16px', borderRadius: 14,
                 border: '1px solid rgba(255,255,255,0.15)', cursor: 'pointer',
@@ -1472,7 +1477,7 @@ function PricingSection() {
               Start Free Trial — 14 days free
             </button>
             <div style={{ textAlign: 'center', marginTop: 12 }}>
-              <a href={DEMO_URL} target="_blank" rel="noopener noreferrer"
+              <a href={DEMO_URL} onClick={openDemo} target="_blank" rel="noopener noreferrer"
                 style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', textDecoration: 'none' }}>
                 or <span style={{ textDecoration: 'underline' }}>schedule a free demo first</span>
               </a>
@@ -1549,6 +1554,7 @@ function StickyBar() {
           </div>
           <a
             href={appUrl('/checkout')}
+            onClick={() => trackTrialCheckout()}
             style={{
               background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 700,
               padding: '10px 20px', borderRadius: 10, textDecoration: 'none',
@@ -1573,6 +1579,7 @@ function StickyBar() {
             </button>
             <a
               href={DEMO_URL}
+              onClick={openDemo}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -1584,6 +1591,7 @@ function StickyBar() {
             </a>
             <a
               href={appUrl('/checkout')}
+              onClick={() => trackTrialCheckout()}
               style={{
                 background: ACCENT, color: '#fff', fontSize: 13, fontWeight: 700,
                 padding: '10px 22px', borderRadius: 10, textDecoration: 'none',
@@ -1611,17 +1619,18 @@ function Footer() {
       <p style={{ fontSize: 13, color: '#9ca3af', marginBottom: 20 }}>Built by a painting contractor, for painting contractors.</p>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 28, flexWrap: 'wrap' }}>
         {[
-          { label: 'Book a Demo', href: 'https://calendly.com/carstonroberts/30min', external: true },
+          { label: 'Book a Demo', href: DEMO_URL, external: true, demo: true },
           { label: 'vs PaintScout', href: '/compare/paintscout', external: false },
           { label: 'vs DripJobs', href: '/compare/dripjobs', external: false },
           { label: 'Privacy', href: '/privacy', external: false },
           { label: 'Terms', href: '/terms', external: false },
           { label: 'Refund Policy', href: '/refund', external: false },
           { label: 'Log in', href: appUrl('/login'), external: false },
-        ].map(link => (
+        ].map((link: { label: string; href: string; external: boolean; demo?: boolean }) => (
           <a
             key={link.label}
             href={link.href}
+            onClick={link.demo ? openDemo : undefined}
             target={link.external ? '_blank' : undefined}
             rel={link.external ? 'noopener noreferrer' : undefined}
             style={{ fontSize: 13, color: '#9ca3af', textDecoration: 'none' }}

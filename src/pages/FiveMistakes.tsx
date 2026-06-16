@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { openDemo, DEMO_URL } from '../lib/demo'
 
 const FORMSPREE_MISTAKES = 'https://formspree.io/f/xnjllrga'
 
@@ -156,7 +157,8 @@ export default function FiveMistakes() {
                 Every one of these mistakes is solved by having the right data in front of you. PaintStride was built by a painting contractor specifically to track job costing, labor budgets, deposit status, and post-job profitability — so you always know where your money is going.
               </p>
               <a
-                href="https://calendly.com/carstonroberts/30min"
+                href={DEMO_URL}
+                onClick={openDemo}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 bg-white text-[#0f1117] text-sm font-semibold px-6 py-3 rounded-xl hover:opacity-90 transition-opacity mb-6"

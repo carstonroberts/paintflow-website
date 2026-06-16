@@ -6,6 +6,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { captureUtms } from './lib/appLink'
+import { initMetaPixel } from './lib/metaPixel'
 
 // First-touch UTM capture — must run before render so app CTAs carry attribution.
 captureUtms()
@@ -24,6 +25,11 @@ if (phKey) {
     person_profiles: 'identified_only',
   })
 }
+
+// Meta (Facebook) Pixel — same env-gated pattern as PostHog above. No-ops when
+// VITE_META_PIXEL_ID is unset. Inits without an automatic PageView; PageViews
+// fire on route change from App.tsx.
+initMetaPixel()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

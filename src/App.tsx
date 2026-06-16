@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import posthog from 'posthog-js'
+import { trackMeta } from './lib/metaPixel'
+import { preloadCalendly } from './lib/demo'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import Landing from './pages/Landing'
@@ -31,6 +33,21 @@ function PostHogPageview() {
   return null
 }
 
+// The Meta pixel is initialised WITHOUT an automatic PageView, so we fire one on
+// every route change — including the initial load. A ref keyed on the path
+// dedupes StrictMode's double-invoked effect so the initial PageView fires once.
+function MetaPixelPageview() {
+  const location = useLocation()
+  const lastPath = useRef<string | null>(null)
+  useEffect(() => {
+    const path = location.pathname + location.search
+    if (lastPath.current === path) return
+    lastPath.current = path
+    trackMeta('PageView')
+  }, [location])
+  return null
+}
+
 // Layout with shared Nav/Footer for resource pages
 function ResourceLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -43,9 +60,29 @@ function ResourceLayout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  // Calendly demo bookings: preload the widget assets, then listen for the
+  // popup's completion message and fire 'Schedule' to Meta + PostHog for parity.
+  // Demo CTAs site-wide route through openDemo() (src/lib/demo.ts) so this single
+  // listener captures every booking.
+  useEffect(() => {
+    preloadCalendly()
+    function onMessage(e: MessageEvent) {
+      if (typeof e.origin === 'string' && !e.origin.includes('calendly.com')) return
+      const data = e.data as { event?: string } | null
+      if (data?.event !== 'calendly.event_scheduled') return
+      trackMeta('Schedule', { content_name: 'demo' })
+      if (import.meta.env.VITE_POSTHOG_KEY) {
+        posthog.capture('demo_scheduled', { content_name: 'demo' })
+      }
+    }
+    window.addEventListener('message', onMessage)
+    return () => window.removeEventListener('message', onMessage)
+  }, [])
+
   return (
     <BrowserRouter>
       <PostHogPageview />
+      <MetaPixelPageview />
       <Routes>
         {/* Landing has its own Nav and Footer built in */}
         <Route path="/" element={<Landing />} />
